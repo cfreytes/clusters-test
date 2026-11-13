@@ -1,0 +1,14 @@
+Poné acá los logos de los clusters con estos nombres exactos (PNG, idealmente cuadrados o con fondo transparente):
+
+bpo.png            BPO & KPO Córdoba Cluster
+clic.png           CLIC
+bim.png            Cluster BIM Argentina
+salud-humana.png   Cluster de Investigación e Innovación en Salud Humana
+fintech.png        Cluster Fintech Córdoba
+franquicias.png    Cluster de Franquicias de Córdoba
+turismo-salud.png  Cluster Turismo Salud Córdoba
+creativa.png       Córdoba Creativa
+welcome.png        Córdoba Welcome
+
+Si un logo falta, la página muestra las iniciales del cluster en su lugar.
+Para usar otro nombre o formato (por ejemplo .svg), cambiá el campo "logo" del cluster en index.html.
