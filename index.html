@@ -24,6 +24,7 @@
 #icc a{color:inherit}
 #icc button{font-family:inherit;cursor:pointer}
 #icc :focus-visible{outline:2px solid var(--orange-hi);outline-offset:3px;border-radius:6px}
+#icc h1[tabindex="-1"]:focus{outline:none}
 #icc .wrap{max-width:1240px;margin:0 auto;padding:0 40px}
 #icc h1,#icc h2,#icc h3,#icc p,#icc ul{margin:0}
 #icc .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -190,6 +191,65 @@
 #icc .pager small{display:block;font-size:13px;color:var(--soft)}
 #icc .pager b{font-size:18px}
 
+
+/* Ficha editorial */
+#icc .fx-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+#icc .fx-meta span{font-size:13px;font-weight:700;padding:7px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:#E2E1DB}
+#icc .fx-meta span.hot{background:var(--orange-wash);border-color:transparent;color:var(--orange-hi)}
+#icc .fx-hero{display:flex;flex-direction:column;align-items:flex-start;gap:28px;padding-bottom:56px;border-bottom:1px solid var(--line)}
+#icc .fx-hero .logo{width:132px;height:132px}
+#icc .fx-hero .logo .ini{font-size:28px}
+#icc .fx-hero .city{font-size:15px;color:var(--muted);margin-top:10px}
+#icc .fx-sec{display:grid;grid-template-columns:220px minmax(0,1fr);gap:40px;padding:56px 0;border-bottom:1px solid var(--line)}
+#icc .fx-label{font-size:14px;font-weight:700;color:var(--orange-hi);padding-top:6px}
+#icc .fx-sec h2.fx-h{font-size:clamp(26px,2.8vw,34px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:24px}
+#icc .fx-sec .lead{margin-bottom:24px}
+#icc .fx-dato{display:flex;flex-wrap:wrap;gap:18px 40px;align-items:center;padding:44px 48px;border-radius:var(--radius-l);background:var(--orange);color:var(--ink)}
+#icc .fx-dato strong{flex:0 1 auto;font-size:clamp(52px,7vw,96px);font-weight:800;letter-spacing:-.055em;line-height:.9}
+#icc .fx-dato p{flex:1 1 260px;font-size:clamp(18px,1.9vw,23px);font-weight:700;line-height:1.35;max-width:36ch}
+#icc .fx-nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 32px}
+#icc .fx-num strong{display:block;font-size:46px;font-weight:800;letter-spacing:-.045em;line-height:1;color:var(--text)}
+#icc .fx-num span{display:block;margin-top:10px;font-size:15px;color:var(--muted);max-width:28ch;padding-top:12px;border-top:2px solid var(--orange)}
+#icc .fx-text{font-size:clamp(19px,1.8vw,22px);line-height:1.5;color:#E8E7E1;max-width:60ch}
+#icc .fx-todo{padding:28px 32px;border:1px dashed #55544F;border-radius:var(--radius-l);color:var(--muted);margin-top:24px}
+#icc .fx-todo b{display:block;color:var(--text);margin-bottom:6px}
+#icc .fx-steps{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#icc .fx-steps li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;align-items:start;padding:24px;border-radius:var(--radius-m);background:var(--surface);border:1px solid var(--line)}
+#icc .fx-steps .n{width:40px;height:40px;border-radius:50%;background:var(--orange-wash);color:var(--orange-hi);display:grid;place-items:center;font-weight:800}
+#icc .fx-steps b{display:block;font-size:17px;margin-bottom:4px}
+#icc .fx-steps p{color:#D8D7D1;font-size:15px}
+#icc .flags{display:flex;flex-wrap:wrap;gap:10px}
+#icc .flag{display:inline-flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:15px;font-weight:600}
+#icc .flag img{width:24px;height:18px;border-radius:3px;object-fit:cover;display:block}
+#icc .fx-contact{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center;padding:40px 44px;border-radius:var(--radius-l);background:var(--surface);border:1px solid var(--line);margin-top:56px}
+#icc .fx-contact .who{font-size:20px;font-weight:800;margin-top:4px}
+#icc .fx-contact .actions{display:flex;flex-wrap:wrap;gap:12px}
+@media (max-width:1000px){
+  #icc .fx-sec{grid-template-columns:minmax(0,1fr);gap:16px}
+  #icc .fx-nums{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  #icc .fx-hero{grid-template-columns:minmax(0,1fr)}
+  #icc .fx-hero .logo{width:96px;height:96px}
+  #icc .fx-dato{padding:32px 28px;gap:16px}
+  #icc .fx-nums,#icc .fx-steps{grid-template-columns:minmax(0,1fr)}
+  #icc .fx-contact{grid-template-columns:minmax(0,1fr);padding:28px}
+}
+
+#icc .logo-full{display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:18px;padding:18px 26px;height:124px;max-width:min(100%,380px)}
+#icc .logo-full img{max-height:88px;max-width:100%;object-fit:contain;display:block}
+#icc .logo-full .ini{display:none;color:var(--ink);font-weight:800;font-size:28px}
+#icc .logo-full.nologo img{display:none}
+#icc .logo-full.nologo .ini{display:block}
+#icc .fx-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#icc .fx-card{padding:26px 28px;border-radius:var(--radius-m);background:var(--surface);border:1px solid var(--line)}
+#icc .fx-card h3{font-size:18px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em}
+#icc .fx-card p{color:#D2D1CB;font-size:15px}
+#icc .fx-links{display:flex;flex-wrap:wrap;gap:10px}
+#icc .fx-links span{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;border:1px solid var(--line);font-weight:600;font-size:15px}
+#icc .fx-links span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--orange)}
+@media (max-width:640px){#icc .fx-cards{grid-template-columns:minmax(0,1fr)} #icc .logo-full{height:96px;padding:14px 18px} #icc .logo-full img{max-height:66px}}
+
 /* Cifras de los clusters */
 #icc .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 24px}
 #icc .tabs button{min-height:44px;padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:#D8D7D1;font-weight:600;font-size:14px}
@@ -335,7 +395,7 @@
      indicado en "logo". Si falta, se muestran las iniciales.
      ========================================================= */
   var CLUSTERS = [
-    { id: 'bpo', short: 'BPO & KPO', ini: 'BPO', logo: 'logos/bpo.png', kpi: 1,
+    { id: 'bpo', dato: ['40%', 'del empleo del sector BPO & KPO de Argentina se concentra en Córdoba'], short: 'BPO & KPO', ini: 'BPO', logo: 'logos/bpo-icon.png', logoFull: 'logos/bpo.png', kpi: 1,
       name: 'BPO & KPO Córdoba Cluster', sector: 'Servicios basados en conocimiento',
       desc: 'El sector es el primer eslabón de la Economía del Conocimiento, el talento digital y la transformación empresarial. Reúne a las principales empresas del sector de servicios empresariales y tercerización de procesos, con el objetivo de posicionar a Córdoba como la plaza más competitiva del país.',
       cifras: [['8', 'empresas socias'], ['+18.000', 'personas empleadas en el sector (2025)'], ['40%', 'del empleo del sector en Argentina se concentra en Córdoba'], ['58%', 'de los nuevos empleos ocupados por mujeres'], ['33%', 'primer empleo formal de jóvenes'], ['3', 'convenios de empleo firmados en 2023, 2024 y 2025']],
@@ -346,7 +406,7 @@
       exporta: [], exportaTexto: 'Atiende clientes en más de 10 mercados globales desde Córdoba.',
       manager: 'Diana Tuma', web: 'https://cbaclusterbpokpo.com.ar/', webLabel: 'Visitar el sitio del cluster' },
 
-    { id: 'clic', short: 'CLIC', ini: 'CLIC', logo: 'logos/clic.png',
+    { id: 'clic', dato: ['100%', 'de las empresas socias exporta sus servicios'], short: 'CLIC', ini: 'CLIC', logo: 'logos/clic-icon.png', logoFull: 'logos/clic.png',
       name: 'Cluster de Localización e Interpretación de Córdoba', sector: 'Servicios lingüísticos',
       desc: 'El clúster de la industria de traducción, localización e interpretación de la ciudad de Córdoba tiene el propósito de fomentar la colaboración, el crecimiento y la excelencia en el sector lingüístico, posicionando a Córdoba como referente regional e internacional en servicios de lengua y contenidos.',
       cifras: [['100%', 'de las empresas socias exporta'], ['1.300', 'lingüistas en Argentina en la red del cluster'], ['6.000', 'lingüistas en la red global de las empresas socias'], ['3,56%', 'del VAB provincial representa el paquete sectorial de referencia']],
@@ -356,7 +416,7 @@
       exporta: ['Estados Unidos', 'Canadá', 'Italia'],
       manager: 'Serenella Domizi', web: 'https://cliccluster.com/', webLabel: 'Visitar el sitio del cluster' },
 
-    { id: 'bim', short: 'BIM', ini: 'BIM', logo: 'logos/bim.png', kpi: 4,
+    { id: 'bim', dato: ['USD 50 M', 'en exportaciones anuales, con presencia en 18 países y 6 continentes'], short: 'BIM', ini: 'BIM', logo: 'logos/bim-icon.png', logoFull: 'logos/bim.png', kpi: 4,
       name: 'Cluster BIM Argentina', sector: 'Construcción e ingeniería digital',
       desc: 'Es el primer cluster de Argentina dedicado a la innovación, cooperación e implementación de la metodología BIM. Su objetivo es transformar la industria de diversos sectores mediante la integración de esta metodología, impulsando la eficiencia a través de la digitalización y el lenguaje común de los procesos.',
       cifras: [['50', 'socios'], ['1.º', 'Hub universitario BIM del país'], ['+280', 'becas BIM Modeler otorgadas'], ['8', 'servicios colaborativos'], ['USD 50 M', 'en exportaciones anuales'], ['18', 'países con presencia exportadora']],
@@ -366,7 +426,7 @@
       exporta: ['Alemania', 'Australia', 'Brasil', 'Canadá', 'Chile', 'Emiratos Árabes', 'España', 'Estados Unidos', 'Irlanda', 'Italia', 'México', 'Panamá', 'Perú', 'Portugal', 'Reino Unido', 'República Dominicana', 'Suecia', 'Uruguay'],
       manager: 'Hernán Laguia', web: 'https://clusterbim.com/', webLabel: 'Visitar el sitio del cluster' },
 
-    { id: 'salud-humana', short: 'Salud Humana', ini: 'IISH', logo: 'logos/salud-humana.png', kpi: 3,
+    { id: 'salud-humana', dato: ['-65%', 'en los tiempos del proceso regulatorio de ensayos clínicos'], short: 'Salud Humana', ini: 'IISH', logo: 'logos/salud-humana-icon.png', logoFull: 'logos/salud-humana.png', kpi: 3,
       name: 'Cluster de Investigación e Innovación en Salud Humana', sector: 'Ciencias de la vida',
       desc: 'El propósito del cluster es nuclear a los actores de la investigación clínica para potenciar a la Ciudad como hub de investigación e innovación en salud humana. Articula centros de investigación, universidades, empresas de innovación biomédica, instituciones médicas, laboratorios, CROs y organismos públicos en torno a ensayos clínicos, medicina de precisión y producción tecnológica médica.',
       cifras: [['32', 'instituciones miembro'], ['+500', 'investigadores registrados en la provincia de Córdoba'], ['97', 'profesionales capacitados en IA aplicada a investigación clínica'], ['-65%', 'en los tiempos del proceso regulatorio'], ['7', 'países en 3 continentes con cooperación y exportación de servicios clínicos'], ['1.º', 'evento que reúne a estudiantes, investigadores, sitios de investigación, universidades, sponsors y CRO']],
@@ -376,48 +436,58 @@
       exporta: ['Uruguay', 'México', 'España', 'Chile', 'Alemania', 'Brasil', 'Perú'],
       manager: 'Belén Olmedo', web: 'https://www.clustersaludcba.com/', webLabel: 'Visitar el sitio del cluster' },
 
-    { id: 'fintech', short: 'Fintech', ini: 'FIN', logo: 'logos/fintech.png',
+    { id: 'fintech',
+      porQue: [
+        ['Presencia en la conversación global', 'Presencia exportadora activa y participación constante en los principales foros y eventos fintech del mundo, lo que permite cocrear soluciones interoperables y facilitar el desembarco de tecnologías locales en múltiples mercados internacionales.'],
+        ['Un portafolio integral y avanzado', 'Desde pasarelas de pagos digitales y servicios financieros B2B hasta infraestructuras de blockchain y criptoactivos, e inteligencia artificial aplicada al análisis de riesgo y las finanzas predictivas.'],
+        ['I+D a la vanguardia', 'El 90% de las empresas socias invierte activamente en I+D, lo que asegura a los clientes soluciones de software financiero actualizadas bajo las últimas tendencias globales de ciberseguridad y eficiencia operativa.'],
+        ['Experiencia en todos los segmentos', 'Más de 13.000 clientes distintos entre B2B y B2C, con presencia en el segmento bancario, público, PyMEs, microempresas, grandes empresas y personas físicas.']],
+      vinculos: ['Fintech Club Miami', 'Pro Panamá', 'Programa InterCluster CEPAL', 'Fintech Americas Conference Miami', 'São Paulo Fintech Week'],
+      oportunidades: [
+        ['Acceso a infraestructuras digitales consolidadas', 'Capacidad probada para procesar altos volúmenes de transacciones financieras diarias, con soluciones robustas de pasarelas de pago y servicios B2B adaptables a grandes, medianas y pequeñas corporaciones.'],
+        ['Diseño conjunto de finanzas sustentables', 'Sobre un modelo ya desarrollado por el cluster, conectamos herramientas de medición ambiental (como huella hídrica y de carbono) con instrumentos económicos y líneas de financiamiento.'],
+        ['Mesas de trabajo y transferencia de buenas prácticas', 'Entre el ecosistema local y ecosistemas internacionales, para armonizar criterios y promover el intercambio mutuo de conocimientos sobre tendencias.'],
+        ['Formación técnica a medida', 'Células de talento a medida y capacitaciones corporativas de alta especialización junto a nuestras universidades aliadas y universidades globales.']], dato: ['US$ 10.405 M', 'administrados anualmente por las empresas del cluster'], short: 'Fintech', ini: 'FIN', logo: 'logos/fintech-icon.png', logoFull: 'logos/fintech.png',
       name: 'Cluster Fintech Córdoba', sector: 'Servicios financieros digitales',
       desc: 'El clúster unifica a empresas fintech, instituciones académicas y el sector público para consolidar a Córdoba como un hub financiero digital de clase mundial. Impulsa una infraestructura robusta, segura y escalable con un fuerte enfoque exportador, posicionando el talento y la tecnología local en los mercados globales más exigentes.',
       cifras: [['US$ 10.405 M', 'administrados anualmente por el cluster'], ['750', 'empleados en las empresas socias (2025)'], ['833.240', 'usuarios finales de servicios'], ['6', 'universidades e instituciones aliadas']],
-      destacado: 'El 90% de las empresas socias invierte activamente en I+D, lo que asegura a los clientes soluciones de software financiero actualizadas bajo las últimas tendencias globales de ciberseguridad y eficiencia operativa.',
       empresas: ['Pagos digitales', 'Blockchain', 'Mercado de capitales', 'IA financiera', 'Servicios B2B'],
       acciones: ['Capacitaciones multiactor internas, académicas y de impacto social', 'Observatorio de tendencias para la toma de decisiones estratégicas', 'Participación en eventos internacionales'],
-      exporta: ['Estados Unidos', 'Uruguay', 'Panamá', 'Chile', 'Colombia', 'Paraguay'],
-      manager: 'Florencia Peláez', web: 'https://ar.linkedin.com/company/clusterfintechcordoba', webLabel: 'Ver el cluster en LinkedIn' },
+      exporta: ['Estados Unidos', 'Uruguay', 'Panamá', 'Chile', 'Colombia', 'Paraguay', 'Estonia', 'Lituania'],
+      manager: 'Ruth Sironi', presidente: 'Agustín Ramello de la Vega', desde: '2024', web: 'https://ar.linkedin.com/company/clusterfintechcordoba', webLabel: 'Ver el cluster en LinkedIn' },
 
-    { id: 'franquicias', short: 'Franquicias', ini: 'CFC', logo: 'logos/franquicias.png',
+    { id: 'franquicias', dato: ['2.º', 'polo franquiciante de Argentina'], short: 'Franquicias', ini: 'CFC', logo: 'logos/franquicias-icon.png', logoFull: 'logos/franquicias.png',
       name: 'Cluster de Franquicias de Córdoba', sector: 'Comercio y modelos de negocio',
       desc: 'Su propósito es potenciar el sistema de franquicias desde Córdoba al mundo, profesionalizando el sector e incrementando la competitividad de las PyMEs que crecen bajo este modelo. Las empresas del cluster exportan modelos de negocio replicables. Córdoba es el segundo polo franquiciante del país, presente en el 59% de las marcas con desarrollo nacional.',
       cifras: [['120', 'franquicias activas en Córdoba (2025)'], ['+20', 'empresas socias con operación en mercados externos'], ['59%', 'de las marcas nacionales tiene presencia en Córdoba'], ['10.200', 'empleos directos del sector en la provincia'], ['1.611', 'empleados registrados por empresas del cluster (2025)'], ['23,2%', 'del VAB provincial producido por el sector']],
-      destacado: 'Córdoba es el 2.º polo franquiciante de Argentina.',
+      
       empresas: ['Gastronomía', 'Salud y bienestar', 'Indumentaria', 'Turismo', 'Retail especializado'],
       acciones: ['Intercambio de buenas prácticas con redes de franquicias internacionales', 'Diagnóstico para una internacionalización efectiva'],
       exporta: ['Uruguay', 'Brasil', 'Paraguay', 'Chile', 'México', 'Estados Unidos', 'España'],
       manager: 'Marcela Caballero', web: 'http://cfcor.com.ar/home/', webLabel: 'Visitar el sitio del cluster' },
 
-    { id: 'turismo-salud', short: 'Turismo Salud', ini: 'TS', logo: 'logos/turismo-salud.png',
+    { id: 'turismo-salud', dato: ['60%', 'menos puede costar un servicio de salud en Córdoba para un paciente extranjero, frente a Estados Unidos o Europa'], short: 'Turismo Salud', ini: 'TS', logo: 'logos/turismo-salud-icon.png', logoFull: 'logos/turismo-salud.png',
       name: 'Cluster Turismo Salud Córdoba', sector: 'Salud y turismo',
       desc: 'El cluster reúne a instituciones médicas, centros especializados y servicios de hospitalidad con el objetivo de ofrecer servicios de salud de alta calidad a pacientes internacionales. Córdoba es la 2.º plaza de turismo médico de Argentina, con 2.100 pacientes internacionales por año.',
       cifras: [['2.100', 'pacientes internacionales por año'], ['12', 'instituciones aliadas'], ['+12', 'especialidades médicas'], ['2', 'instituciones acreditadas por Joint Commission International'], ['15%', 'del flujo nacional de pacientes internacionales captado por Córdoba']],
-      destacado: 'Para un paciente extranjero, los servicios de salud en Córdoba pueden costar hasta un 60% menos respecto a Estados Unidos o Europa.',
+      
       empresas: ['Alta complejidad médica y quirúrgica', 'Oncología y radioterapia', 'Diagnóstico por imágenes', 'Cirugía robótica', 'Medicina reproductiva', 'Hotelería y asistencia al paciente'],
       acciones: ['Promoción internacional de Córdoba como destino de turismo de salud', 'Misiones comerciales y misiones inversas', 'Vinculación con aseguradoras, universidades e instituciones de salud internacionales', 'Participación en ferias, congresos y eventos especializados'],
       exporta: ['Perú', 'Paraguay', 'Uruguay', 'Bolivia', 'Chile'], exportaLabel: 'Mercados prioritarios',
       exportaTexto: 'También recibe pacientes de Estados Unidos, Europa y otros países de Latinoamérica.',
       manager: 'Javier Romero', web: 'https://www.turismosaludcordoba.com/', webLabel: 'Visitar el sitio del cluster' },
 
-    { id: 'creativa', short: 'Creativa', ini: 'CC', logo: 'logos/creativa.png',
+    { id: 'creativa', dato: ['+1.500', 'profesionales y expertos en el ecosistema interno y ampliado del cluster'], short: 'Creativa', ini: 'CC', logo: 'logos/creativa-icon.png', logoFull: 'logos/creativa.png',
       name: 'Córdoba Creativa, Cluster Publicidad', sector: 'Industrias creativas',
       desc: 'El clúster de la industria creativa, publicitaria y de marketing de Córdoba reúne agencias, estudios y profesionales creativos para amplificar los negocios del ecosistema y posicionar a la Ciudad como una capital de ideas, articulando empresas, universidades y organismos públicos para escalar la oferta del sector.',
       cifras: [['+1.500', 'profesionales y expertos en el ecosistema interno y ampliado'], ['+350', 'profesionales creativos en red'], ['100%', 'oferta integral que cubre toda la cadena de valor'], ['5', 'alianzas con universidades y centros de formación']],
       destacado: 'Las agencias socias operan individualmente en mercados de alta exigencia como Estados Unidos, España, México, Chile, Perú y Uruguay.',
       empresas: ['Branding', 'Campañas', 'Producción audiovisual', 'Desarrollo web', 'Gestión de pauta'],
       acciones: ['Plataforma de licitaciones para acceder a proyectos públicos y privados', 'Convenios con universidades para cerrar brechas de formación', 'Convenios con otros clusters para captar nuevos clientes'],
-      exporta: ['Estados Unidos', 'España', 'México', 'Chile', 'Perú', 'Uruguay'], exportaLabel: 'Mercados de alta exigencia',
+      exporta: ['Estados Unidos', 'España', 'México', 'Chile', 'Perú', 'Uruguay', 'República Dominicana', 'Costa Rica', 'Colombia', 'Ecuador', 'Brasil', 'Australia'],
       manager: 'Alberto Finkelztein', web: 'https://clustercordobacreativa.com/', webLabel: 'Visitar el sitio del cluster' },
 
-    { id: 'welcome', short: 'Welcome', ini: 'CW', logo: 'logos/welcome.png', kpi: 2,
+    { id: 'welcome', dato: ['+870', 'festivales realizados en la ciudad durante 2025'], short: 'Welcome', ini: 'CW', logo: 'logos/welcome-icon.png', logoFull: 'logos/welcome.png', kpi: 2,
       name: 'Córdoba Welcome, Cluster de Eventos', sector: 'Industria de eventos',
       desc: 'El cluster trabaja en pos de transformar la industria de eventos, espectáculos artísticos y deportivos en Córdoba. En colaboración con otros actores del ecosistema impulsa el crecimiento económico, social y sostenible de la región, proyectando globalmente a la Ciudad como una plaza de referencia internacional.',
       cifras: [['+75', 'empresas socias'], ['+530.000', 'puestos de trabajo directos, indirectos y eventuales'], ['+870', 'festivales realizados en la ciudad durante 2025'], ['+8', 'destinos de exportación activos']],
@@ -427,6 +497,9 @@
       exporta: ['Paraguay', 'Chile', 'Uruguay', 'México', 'Estados Unidos', 'España'],
       manager: 'Analía Jaccoud', web: 'https://cordobawelcome.com.ar/', webLabel: 'Visitar el sitio del cluster' }
   ];
+
+  // Total oficial de países de exportación. La lista por país se arma con los destinos detallados de cada cluster.
+  var TOTAL_PAISES = 29;
 
   var QUE_HACEMOS = [
     { icon: 'link', title: 'Articulación y vinculación entre actores', text: 'Facilitamos la coordinación entre empresas, instituciones, sector académico y sector público.' },
@@ -456,7 +529,7 @@
       ['+280', 'becas BIM Modeler otorgadas', 'bim'],
       ['97', 'profesionales capacitados en IA aplicada a investigación clínica', 'salud-humana']] },
     inter: { label: 'Internacionalización', items: [
-      ['__DEST__', 'países de destino declarados por el conjunto de los clusters', null],
+      ['__DEST__', 'países de destino de exportación de los clusters', null],
       ['USD 50 M', 'en exportaciones anuales del Cluster BIM', 'bim'],
       ['100%', 'de las empresas socias de CLIC exporta', 'clic'],
       ['2.100', 'pacientes internacionales por año', 'turismo-salud'],
@@ -509,10 +582,20 @@
     chart: '<svg ' + S + ' stroke-width="1.7"><path d="M4 20V11M10 20V4M16 20v-7M2 20h20"/></svg>',
     tool: '<svg ' + S + ' stroke-width="1.7"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8M9 13h2M13 13h2"/></svg>'
   };
+
+  var ISO = { 'Alemania':'de','Australia':'au','Bolivia':'bo','Brasil':'br','Canadá':'ca','Chile':'cl','Colombia':'co','Costa Rica':'cr','Ecuador':'ec','Emiratos Árabes':'ae','España':'es','Estados Unidos':'us','Estonia':'ee','Irlanda':'ie','Italia':'it','Lituania':'lt','México':'mx','Panamá':'pa','Paraguay':'py','Perú':'pe','Portugal':'pt','Reino Unido':'gb','República Dominicana':'do','Suecia':'se','Uruguay':'uy' };
+  function flag(p) {
+    var iso = ISO[p];
+    return '<span class="flag">' + (iso ? '<img src="https://flagcdn.com/w40/' + iso + '.png" alt="" loading="lazy" onerror="this.remove()">' : '') + p + '</span>';
+  }
   function byId(id) { for (var i = 0; i < CLUSTERS.length; i++) if (CLUSTERS[i].id === id) return CLUSTERS[i]; return null; }
   function ext(href) { return /^https?:/.test(href) ? ' target="_blank" rel="noopener"' : ''; }
   function logo(c) {
     return '<span class="logo"><img data-logo src="' + c.logo + '" alt="Logo de ' + c.short + '"><span class="ini" aria-hidden="true">' + c.ini + '</span></span>';
+  }
+
+  function logoFull(c) {
+    return '<span class="logo-full"><img data-logo src="' + (c.logoFull || c.logo) + '" alt="Logo de ' + c.name + '"><span class="ini" aria-hidden="true">' + c.ini + '</span></span>';
   }
 
   // Destinos sin repetir, con los clusters que llegan a cada uno
@@ -575,9 +658,9 @@
       '</div>' +
       '<div class="figures">' +
         '<div class="figure"><strong>9</strong><span>clusters intensivos en conocimiento</span></div>' +
-        '<div class="figure"><strong>260</strong><span>empresas socias</span></div>' +
-        '<div class="figure"><strong>' + DEST.length + '</strong><span>países de destino de exportación</span></div>' +
-        '<div class="figure"><strong>150</strong><span>servicios prestados</span></div>' +
+        '<div class="figure"><strong>+250</strong><span>empresas socias</span></div>' +
+        '<div class="figure"><strong>' + TOTAL_PAISES + '</strong><span>países de destino de exportación</span></div>' +
+        '<div class="figure"><strong>27</strong><span>países presentes en la TCI Global Conference 2026</span></div>' +
       '</div>' +
       '<div class="doors">' +
         door('#que-hacemos', 'Qué hacemos', 'Seis líneas de trabajo para articular, acompañar y fortalecer a los clusters.', null, 'wide') +
@@ -631,34 +714,51 @@
     var i = CLUSTERS.indexOf(c);
     var prev = CLUSTERS[(i + CLUSTERS.length - 1) % CLUSTERS.length];
     var next = CLUSTERS[(i + 1) % CLUSTERS.length];
-    var cifras = c.cifras.map(function (m) { return '<div class="cifra"><strong>' + m[0] + '</strong><span>' + m[1] + '</span></div>'; }).join('');
-    var destacado = c.destacado ? '<div class="destacado">' + c.destacado + '</div>' : '';
-    var pendiente = c.pendiente ? '<div class="destacado todo"><small>' + c.pendiente.title + '</small>' + c.pendiente.text + '</div>' : '';
-    var sectores = c.sectores ? '<section class="fblock"><h2 class="flabel">' + c.sectores.title + '</h2><div class="sectores">' +
-      c.sectores.items.map(function (s) { return '<span>' + s + '</span>'; }).join('') + '</div></section>' : '';
-    var exportaLabel = c.exportaLabel || (c.exporta.length ? 'Exporta a ' + c.exporta.length + ' países' : 'Exporta');
-    var exporta = (c.exporta.length ? '<div class="chips">' + c.exporta.map(function (p) { return '<span class="chip flat">' + p + '</span>'; }).join('') + '</div>' : '') +
-      (c.exportaTexto ? '<p class="body">' + c.exportaTexto + '</p>' : '');
+    function sec(label, title, body) {
+      return '<section class="fx-sec"><div class="fx-label">' + label + '</div><div>' + (title ? '<h2 class="fx-h">' + title + '</h2>' : '') + body + '</div></section>';
+    }
+    var out = '';
+    // Quiénes son
+    out += sec('Quiénes son', null,
+      '<p class="lead">' + c.desc + '</p><div class="chips">' + c.empresas.map(function (e) { return '<span class="chip">' + e + '</span>'; }).join('') + '</div>');
+    // El dato
+    if (c.dato) out += sec('El dato', null, '<div class="fx-dato"><strong>' + c.dato[0] + '</strong><p>' + c.dato[1] + '</p></div>');
+    // En números
+    out += sec('En números', null, '<div class="fx-nums">' + c.cifras.filter(function (m) { return !c.dato || m[0] !== c.dato[0]; }).map(function (m) {
+      return '<div class="fx-num"><strong>' + m[0] + '</strong><span>' + m[1] + '</span></div>'; }).join('') + '</div>');
+    // Diferencial
+    if (c.destacado || c.sectores || c.pendiente) {
+      var b = '';
+      if (c.destacado) b += '<p class="fx-text">' + c.destacado + '</p>';
+      if (c.sectores) b += '<h3 class="flabel" style="margin:' + (c.destacado ? '32px' : '0') + ' 0 14px">' + c.sectores.title + '</h3><div class="sectores">' + c.sectores.items.map(function (x) { return '<span>' + x + '</span>'; }).join('') + '</div>';
+      if (c.pendiente) b += '<div class="fx-todo"><b>' + c.pendiente.title + '</b>' + c.pendiente.text + '</div>';
+      out += sec('Diferencial', null, b);
+    }
+    // Por qué asociarse
+    if (c.porQue) out += sec('Por qué asociarse', 'Razones para iniciar una conversación', '<div class="fx-cards">' + c.porQue.map(function (r) {
+      return '<article class="fx-card"><h3>' + r[0] + '</h3><p>' + r[1] + '</p></article>'; }).join('') + '</div>');
+    // Acciones
+    out += sec('Qué impulsa', 'Principales acciones del cluster', '<ol class="fx-steps">' + c.acciones.map(function (a, k) {
+      return '<li><span class="n">' + (k + 1) + '</span><p>' + a + '</p></li>'; }).join('') + '</ol>');
+    // Ya conectado con
+    if (c.vinculos) out += sec('Ya conectado con', 'Vínculos internacionales', '<div class="fx-links">' + c.vinculos.map(function (v) { return '<span>' + v + '</span>'; }).join('') + '</div>');
+    // Dónde exportan
+    var expTitle = c.exportaLabel || (c.exporta.length ? 'Dónde exportan las empresas socias' : 'Alcance internacional');
+    out += sec('Mundo', expTitle,
+      (c.exporta.length ? '<div class="flags">' + c.exporta.map(flag).join('') + '</div>' : '') +
+      (c.exportaTexto ? '<p class="body" style="margin-top:' + (c.exporta.length ? '18px' : '0') + '">' + c.exportaTexto + '</p>' : ''));
+
+    // Oportunidades
+    if (c.oportunidades) out += sec('Hitos', 'Oportunidades concretas de colaboración', '<ol class="fx-steps">' + c.oportunidades.map(function (o, k) {
+      return '<li><span class="n">' + (k + 1) + '</span><div><b>' + o[0] + '</b><p>' + o[1] + '</p></div></li>'; }).join('') + '</ol>');
     return '<div class="wrap">' + crumbs([['Inicio', '#inicio'], ['Clusters', '#clusters'], [c.short]]) +
-      '<header class="fhead">' + logo(c) +
-        '<div class="fhead-text"><span class="sector">' + c.sector + '</span>' +
-        '<h1 class="h-xl" tabindex="-1">' + c.name + '</h1>' +
-        '<p class="lead">' + c.desc + '</p></div></header>' +
-      '<div class="cifras">' + cifras + '</div>' + destacado + pendiente +
-      '<div class="fbody">' +
-        '<div>' + sectores +
-          '<section class="fblock"><h2 class="flabel">Qué hacen las empresas</h2><div class="chips">' +
-            c.empresas.map(function (e) { return '<span class="chip">' + e + '</span>'; }).join('') + '</div></section>' +
-          '<section class="fblock"><h2 class="flabel">Principales acciones</h2><ul class="acciones">' +
-            c.acciones.map(function (a) { return '<li>' + a + '</li>'; }).join('') + '</ul></section>' +
-          '<section class="fblock"><h2 class="flabel">' + exportaLabel + '</h2>' + exporta + '</section>' +
-        '</div>' +
-        '<aside class="sticky-col" aria-label="Contacto del cluster">' +
-          '<div class="panel"><div><div class="tag">Cluster manager</div><div class="who">' + c.manager + '</div></div>' +
-          '<a class="btn btn-primary" href="' + c.web + '"' + ext(c.web) + '>' + c.webLabel + ' ' + ICONS.arrow + '</a>' +
-          '<p class="tag" style="font-weight:500">Es parte del ecosistema de Córdoba Acelera.</p></div>' +
-        '</aside>' +
-      '</div>' +
+      '<div class="fx-meta"><span class="hot">' + c.sector + '</span><span>Iniciativa Clusters Córdoba Acelera</span>' + (c.desde ? '<span>Desde ' + c.desde + '</span>' : '') + '</div>' +
+      '<header class="fx-hero">' + logoFull(c) + '<div><h1 class="h-xl" tabindex="-1">' + c.name + '</h1><p class="city">Córdoba Capital</p></div></header>' +
+      out +
+      '<section class="fx-contact" aria-label="Contacto del cluster"><div><div class="tag">Cluster manager</div><div class="who">' + c.manager + '</div>' + (c.presidente ? '<div class="tag" style="margin-top:12px">Presidencia</div><div class="who" style="font-size:17px">' + c.presidente + '</div>' : '') +
+        '<p class="body" style="margin-top:8px">¿Querés sumarte a este cluster? Te conectamos con su equipo.</p></div>' +
+        '<div class="actions"><a class="btn btn-primary" href="mailto:hola@cordobaacelera.com.ar?subject=' + encodeURIComponent('Quiero sumarme a ' + c.short) + '">Escribinos</a>' +
+        '<a class="btn btn-ghost" href="' + c.web + '"' + ext(c.web) + '>' + c.webLabel + ' ' + ICONS.arrow + '</a></div></section>' +
       '<nav class="pager" aria-label="Otros clusters">' +
         '<a href="#' + prev.id + '">' + logo(prev) + '<span><small>Cluster anterior</small><b>' + prev.short + '</b></span></a>' +
         '<a class="next" href="#' + next.id + '">' + logo(next) + '<span><small>Cluster siguiente</small><b>' + next.short + '</b></span></a>' +
@@ -688,7 +788,7 @@
   }
   function metricsPanel() {
     var cells = METRICAS[impactTab].items.map(function (m) {
-      var v = m[0] === '__DEST__' ? String(DEST.length) : m[0];
+      var v = m[0] === '__DEST__' ? String(TOTAL_PAISES) : m[0];
       if (m[2] === 'PENDIENTE') return '<div class="mcell pending"><strong>' + v + '</strong><p>' + m[1] + '</p><span class="src">Dato a completar</span></div>';
       var c = m[2] ? byId(m[2]) : null;
       var src = c ? '<a class="src" href="#' + c.id + '">' + c.short + '</a>' : '<span class="src">Iniciativa Clusters</span>';
@@ -696,16 +796,16 @@
     }).join('');
     var extra = '';
     if (impactTab === 'inter') {
-      extra = '<section class="dest" aria-label="Destinos de exportación por cluster"><h3 class="h-m" style="margin-bottom:8px">' + DEST.length + ' destinos y los clusters que llegan a cada uno</h3>' +
+      extra = '<section class="dest" aria-label="Destinos de exportación por cluster"><h3 class="h-m" style="margin-bottom:8px">Destinos detallados y los clusters que llegan a cada uno</h3><p class="note" style="margin:0 0 12px">Se muestran ' + DEST.length + ' de los ' + TOTAL_PAISES + ' países. El resto corresponde a mercados que los clusters informan sin detallar.</p>' +
         DEST.map(function (d) {
           var dots = '';
           for (var i = 0; i < 6; i++) dots += '<i class="' + (i < d.clusters.length ? '' : 'off') + '"></i>';
-          return '<div class="dest-row"><b>' + d.pais + '</b><span class="dots" role="img" aria-label="' + d.clusters.length + ' clusters">' + dots + '</span>' +
+          return '<div class="dest-row"><b style="display:flex;align-items:center;gap:10px">' + (ISO[d.pais] ? '<img src="https://flagcdn.com/w40/' + ISO[d.pais] + '.png" alt="" width="24" height="18" style="border-radius:3px" loading="lazy" onerror="this.remove()">' : '') + d.pais + '</b><span class="dots" role="img" aria-label="' + d.clusters.length + ' clusters">' + dots + '</span>' +
             '<div class="chips">' + d.clusters.map(function (c) { return '<a class="chip" href="#' + c.id + '">' + c.short + '</a>'; }).join('') + '</div></div>';
         }).join('') + '</section>';
     }
     return '<div class="mgrid">' + cells + '</div>' +
-      '<p class="note">Datos declarados por cada cluster. Los destinos surgen de sumar sin repetir los países informados por los clusters. BPO & KPO informa más de 10 mercados sin detallarlos.</p>' + extra;
+      '<p class="note">Datos declarados por cada cluster.</p>' + extra;
   }
 
   function vHerramientas() {
@@ -744,7 +844,7 @@
 
   function wireLogos() {
     view.querySelectorAll('[data-logo]').forEach(function (img) {
-      var box = img.closest('.logo, .node');
+      var box = img.closest('.logo, .logo-full, .node');
       var fail = function () { box.classList.add('nologo'); };
       img.addEventListener('error', fail);
       if (img.tagName === 'IMG' && img.complete && img.naturalWidth === 0) fail();
@@ -766,6 +866,7 @@
     }
     view.className = 'view';
     view.innerHTML = html;
+    root.querySelector('.close').hidden = !!c;
     wireLogos();
     void view.offsetWidth;
     view.className = 'view enter';
