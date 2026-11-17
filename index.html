@@ -113,6 +113,8 @@
 #icc .figure .who-list{position:absolute;left:-1px;right:-1px;top:calc(100% - 1px);z-index:6;display:none;padding:18px 24px 22px;background:var(--surface-2);border:1px solid var(--orange);border-top:0;border-radius:0 0 var(--radius-m) var(--radius-m);box-shadow:0 18px 40px rgba(29,29,27,.12)}
 #icc .figure .who-list ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
 #icc .figure .who-list li{display:grid;grid-template-columns:8px minmax(0,1fr);gap:10px;font-size:14px;font-weight:600;color:var(--text);line-height:1.35}
+#icc .figure .flabel-big{font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.2;max-width:22ch}
+#icc .figure.no-n{justify-content:center}
 #icc .figure .who-list li.todo{color:var(--soft);font-style:italic}
 #icc .figure .who-list li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange);margin-top:6px}
 #icc .figure.has-list:hover,#icc .figure.has-list:focus-within{background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--orange)}
@@ -357,6 +359,7 @@
 #icc .net .dat .ring{fill:#fff;stroke:#EC6907;stroke-width:2.5;transition:stroke-width .2s}
 #icc .net .dat .core{fill:#EC6907}
 #icc .net .dat .num{fill:#1D1D1B;font:800 21px Montserrat,sans-serif;letter-spacing:-.02em;paint-order:stroke;stroke:#fff;stroke-width:4px}
+#icc .net .dat .num.sm{font-size:15px}
 #icc .net .dat .cap{fill:#55534E;font:600 13px Montserrat,sans-serif;paint-order:stroke;stroke:#fff;stroke-width:4px}
 #icc .net .dat.on .ring,#icc .net .dat:focus-visible .ring{stroke-width:5}
 #icc .net-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;font-size:13px;color:var(--muted);margin-top:4px}
@@ -820,20 +823,21 @@
   var SECTORES = {
     titulo: 'Cómo seleccionamos los clusters',
     texto: 'Para promover e impulsar los sectores estratégicos para el desarrollo productivo de la ciudad, utilizamos el <b>GPS de Políticas Productivas</b>, una herramienta que, a partir del análisis de diversas verticales, nos orienta en la identificación de sectores clave y en el diseño de políticas basadas en evidencia.',
-    // [vertical, descripción del GPS, qué buscamos con la política cluster]
+    // [vertical, descripción del GPS]
     verticales: [
-      ['Competitividad', 'Estrategias que optimizan la productividad y posicionan a los sectores en mercados nacionales e internacionales.', ['Reuniones intercluster', 'Acuerdos y convenios con otras instituciones del ecosistema local']],
-      ['Desarrollo de talentos', 'Formación y capacitación para fortalecer el capital humano y su alineación con las demandas del mercado.', ['Formación, atracción y retención continua de recursos humanos', 'Alineamiento de habilidades a necesidades del mercado']],
-      ['Innovación', 'Incorporación de nuevas tecnologías y metodologías para transformar y dinamizar la producción.', ['Cursos, conversatorios y proyectos orientados a incorporar tecnologías y mejorar la gestión']],
-      ['Triple impacto', 'Modelos de negocio que equilibran crecimiento económico, inclusión social y sostenibilidad ambiental.', ['Impacto social', 'Impacto económico', 'Impacto ambiental']],
-      ['Generación de empleo', 'Impulso a la inserción laboral y la creación de puestos de trabajo de calidad.', ['Motor de crecimiento de la empleabilidad de los sectores', 'Inserción y movilidad laboral']],
-      ['Internacionalización', 'Expansión global mediante estrategias de exportación y alianzas estratégicas.', ['Misiones internacionales e inversas', 'Contactos y oportunidades de inserción en mercados externos']],
-      ['Alto valor agregado', 'Desarrollo de productos y servicios diferenciados y de mayor sofisticación.', []]]
+      ['Competitividad', 'Estrategias que optimizan la productividad y posicionan a los sectores en mercados nacionales e internacionales.'],
+      ['Desarrollo de talentos', 'Formación y capacitación para fortalecer el capital humano y su alineación con las demandas del mercado.'],
+      ['Innovación', 'Incorporación de nuevas tecnologías y metodologías para transformar y dinamizar la producción.'],
+      ['Triple impacto', 'Modelos de negocio que equilibran crecimiento económico, inclusión social y sostenibilidad ambiental.'],
+      ['Generación de empleo', 'Impulso a la inserción laboral y la creación de puestos de trabajo de calidad.'],
+      ['Internacionalización', 'Expansión global mediante estrategias de exportación y alianzas estratégicas.'],
+      ['Alto valor agregado', 'Desarrollo de productos y servicios diferenciados y de mayor sofisticación.']]
   };
 
   // Metas públicas de Iniciativa Clusters en el Plan de Metas de la Municipalidad.
   // Fuente: planilla "Metas ICC", hoja CORDOBA ACELERA (columnas "Avance por indicador" y "Estado" de cada año).
-  // En "anios" va una fila por año publicado: [año, estado, avance en %]. La última fila es la que se destaca.
+  // Metas anuales: en "anios" va una fila por año publicado [año, estado, avance %]; se destaca la última.
+  // Metas con plazo 2027: en "acumulado" va el avance acumulado al último año publicado, con su "estado".
   // Estados posibles: Alcanzada, Superada, En curso, No iniciada.
   var METAS_CORTE = '2025'; // Último año publicado. La Municipalidad publica las metas a año vencido.
   var METAS = [
@@ -845,12 +849,12 @@
     { id: '3.4.8', eje: 'Ciudad Inteligente', objetivo: 'Sostener y fomentar alianzas público-privadas y de cooperación local e internacional estratégica.',
       meta: 'Fomentar al menos 13 acciones conjuntas, con otros entes u organismos, públicos, privados, y académicos, que permitan potenciar el alcance de las actividades de cada clúster, para el 2027',
       indicador: 'N.º de acciones concretadas', fin: '2027',
-      anios: [['2024', 'En curso', 53.85], ['2025', 'Superada', 69.23]],
+      acumulado: 123.08, estado: 'Superada', // avance acumulado al último año publicado
       evidencia: 'https://drive.google.com/drive/folders/1cc0ep5Xx_CfqfvLRTHkNfT3pSEaKfVG3?usp=drive_link' },
     { id: '3.4.9', eje: 'Ciudad Inteligente', objetivo: 'Sostener y fomentar alianzas público-privadas y de cooperación local e internacional estratégica.',
       meta: 'Fomentar la firma y ejecución de convenios, así como la realización de acciones con clústeres relevantes de la ciudad de Córdoba, para alcanzar 32 proyectos presentados para el año 2027, contribuyendo a la generación de empleo, desarrollo de talentos, internacionalización y posicionamiento de la ciudad',
       indicador: 'Cantidad de proyectos ejecutados a través de convenio con clusters', fin: '2027',
-      anios: [['2024', 'En curso', 7.14], ['2025', 'Superada', 178.57]],
+      acumulado: 185.71, estado: 'Superada',
       evidencia: 'https://drive.google.com/drive/folders/1fve6g5x1gebaxm3DXGIi-7_9bkotijkU?usp=drive_link' }
   ];
 
@@ -1086,11 +1090,11 @@
     nodes.forEach(function (n, a) {
       if (n.type === 'm') { n.el = el('circle', { 'class': 'dot', r: 2.6 }, gCountries); return; }
       if (n.type === 'd') {
-        n.el = el('g', { 'class': 'dat', tabindex: '0', 'aria-label': n.f.n + ' ' + n.f.label }, gData);
+        n.el = el('g', { 'class': 'dat', tabindex: '0', 'aria-label': (n.f.n ? n.f.n + ' ' : '') + n.f.label }, gData);
         el('circle', { 'class': 'ring', r: 12 }, n.el);
         el('circle', { 'class': 'core', r: 5 }, n.el);
-        var num = el('text', { 'class': 'num', x: 20, y: 2 }, n.el); num.textContent = n.f.n;
-        var cap = el('text', { 'class': 'cap', x: 20, y: 19 }, n.el); cap.textContent = n.f.short;
+        var num = el('text', { 'class': n.f.n ? 'num' : 'num sm', x: 20, y: n.f.n ? 2 : 5 }, n.el); num.textContent = n.f.n || n.f.short;
+        if (n.f.n) { var cap = el('text', { 'class': 'cap', x: 20, y: 19 }, n.el); cap.textContent = n.f.short; }
         bind(n.el, a);
         return;
       }
@@ -1132,7 +1136,7 @@
         tip.className = 'net-tip is-cluster';
       } else {
         var f = n.f;
-        tip.innerHTML = '<span class="tip-big">' + f.n + '</span><b class="tip-label">' + f.label + '</b>' +
+        tip.innerHTML = (f.n ? '<span class="tip-big">' + f.n + '</span>' : '') + '<b class="tip-label">' + f.label + '</b>' +
           (f.list ? '<ul class="tip-list">' + f.list.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>' : '');
         tip.className = 'net-tip is-dato';
       }
@@ -1206,7 +1210,7 @@
   // En las que tienen lista, el número sale de la cantidad de elementos.
   var UNIVERSIDADES = ['Universidad Nacional de Córdoba (UNC)', 'Universidad Católica de Córdoba (UCC)', 'Universidad Siglo 21', 'Universidad Provincial de Córdoba (UPC)', 'Universidad Blas Pascal (UBP)', 'Instituto Universitario de Ciencias Biomédicas de Córdoba (IUCBC)', 'Instituto Universitario Aeronáutico (IUA)', 'Universidad Tecnológica Nacional, Facultad Regional Córdoba (UTN)'];
   var ALIANZAS = ['CEPAL', 'TCI Network', 'WEF', 'PNUD', 'BID', 'CAF'];
-  var ARTICULACION = ['Ente ProCórdoba', 'Agencia Córdoba Cultura', 'Ministerio de Economía de la Provincia', 'Ministerio de Producción de la Provincia', 'Áreas de la Municipalidad de Córdoba', '[Órgano a completar]', '[Órgano a completar]'];
+  var ARTICULACION = ['Ente ProCórdoba', 'Agencia Córdoba Cultura', 'Ministerio de Economía de la Provincia', 'Ministerio de Producción de la Provincia', 'Áreas de la Municipalidad de Córdoba'];
   var FIGURAS = [
     { n: '+575.000', label: 'empleos vinculados al ecosistema', short: 'empleos' },
     { n: '+260', label: 'empresas', short: 'empresas' },
@@ -1214,11 +1218,11 @@
     { n: String(TOTAL_PAISES), label: 'países de destino de exportación', short: 'países de exportación' },
     { n: String(UNIVERSIDADES.length), label: 'universidades de la Ciudad articuladas', short: 'universidades', list: UNIVERSIDADES },
     { n: String(ALIANZAS.length), label: 'alianzas con organismos internacionales', short: 'alianzas internacionales', list: ALIANZAS },
-    { n: String(ARTICULACION.length), label: 'órganos locales y regionales articulados', short: 'órganos articulados', list: ARTICULACION }
+    { n: '', label: 'Articulación con órganos locales y regionales', short: 'Articulación local y regional', list: ARTICULACION } // sin número: solo el texto y "Ver quiénes"
   ];
   function figList(n, label, items, cls) {
-    return '<div class="figure has-list ' + (cls || '') + '" tabindex="0" aria-label="' + n + ' ' + label + '. ' + items.join(', ') + '">' +
-      '<strong>' + n + '</strong><span>' + label + '</span><span class="more">Ver quiénes</span>' +
+    return '<div class="figure has-list ' + (cls || '') + (n ? '' : ' no-n') + '" tabindex="0" aria-label="' + (n ? n + ' ' : '') + label + '. ' + items.join(', ') + '">' +
+      (n ? '<strong>' + n + '</strong><span>' + label + '</span>' : '<b class="flabel-big">' + label + '</b>') + '<span class="more">Ver quiénes</span>' +
       '<div class="who-list" aria-hidden="true"><ul>' + items.map(function (x) { return '<li' + (isTodo(x) ? ' class="todo"' : '') + '>' + x + '</li>'; }).join('') + '</ul></div></div>';
   }
   function door(href, title, text, peek, cls) {
@@ -1233,15 +1237,13 @@
         '<h2 class="h-m">' + q.title + '</h2><p>' + q.text + '</p></article>';
     }).join('');
     var flips = '<article class="gps-card"><div class="gps-badge"><b>GPS</b><span>de Políticas Productivas</span><i></i></div>' +
-        '<p><b>Verticales analizadas.</b> Pasá el mouse o tocá cada una para ver qué buscamos con la política cluster.</p></article>' +
+        '<p><b>Verticales analizadas.</b> Pasá el mouse o tocá cada una para ver de qué se trata.</p></article>' +
       SECTORES.verticales.map(function (v, i) {
-        var its = (v[2] || []).map(function (t) { return '<span class="it">' + t + '</span>'; }).join('');
         return '<button type="button" class="flip" aria-expanded="false" aria-label="' + v[0] + '. Mostrar detalle">' +
           '<span class="flip-inner">' +
             '<span class="face front"><span class="num" aria-hidden="true">' + (i + 1) + '</span><span class="ft">' + v[0] + '</span>' +
               '<span class="turn">' + ICONS.turn + 'Pasá el mouse o tocá para ver</span></span>' +
-            '<span class="face back"><span class="ft">' + v[0] + '</span><span class="desc">' + v[1] + '</span>' +
-              (its ? '<span class="list">' + its + '</span>' : '') + '</span>' +
+            '<span class="face back"><span class="ft">' + v[0] + '</span><span class="desc">' + v[1] + '</span></span>' +
           '</span></button>';
       }).join('');
     return '<div class="wrap">' + crumbs([['Inicio', '#inicio'], ['Qué hacemos']]) +
@@ -1387,7 +1389,7 @@
   function slug(t) { return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, '-'); }
   function pctTxt(n) { return String(Math.round(n * 100) / 100).replace('.', ',') + '%'; }
   function vMetas() {
-    function last(m) { return m.anios[m.anios.length - 1]; }
+    function last(m) { return m.anios ? m.anios[m.anios.length - 1] : [METAS_CORTE, m.estado, m.acumulado]; }
     var ok = METAS.filter(function (m) { return /superada|alcanzada/i.test(last(m)[1]); }).length;
     var run = METAS.filter(function (m) { return /en curso/i.test(last(m)[1]); }).length;
     var rows = METAS.map(function (m) {
@@ -1397,10 +1399,10 @@
           '<h3>' + m.meta + '</h3>' +
           '<p class="mind">Indicador: <b>' + m.indicador + '</b> · Plazo: ' + m.fin + '</p></div>' +
         '<div class="mside">' +
-          '<span class="mlbl">Avance ' + l[0] + '</span>' +
+          '<span class="mlbl">' + (m.anios ? 'Avance ' + l[0] : 'Avance acumulado a ' + l[0]) + '</span>' +
           '<div class="mpct"><strong>' + pctTxt(l[2]) + '</strong><span class="mbadge s-' + slug(l[1]) + '">' + l[1] + '</span></div>' +
           '<div class="pbar" role="img" aria-label="Avance ' + l[0] + ': ' + pctTxt(l[2]) + '"><i style="width:' + Math.max(0, Math.min(100, l[2])) + '%"></i></div>' +
-          (m.anios.length > 1 ? '<div class="manios">' + m.anios.map(function (a) {
+          (m.anios && m.anios.length > 1 ? '<div class="manios">' + m.anios.map(function (a) {
             return '<div><span>' + a[0] + '</span><span class="mbadge s-' + slug(a[1]) + '">' + a[1] + ' · ' + pctTxt(a[2]) + '</span></div>'; }).join('') + '</div>' : '') +
           (m.evidencia ? '<a class="mev" href="' + m.evidencia + '" target="_blank" rel="noopener">' + ICONS.arrow + 'Ver carpeta de evidencia</a>' : '') +
         '</div></article>';
@@ -1415,7 +1417,7 @@
         '<div class="run"><strong>' + run + '</strong><span>en curso en ' + METAS_CORTE + '</span></div>' +
       '</div>' +
       '<div class="mlist">' + rows + '</div>' +
-      '<p class="note">Avance de cada año según el Plan de Metas de la Municipalidad de Córdoba, que se publica a año vencido. El avance puede superar el 100% cuando se supera lo previsto.</p></div>';
+      '<p class="note">Según el Plan de Metas de la Municipalidad de Córdoba, que se publica a año vencido. En las metas anuales se muestra el avance de cada año; en las metas con plazo 2027, el avance acumulado. El avance puede superar el 100% cuando se supera lo previsto.</p></div>';
   }
 
   var newsFilter = 'Todas';
