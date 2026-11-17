@@ -454,7 +454,7 @@
 #icc .gps.todo{background:transparent;border:1px dashed #CFCAC2}
 #icc .gps.todo h3{color:var(--muted)}
 /* Metas públicas */
-#icc .msum{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius-l);overflow:hidden;margin-top:36px}
+#icc .msum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius-l);overflow:hidden;margin-top:36px}
 #icc .msum div{background:var(--bg);padding:24px 26px}
 #icc .msum strong{display:block;font-size:40px;font-weight:800;letter-spacing:-.04em;line-height:1}
 #icc .msum span{display:block;margin-top:8px;font-size:14px;color:var(--muted)}
@@ -469,6 +469,7 @@
 #icc .mrow .mind{margin-top:12px;font-size:14px;color:var(--muted)}
 #icc .mrow .mind b{color:var(--text)}
 #icc .mrow .mside{display:flex;flex-direction:column;gap:12px;padding-left:32px;border-left:1px solid var(--line)}
+#icc .mrow .mlbl{font-size:13px;font-weight:700;color:var(--muted);margin-bottom:-6px}
 #icc .mrow .mpct{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
 #icc .mrow .mpct strong{font-size:44px;font-weight:800;letter-spacing:-.045em;line-height:1}
 #icc .mbadge{font-size:12px;font-weight:800;padding:5px 11px;border-radius:999px;white-space:nowrap}
@@ -481,6 +482,8 @@
 #icc .mrow .mvals{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
 #icc .mrow .mvals b{display:block;font-size:18px;color:var(--text)}
 #icc .mrow .mvals div:last-child{text-align:right}
+#icc .mrow .manios{display:flex;flex-direction:column;gap:8px;padding-top:12px;border-top:1px solid var(--line)}
+#icc .mrow .manios div{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px;font-weight:700}
 #icc .mrow .mev{margin-top:4px;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-size:14px;font-weight:800;color:var(--orange-hi);text-decoration:none;min-height:40px}
 #icc .mrow .mev:hover{text-decoration:underline}
 #icc .mrow .mev svg{width:16px;height:16px}
@@ -829,21 +832,25 @@
   };
 
   // Metas públicas de Iniciativa Clusters en el Plan de Metas de la Municipalidad.
-  // Fuente: planilla "Metas ICC", hoja CORDOBA ACELERA. "avance" es el avance del indicador en % (puede superar 100);
-  // la barra se llena hasta 100. Estados posibles: Alcanzada, Superada, En curso, No iniciada.
-  var METAS_FECHA = 'noviembre de 2026'; // Fecha de la última actualización que se muestra en la página
+  // Fuente: planilla "Metas ICC", hoja CORDOBA ACELERA (columnas "Avance por indicador" y "Estado" de cada año).
+  // En "anios" va una fila por año publicado: [año, estado, avance en %]. La última fila es la que se destaca.
+  // Estados posibles: Alcanzada, Superada, En curso, No iniciada.
+  var METAS_CORTE = '2025'; // Último año publicado. La Municipalidad publica las metas a año vencido.
   var METAS = [
     { id: '3.4.5', eje: 'Ciudad Inteligente', objetivo: 'Sostener y fomentar alianzas público-privadas y de cooperación local e internacional estratégica.',
       meta: 'Desarrollar 3 capacitaciones anuales, enfocadas en iniciativas de clusters con el objetivo de potenciar y fortalecer su desarrollo para 2027',
-      indicador: 'Cantidad de capacitaciones', base: '2', actual: '11', objetivoN: '14', avance: 91.67, estado: 'En curso', fin: 'Anual',
+      indicador: 'Cantidad de capacitaciones', fin: 'Anual hasta 2027',
+      anios: [['2024', 'Superada', 200], ['2025', 'Superada', 167]],
       evidencia: 'https://drive.google.com/drive/folders/1jxXXbUAprEfSGBMWzv-E1FFwj2dYciq2?usp=drive_link' },
     { id: '3.4.8', eje: 'Ciudad Inteligente', objetivo: 'Sostener y fomentar alianzas público-privadas y de cooperación local e internacional estratégica.',
       meta: 'Fomentar al menos 13 acciones conjuntas, con otros entes u organismos, públicos, privados, y académicos, que permitan potenciar el alcance de las actividades de cada clúster, para el 2027',
-      indicador: 'N.º de acciones concretadas', base: '3', actual: '16', objetivoN: '16', avance: 123.08, estado: 'Superada', fin: '2027',
+      indicador: 'N.º de acciones concretadas', fin: '2027',
+      anios: [['2024', 'En curso', 53.85], ['2025', 'Superada', 69.23]],
       evidencia: 'https://drive.google.com/drive/folders/1cc0ep5Xx_CfqfvLRTHkNfT3pSEaKfVG3?usp=drive_link' },
     { id: '3.4.9', eje: 'Ciudad Inteligente', objetivo: 'Sostener y fomentar alianzas público-privadas y de cooperación local e internacional estratégica.',
       meta: 'Fomentar la firma y ejecución de convenios, así como la realización de acciones con clústeres relevantes de la ciudad de Córdoba, para alcanzar 32 proyectos presentados para el año 2027, contribuyendo a la generación de empleo, desarrollo de talentos, internacionalización y posicionamiento de la ciudad',
-      indicador: 'Cantidad de proyectos ejecutados a través de convenio con clusters', base: '4', actual: '52', objetivoN: '32', avance: 185.71, estado: 'Superada', fin: '2027',
+      indicador: 'Cantidad de proyectos ejecutados a través de convenio con clusters', fin: '2027',
+      anios: [['2024', 'En curso', 7.14], ['2025', 'Superada', 178.57]],
       evidencia: 'https://drive.google.com/drive/folders/1fve6g5x1gebaxm3DXGIi-7_9bkotijkU?usp=drive_link' }
   ];
 
@@ -1378,34 +1385,37 @@
   }
 
   function slug(t) { return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, '-'); }
+  function pctTxt(n) { return String(Math.round(n * 100) / 100).replace('.', ',') + '%'; }
   function vMetas() {
-    var ok = METAS.filter(function (m) { return /superada|alcanzada/i.test(m.estado); }).length;
-    var run = METAS.filter(function (m) { return /en curso/i.test(m.estado); }).length;
-    var prom = METAS.length ? Math.round(METAS.reduce(function (a, m) { return a + Math.min(100, m.avance || 0); }, 0) / METAS.length) : 0;
+    function last(m) { return m.anios[m.anios.length - 1]; }
+    var ok = METAS.filter(function (m) { return /superada|alcanzada/i.test(last(m)[1]); }).length;
+    var run = METAS.filter(function (m) { return /en curso/i.test(last(m)[1]); }).length;
     var rows = METAS.map(function (m) {
-      var pct = Math.round((m.avance || 0) * 100) / 100, bar = Math.max(0, Math.min(100, pct)), done = /superada|alcanzada/i.test(m.estado);
+      var l = last(m), done = /superada|alcanzada/i.test(l[1]);
       return '<article class="mrow' + (done ? ' done' : '') + '">' +
         '<div><div class="mtop"><span class="mid">Meta ' + m.id + '</span><span class="meje">' + m.eje + ' · ' + m.objetivo + '</span></div>' +
           '<h3>' + m.meta + '</h3>' +
-          '<p class="mind">Indicador: <b>' + m.indicador + '</b> · Finalización: ' + m.fin + '</p></div>' +
+          '<p class="mind">Indicador: <b>' + m.indicador + '</b> · Plazo: ' + m.fin + '</p></div>' +
         '<div class="mside">' +
-          '<div class="mpct"><strong>' + String(pct).replace('.', ',') + '%</strong><span class="mbadge s-' + slug(m.estado) + '">' + m.estado + '</span></div>' +
-          '<div class="pbar" role="img" aria-label="Avance ' + pct + '%"><i style="width:' + bar + '%"></i></div>' +
-          '<div class="mvals"><div>Línea base<b>' + m.base + '</b></div><div>Valor actual<b>' + m.actual + '</b></div><div>Meta<b>' + m.objetivoN + '</b></div></div>' +
+          '<span class="mlbl">Avance ' + l[0] + '</span>' +
+          '<div class="mpct"><strong>' + pctTxt(l[2]) + '</strong><span class="mbadge s-' + slug(l[1]) + '">' + l[1] + '</span></div>' +
+          '<div class="pbar" role="img" aria-label="Avance ' + l[0] + ': ' + pctTxt(l[2]) + '"><i style="width:' + Math.max(0, Math.min(100, l[2])) + '%"></i></div>' +
+          (m.anios.length > 1 ? '<div class="manios">' + m.anios.map(function (a) {
+            return '<div><span>' + a[0] + '</span><span class="mbadge s-' + slug(a[1]) + '">' + a[1] + ' · ' + pctTxt(a[2]) + '</span></div>'; }).join('') + '</div>' : '') +
           (m.evidencia ? '<a class="mev" href="' + m.evidencia + '" target="_blank" rel="noopener">' + ICONS.arrow + 'Ver carpeta de evidencia</a>' : '') +
         '</div></article>';
     }).join('');
     return '<div class="wrap">' + crumbs([['Inicio', '#inicio'], ['Metas públicas']]) +
       '<h1 class="h-xl" tabindex="-1">Metas públicas</h1>' +
-      '<p class="lead" style="margin-top:18px">Las metas de Iniciativa Clusters Córdoba en el Plan de Metas de la Municipalidad de Córdoba, con su avance y la evidencia que lo respalda.</p>' +
+      '<p class="lead" style="margin-top:18px">Las metas de Iniciativa Clusters Córdoba en el Plan de Metas de la Municipalidad de Córdoba, con su avance por año y la evidencia que lo respalda.</p>' +
+      '<div class="fx-meta" style="margin:22px 0 0"><span class="hot">Datos al cierre de ' + METAS_CORTE + '</span><span>La Municipalidad publica las metas a año vencido</span></div>' +
       '<div class="msum">' +
         '<div><strong>' + METAS.length + '</strong><span>metas de la Iniciativa</span></div>' +
-        '<div class="ok"><strong>' + ok + '</strong><span>alcanzadas o superadas</span></div>' +
-        '<div class="run"><strong>' + run + '</strong><span>en curso</span></div>' +
-        '<div><strong>' + prom + '%</strong><span>avance promedio</span></div>' +
+        '<div class="ok"><strong>' + ok + '</strong><span>alcanzadas o superadas en ' + METAS_CORTE + '</span></div>' +
+        '<div class="run"><strong>' + run + '</strong><span>en curso en ' + METAS_CORTE + '</span></div>' +
       '</div>' +
       '<div class="mlist">' + rows + '</div>' +
-      '<p class="note">Datos actualizados a ' + METAS_FECHA + '. El avance puede superar el 100% cuando el indicador supera la meta.</p></div>';
+      '<p class="note">Avance de cada año según el Plan de Metas de la Municipalidad de Córdoba, que se publica a año vencido. El avance puede superar el 100% cuando se supera lo previsto.</p></div>';
   }
 
   var newsFilter = 'Todas';
