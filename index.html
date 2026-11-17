@@ -131,7 +131,7 @@
 #icc .door:hover .open svg{transform:translate(3px,-3px)}
 #icc .door .peek{font-size:44px;font-weight:800;letter-spacing:-.04em;color:var(--orange);line-height:1}
 
-/* Banda TCI Network / Global Conference (Inicio y Resultados) */
+/* Banda TCI Global Conference (Informes) */
 #icc .tci-band{margin-top:14px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px 56px;align-items:center;padding:44px 48px;border-radius:var(--radius-l);background:var(--orange);color:var(--ink)}
 #icc .tci-band .kicker{display:flex;flex-wrap:wrap;gap:8px}
 #icc .tci-band .kicker span{font-size:13px;font-weight:800;padding:6px 12px;border-radius:999px;background:rgba(29,29,27,.12)}
@@ -432,25 +432,60 @@
 #icc .foot .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 
+#icc .gps-flips{grid-template-columns:repeat(4,minmax(0,1fr))}
+#icc .gps-flips .flip,#icc .gps-flips .flip-inner{min-height:330px}
+#icc .gps-flips .front .num{font-size:80px}
+#icc .gps-flips .front .ft{font-size:23px}
+#icc .back .desc{display:block;font-size:14px;font-weight:600;line-height:1.45}
+#icc .gps-flips .back{gap:12px;padding:26px}
+#icc .gps-flips .back .list{padding-top:12px;border-top:1px solid rgba(29,29,27,.2);gap:8px}
+#icc .gps-flips .back .it{font-size:14px;font-weight:700;line-height:1.35}
+#icc .gps-card{display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:28px;border-radius:var(--radius-l);background:var(--orange-wash) var(--net) no-repeat right -60px bottom -40px/140%;min-height:330px}
+#icc .gps-card p{font-size:15px;color:var(--text)}
+#icc .gps-card .gps-badge{background:#fff}
+@media (max-width:640px){#icc .gps-flips .flip,#icc .gps-flips .flip-inner{min-height:250px} #icc .gps-flips .front .num{font-size:60px} #icc .gps-card{min-height:0}}
+#icc .gps-badge{display:inline-flex;flex-direction:column;align-self:flex-start;padding:18px 22px;border-radius:var(--radius-m);border:1px solid var(--line);background:var(--bg)}
+#icc .gps-badge b{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--muted)}
+#icc .gps-badge span{font-size:13px;font-weight:700;color:var(--muted);margin-top:4px}
+#icc .gps-badge i{display:block;height:6px;margin-top:10px;border-radius:99px;background:linear-gradient(90deg,#8E2C48 0 25%,#EC6907 25% 50%,#3D8FD1 50% 75%,#6BAF4A 75%)}
 /* Qué hacemos: por qué estos sectores */
 #icc .gps{background:var(--orange-wash);border-color:transparent}
 #icc .gps h3{color:var(--orange-hi)}
 #icc .gps.todo{background:transparent;border:1px dashed #CFCAC2}
 #icc .gps.todo h3{color:var(--muted)}
-/* Resultados: metas públicas */
-#icc .metas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:40px}
-#icc .meta{padding:30px;border-radius:var(--radius-l);background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:14px;min-height:280px}
-#icc .meta.todo{background:transparent;border-style:dashed;border-color:#CFCAC2}
-#icc .meta .k{font-size:13px;font-weight:800;color:var(--orange-hi)}
-#icc .meta h3{font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.2}
-#icc .meta p{color:var(--muted);font-size:15px}
-#icc .meta .vals{margin-top:auto;display:flex;justify-content:space-between;gap:16px;font-size:13px;color:var(--muted)}
-#icc .meta .vals b{display:block;font-size:22px;color:var(--text);letter-spacing:-.02em}
-#icc .meta .vals div:last-child{text-align:right}
-#icc .meta .pbar{height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden}
-#icc .meta .pbar i{display:block;height:100%;background:var(--orange);border-radius:99px}
-#icc .meta.todo h3,#icc .meta.todo .vals b{color:var(--soft)}
-#icc .meta.todo .pbar{background:repeating-linear-gradient(90deg,#E5E1DA 0 8px,transparent 8px 14px)}
+/* Metas públicas */
+#icc .msum{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius-l);overflow:hidden;margin-top:36px}
+#icc .msum div{background:var(--bg);padding:24px 26px}
+#icc .msum strong{display:block;font-size:40px;font-weight:800;letter-spacing:-.04em;line-height:1}
+#icc .msum span{display:block;margin-top:8px;font-size:14px;color:var(--muted)}
+#icc .msum .ok strong{color:#2E7D4F}
+#icc .msum .run strong{color:var(--orange)}
+#icc .mlist{display:flex;flex-direction:column;gap:14px;margin-top:28px}
+#icc .mrow{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px 40px;padding:30px 32px;border-radius:var(--radius-l);background:var(--bg);border:1px solid var(--line)}
+#icc .mrow .mtop{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+#icc .mrow .mid{font-size:13px;font-weight:800;padding:5px 11px;border-radius:999px;background:var(--ink);color:#fff}
+#icc .mrow .meje{font-size:13px;font-weight:600;color:var(--muted)}
+#icc .mrow h3{font-size:19px;font-weight:700;line-height:1.4;letter-spacing:-.01em}
+#icc .mrow .mind{margin-top:12px;font-size:14px;color:var(--muted)}
+#icc .mrow .mind b{color:var(--text)}
+#icc .mrow .mside{display:flex;flex-direction:column;gap:12px;padding-left:32px;border-left:1px solid var(--line)}
+#icc .mrow .mpct{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+#icc .mrow .mpct strong{font-size:44px;font-weight:800;letter-spacing:-.045em;line-height:1}
+#icc .mbadge{font-size:12px;font-weight:800;padding:5px 11px;border-radius:999px;white-space:nowrap}
+#icc .mbadge.s-superada,#icc .mbadge.s-alcanzada{background:#E3F2E8;color:#1F6A3E}
+#icc .mbadge.s-en-curso{background:var(--orange-wash);color:var(--orange-hi)}
+#icc .mbadge.s-no-iniciada{background:var(--surface-2);color:var(--muted)}
+#icc .mrow .pbar{height:10px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+#icc .mrow .pbar i{display:block;height:100%;border-radius:99px;background:var(--orange)}
+#icc .mrow.done .pbar i{background:#2E7D4F}
+#icc .mrow .mvals{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+#icc .mrow .mvals b{display:block;font-size:18px;color:var(--text)}
+#icc .mrow .mvals div:last-child{text-align:right}
+#icc .mrow .mev{margin-top:4px;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-size:14px;font-weight:800;color:var(--orange-hi);text-decoration:none;min-height:40px}
+#icc .mrow .mev:hover{text-decoration:underline}
+#icc .mrow .mev svg{width:16px;height:16px}
+@media (max-width:1000px){#icc .mrow{grid-template-columns:minmax(0,1fr)} #icc .mrow .mside{padding-left:0;border-left:0;padding-top:20px;border-top:1px solid var(--line)} #icc .msum{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){#icc .mrow{padding:24px}}
 /* Noticias */
 #icc .news{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
 #icc .new{display:flex;flex-direction:column;border-radius:var(--radius-l);background:var(--bg);border:1px solid var(--line);overflow:hidden;text-decoration:none;transition:border-color .2s,box-shadow .2s}
@@ -534,7 +569,7 @@
         <a href="#inicio" data-nav="inicio">Inicio</a>
         <a href="#que-hacemos" data-nav="que-hacemos">Qué hacemos</a>
         <a href="#clusters" data-nav="clusters">Clusters</a>
-        <a href="#resultados" data-nav="resultados">Resultados</a>
+        <a href="#metas" data-nav="metas">Metas públicas</a>
         <a href="#herramientas" data-nav="herramientas">Herramientas</a>
         <a href="#informes" data-nav="informes">Informes</a>
         <a href="#noticias" data-nav="noticias">Noticias</a>
@@ -778,32 +813,42 @@
     { icon: 'tool', title: 'Construcción de herramientas estratégicas', text: 'Elaboramos herramientas digitales para profesionalizar y fortalecer la gestión y la toma de decisión de los clusters.' }
   ];
 
-  // Resultados de la política cluster. Los ítems entre corchetes se muestran como pendientes.
-  var RESULTADOS = [
-    { title: 'Posicionamiento', items: ['Reuniones intercluster', 'Acuerdos y convenios con otras instituciones del ecosistema local'] },
-    { title: 'Internacionalización', items: ['Misiones internacionales e inversas', 'Contactos y oportunidades de inserción en mercados externos'] },
-    { title: 'Innovación', items: ['Cursos, conversatorios y proyectos orientados a incorporar tecnologías y mejorar la gestión'] },
-    { title: 'Desarrollo de talento y empleo', items: ['Formación, atracción y retención continua de recursos humanos', 'Alineamiento de habilidades a necesidades del mercado', 'Motor de crecimiento de la empleabilidad de los sectores', 'Inserción y movilidad laboral'] },
-    { title: 'Valor agregado', items: ['[Resultado a completar]', '[Resultado a completar]', '[Resultado a completar]'] },
-    { title: 'Triple impacto', items: ['Social', 'Económico', 'Ambiental'] }
-  ];
-
-  // Qué hacemos: por qué se seleccionaron estos sectores. Lo que está entre corchetes se muestra como pendiente.
+  // Qué hacemos: cómo se seleccionan los clusters (fuente: GPS de Políticas Productivas, Córdoba Acelera)
   var SECTORES = {
-    texto: '[Texto a completar: por qué se seleccionaron estos sectores (por ejemplo, intensidad en conocimiento, capacidad exportadora, potencial de empleo y de agregado de valor)]',
-    gps: { titulo: 'Alineados con el GPS de Política Productiva', texto: '[Texto a completar: cómo se vincula la selección de sectores con el GPS de Política Productiva]', link: '' }
+    titulo: 'Cómo seleccionamos los clusters',
+    texto: 'Para promover e impulsar los sectores estratégicos para el desarrollo productivo de la ciudad, utilizamos el <b>GPS de Políticas Productivas</b>, una herramienta que, a partir del análisis de diversas verticales, nos orienta en la identificación de sectores clave y en el diseño de políticas basadas en evidencia.',
+    // [vertical, descripción del GPS, qué buscamos con la política cluster]
+    verticales: [
+      ['Competitividad', 'Estrategias que optimizan la productividad y posicionan a los sectores en mercados nacionales e internacionales.', ['Reuniones intercluster', 'Acuerdos y convenios con otras instituciones del ecosistema local']],
+      ['Desarrollo de talentos', 'Formación y capacitación para fortalecer el capital humano y su alineación con las demandas del mercado.', ['Formación, atracción y retención continua de recursos humanos', 'Alineamiento de habilidades a necesidades del mercado']],
+      ['Innovación', 'Incorporación de nuevas tecnologías y metodologías para transformar y dinamizar la producción.', ['Cursos, conversatorios y proyectos orientados a incorporar tecnologías y mejorar la gestión']],
+      ['Triple impacto', 'Modelos de negocio que equilibran crecimiento económico, inclusión social y sostenibilidad ambiental.', ['Impacto social', 'Impacto económico', 'Impacto ambiental']],
+      ['Generación de empleo', 'Impulso a la inserción laboral y la creación de puestos de trabajo de calidad.', ['Motor de crecimiento de la empleabilidad de los sectores', 'Inserción y movilidad laboral']],
+      ['Internacionalización', 'Expansión global mediante estrategias de exportación y alianzas estratégicas.', ['Misiones internacionales e inversas', 'Contactos y oportunidades de inserción en mercados externos']],
+      ['Alto valor agregado', 'Desarrollo de productos y servicios diferenciados y de mayor sofisticación.', []]]
   };
 
-  // Resultados: metas públicas. "avance" va de 0 a 100; si queda en null, la barra se muestra como pendiente.
+  // Metas públicas de Iniciativa Clusters en el Plan de Metas de la Municipalidad.
+  // Fuente: planilla "Metas ICC", hoja CORDOBA ACELERA. "avance" es el avance del indicador en % (puede superar 100);
+  // la barra se llena hasta 100. Estados posibles: Alcanzada, Superada, En curso, No iniciada.
+  var METAS_FECHA = 'noviembre de 2026'; // Fecha de la última actualización que se muestra en la página
   var METAS = [
-    { meta: '[Meta pública 1]', indicador: '[Indicador con el que se mide]', actual: '[Valor actual]', objetivo: '[Objetivo]', avance: null },
-    { meta: '[Meta pública 2]', indicador: '[Indicador con el que se mide]', actual: '[Valor actual]', objetivo: '[Objetivo]', avance: null },
-    { meta: '[Meta pública 3]', indicador: '[Indicador con el que se mide]', actual: '[Valor actual]', objetivo: '[Objetivo]', avance: null }
+    { id: '3.4.5', eje: 'Ciudad Inteligente', objetivo: 'Sostener y fomentar alianzas público-privadas y de cooperación local e internacional estratégica.',
+      meta: 'Desarrollar 3 capacitaciones anuales, enfocadas en iniciativas de clusters con el objetivo de potenciar y fortalecer su desarrollo para 2027',
+      indicador: 'Cantidad de capacitaciones', base: '2', actual: '11', objetivoN: '14', avance: 91.67, estado: 'En curso', fin: 'Anual',
+      evidencia: 'https://drive.google.com/drive/folders/1jxXXbUAprEfSGBMWzv-E1FFwj2dYciq2?usp=drive_link' },
+    { id: '3.4.8', eje: 'Ciudad Inteligente', objetivo: 'Sostener y fomentar alianzas público-privadas y de cooperación local e internacional estratégica.',
+      meta: 'Fomentar al menos 13 acciones conjuntas, con otros entes u organismos, públicos, privados, y académicos, que permitan potenciar el alcance de las actividades de cada clúster, para el 2027',
+      indicador: 'N.º de acciones concretadas', base: '3', actual: '16', objetivoN: '16', avance: 123.08, estado: 'Superada', fin: '2027',
+      evidencia: 'https://drive.google.com/drive/folders/1cc0ep5Xx_CfqfvLRTHkNfT3pSEaKfVG3?usp=drive_link' },
+    { id: '3.4.9', eje: 'Ciudad Inteligente', objetivo: 'Sostener y fomentar alianzas público-privadas y de cooperación local e internacional estratégica.',
+      meta: 'Fomentar la firma y ejecución de convenios, así como la realización de acciones con clústeres relevantes de la ciudad de Córdoba, para alcanzar 32 proyectos presentados para el año 2027, contribuyendo a la generación de empleo, desarrollo de talentos, internacionalización y posicionamiento de la ciudad',
+      indicador: 'Cantidad de proyectos ejecutados a través de convenio con clusters', base: '4', actual: '52', objetivoN: '32', avance: 185.71, estado: 'Superada', fin: '2027',
+      evidencia: 'https://drive.google.com/drive/folders/1fve6g5x1gebaxm3DXGIi-7_9bkotijkU?usp=drive_link' }
   ];
 
   // Noticias. "img" es opcional (si no hay, se muestra el fondo de red). "href" puede ser interno (#...) o externo.
   var NOTICIAS = [
-    { fecha: 'Octubre 2026', cluster: 'Iniciativa Clusters', titulo: 'Córdoba fue sede de la 29.ª TCI Global Conference', resumen: 'Más de 380 participantes de 19 países llegaron a Córdoba para cuatro días de visitas a empresas, rondas de negocios y conferencias sobre clusters y competitividad.', href: '#global-conference', cta: 'Ver la conferencia' },
     { fecha: '[Fecha]', cluster: '[Cluster]', titulo: '[Título de la noticia]', resumen: '[Resumen breve de la noticia, en dos o tres líneas]', href: '', todo: true },
     { fecha: '[Fecha]', cluster: '[Cluster]', titulo: '[Título de la noticia]', resumen: '[Resumen breve de la noticia, en dos o tres líneas]', href: '', todo: true }
   ];
@@ -825,7 +870,7 @@
       lugar: 'Córdoba, Argentina',
       edicion: '29.ª edición',
       dato: ['+380', 'participantes de 19 países durante cuatro días, en la primera edición de la conferencia en el Cono Sur'],
-      // Las dos primeras cifras son las que se muestran en las bandas de Inicio y Resultados
+      // Las dos primeras cifras son las que se muestran en la banda de Informes
       cifras: [['+380', 'Participantes en los 4 días'], ['19', 'Países representados'], ['562', 'Inscriptos en la plataforma'], ['75', 'Participantes internacionales'], ['134', 'Organizaciones participantes'], ['58', 'Speakers y moderadores', 'del 28 al 30 de octubre']],
       dias: [
         ['Martes 27 · Cluster visits', 'Cuatro recorridos simultáneos por el entramado productivo cordobés: 100 visitantes de otras provincias y del exterior conocieron 14 empresas e instituciones.'],
@@ -923,11 +968,11 @@
   function tciBand(variant) {
     var g = TCI.gc, home = variant === 'home';
     var nums = g.cifras.slice(0, 2).map(function (n) { return '<div><strong>' + n[0] + '</strong><span>' + n[1] + '</span></div>'; }).join('');
-    var title = home ? 'Córdoba fue sede de la conferencia mundial de clusters' : 'Resultados de la TCI Global Conference Córdoba 2026';
+    var title = home ? 'Córdoba fue sede de la conferencia mundial de clusters' : 'TCI Global Conference Córdoba 2026 en cifras';
     var text = home
       ? 'Del 27 al 30 de octubre de 2026 recibimos la 29.ª conferencia anual de TCI Network, la red global de clusters, competitividad e innovación de la que Córdoba Acelera es miembro. Fue la primera edición en el Cono Sur.'
       : 'Visitas a empresas, 357 reuniones de negocios uno a uno agendadas y dos encuentros con organismos de Naciones Unidas. Conocé las cifras de la conferencia.';
-    var cta = home ? 'Conocer la conferencia' : 'Ver todos los resultados';
+    var cta = home ? 'Conocer la conferencia' : 'Ver el informe completo';
     return '<section class="tci-band' + (home ? '' : ' alt') + '" aria-label="TCI Global Conference Córdoba 2026">' +
       '<div><div class="kicker"><span>TCI Global Conference 2026</span><span>Córdoba, Argentina</span></div>' +
         '<h2>' + title + '</h2><p>' + text + '</p>' +
@@ -967,11 +1012,10 @@
       '<div class="doors">' +
         door('#que-hacemos', 'Qué hacemos', 'Seis líneas de trabajo para articular, acompañar y fortalecer a los clusters.', null, 'wide') +
         door('#clusters', 'Los clusters', 'Perfil, cifras, mercados y contacto de cada cluster, con el mismo formato para los nueve.', null, 'wide') +
-        door('#resultados', 'Resultados', 'Las metas públicas de la Iniciativa y los resultados de la TCI Global Conference.') +
+        door('#metas', 'Metas públicas', 'Las metas de la Iniciativa en el Plan de Metas de la Municipalidad, con su avance y evidencia.') +
         door('#herramientas', 'Cómo gestionar un cluster', 'Herramientas, guías y plataformas para profesionalizar la gestión de un cluster.') +
-        door('#informes', 'Informes', 'Estudios sectoriales y publicaciones del programa.') +
+        door('#informes', 'Informes', 'Estudios sectoriales, publicaciones y los resultados de la TCI Global Conference 2026.') +
       '</div>' +
-      tciBand('home') +
     '</div>';
   }
 
@@ -1181,19 +1225,18 @@
       return '<article class="line"><div class="line-icon">' + ICONS[q.icon] + '</div>' +
         '<h2 class="h-m">' + q.title + '</h2><p>' + q.text + '</p></article>';
     }).join('');
-    var g = SECTORES.gps;
-    var why = (isTodo(SECTORES.texto) ? '<div class="fx-todo" style="margin-top:0">' + SECTORES.texto + '</div>' : '<p class="fx-text">' + SECTORES.texto + '</p>') +
-      '<article class="fx-card gps' + (isTodo(g.texto) ? ' todo' : '') + '" style="margin-top:14px"><h3>' + g.titulo + '</h3><p>' + g.texto + '</p>' +
-      (g.link ? '<a class="btn btn-ghost" style="margin-top:16px" href="' + g.link + '"' + ext(g.link) + '>Conocer el GPS ' + ICONS.arrow + '</a>' : '') + '</article>';
-    var flips = RESULTADOS.map(function (r, i) {
-      var its = r.items.map(function (t) { return '<span class="it' + (isTodo(t) ? ' todo' : '') + '">' + t + '</span>'; }).join('');
-      return '<button type="button" class="flip" aria-expanded="false" aria-label="' + r.title + '. Mostrar resultados">' +
-        '<span class="flip-inner">' +
-          '<span class="face front"><span class="num" aria-hidden="true">' + (i + 1) + '</span><span class="ft">' + r.title + '</span>' +
-            '<span class="turn">' + ICONS.turn + 'Pasá el mouse o tocá para ver</span></span>' +
-          '<span class="face back"><span class="ft">' + r.title + '</span><span class="list">' + its + '</span></span>' +
-        '</span></button>';
-    }).join('');
+    var flips = '<article class="gps-card"><div class="gps-badge"><b>GPS</b><span>de Políticas Productivas</span><i></i></div>' +
+        '<p><b>Verticales analizadas.</b> Pasá el mouse o tocá cada una para ver qué buscamos con la política cluster.</p></article>' +
+      SECTORES.verticales.map(function (v, i) {
+        var its = (v[2] || []).map(function (t) { return '<span class="it">' + t + '</span>'; }).join('');
+        return '<button type="button" class="flip" aria-expanded="false" aria-label="' + v[0] + '. Mostrar detalle">' +
+          '<span class="flip-inner">' +
+            '<span class="face front"><span class="num" aria-hidden="true">' + (i + 1) + '</span><span class="ft">' + v[0] + '</span>' +
+              '<span class="turn">' + ICONS.turn + 'Pasá el mouse o tocá para ver</span></span>' +
+            '<span class="face back"><span class="ft">' + v[0] + '</span><span class="desc">' + v[1] + '</span>' +
+              (its ? '<span class="list">' + its + '</span>' : '') + '</span>' +
+          '</span></button>';
+      }).join('');
     return '<div class="wrap">' + crumbs([['Inicio', '#inicio'], ['Qué hacemos']]) +
       '<div class="split">' +
         '<div class="sticky-col">' +
@@ -1203,15 +1246,11 @@
         '</div>' +
         '<div class="lines">' + items + '</div>' +
       '</div>' +
-      '<section class="split section-gap" aria-labelledby="icc-why">' +
-        '<div class="sticky-col"><h2 class="h-l" id="icc-why">Por qué seleccionamos estos sectores</h2></div>' +
-        '<div>' + why + '</div>' +
-      '</section>' +
-      '<section class="section-gap" aria-labelledby="icc-res">' +
-        '<h2 class="h-l" id="icc-res">Resultados de la política cluster</h2>' +
-        '<p class="lead" style="margin-top:14px">Lo que la política cluster busca generar en cada sector.</p>' +
-        '<div class="flips">' + flips + '</div>' +
-      '</section></div>';
+      '<section class="section-gap" aria-labelledby="icc-why">' +
+        '<div class="split"><div><h2 class="h-l" id="icc-why">' + SECTORES.titulo + '</h2></div>' +
+        '<p class="fx-text">' + SECTORES.texto + '</p></div>' +
+        '<div class="flips gps-flips">' + flips + '</div>' +
+          '</section></div>';
   }
 
   function vClusters() {
@@ -1329,7 +1368,7 @@
         return '<article class="fx-card"><strong class="big">' + e[1] + '</strong><h3>' + e[0] + '</h3><p>' + e[2] + '</p></article>'; }).join('') + '</div>',
       'Miércoles 28 en la Universidad Católica de Córdoba, con más de 110 personas entre los dos encuentros.');
 
-    return '<div class="wrap">' + crumbs([['Inicio', '#inicio'], ['Resultados', '#resultados'], ['TCI Global Conference 2026']]) +
+    return '<div class="wrap">' + crumbs([['Inicio', '#inicio'], ['Informes', '#informes'], ['TCI Global Conference 2026']]) +
       '<div class="fx-meta"><span class="hot">TCI Network</span><span>' + g.edicion + '</span><span>' + g.fechas + '</span>' +
         (isTodo(TCI.miembroDesde) ? '' : '<span>Miembros desde ' + TCI.miembroDesde + '</span>') + '</div>' +
       '<header class="fx-hero"><div><h1 class="h-xl" tabindex="-1">' + g.titulo + '</h1><p class="city">' + g.lugar + '</p></div>' +
@@ -1338,19 +1377,35 @@
       '</header>' + out + '</div>';
   }
 
-  function vResultados() {
-    var metas = METAS.map(function (m, i) {
-      var todo = isTodo(m.meta), av = typeof m.avance === 'number' ? Math.max(0, Math.min(100, m.avance)) : null;
-      return '<article class="meta' + (todo ? ' todo' : '') + '"><span class="k">Meta ' + (i + 1) + '</span>' +
-        '<h3>' + m.meta + '</h3><p>' + m.indicador + '</p>' +
-        '<div class="vals"><div>Hoy<b>' + m.actual + '</b></div><div>Objetivo<b>' + m.objetivo + '</b></div></div>' +
-        '<div class="pbar" role="img" aria-label="' + (av === null ? 'Avance a completar' : 'Avance ' + av + '%') + '">' + (av === null ? '' : '<i style="width:' + av + '%"></i>') + '</div></article>';
+  function slug(t) { return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, '-'); }
+  function vMetas() {
+    var ok = METAS.filter(function (m) { return /superada|alcanzada/i.test(m.estado); }).length;
+    var run = METAS.filter(function (m) { return /en curso/i.test(m.estado); }).length;
+    var prom = METAS.length ? Math.round(METAS.reduce(function (a, m) { return a + Math.min(100, m.avance || 0); }, 0) / METAS.length) : 0;
+    var rows = METAS.map(function (m) {
+      var pct = Math.round((m.avance || 0) * 100) / 100, bar = Math.max(0, Math.min(100, pct)), done = /superada|alcanzada/i.test(m.estado);
+      return '<article class="mrow' + (done ? ' done' : '') + '">' +
+        '<div><div class="mtop"><span class="mid">Meta ' + m.id + '</span><span class="meje">' + m.eje + ' · ' + m.objetivo + '</span></div>' +
+          '<h3>' + m.meta + '</h3>' +
+          '<p class="mind">Indicador: <b>' + m.indicador + '</b> · Finalización: ' + m.fin + '</p></div>' +
+        '<div class="mside">' +
+          '<div class="mpct"><strong>' + String(pct).replace('.', ',') + '%</strong><span class="mbadge s-' + slug(m.estado) + '">' + m.estado + '</span></div>' +
+          '<div class="pbar" role="img" aria-label="Avance ' + pct + '%"><i style="width:' + bar + '%"></i></div>' +
+          '<div class="mvals"><div>Línea base<b>' + m.base + '</b></div><div>Valor actual<b>' + m.actual + '</b></div><div>Meta<b>' + m.objetivoN + '</b></div></div>' +
+          (m.evidencia ? '<a class="mev" href="' + m.evidencia + '" target="_blank" rel="noopener">' + ICONS.arrow + 'Ver carpeta de evidencia</a>' : '') +
+        '</div></article>';
     }).join('');
-    return '<div class="wrap">' + crumbs([['Inicio', '#inicio'], ['Resultados']]) +
-      '<h1 class="h-xl" tabindex="-1">Resultados</h1>' +
-      '<p class="lead" style="margin-top:18px">Las metas públicas de Iniciativa Clusters Córdoba y su avance.</p>' +
-      '<div class="metas">' + metas + '</div>' +
-      '<div class="section-gap">' + tciBand('resultados') + '</div></div>';
+    return '<div class="wrap">' + crumbs([['Inicio', '#inicio'], ['Metas públicas']]) +
+      '<h1 class="h-xl" tabindex="-1">Metas públicas</h1>' +
+      '<p class="lead" style="margin-top:18px">Las metas de Iniciativa Clusters Córdoba en el Plan de Metas de la Municipalidad de Córdoba, con su avance y la evidencia que lo respalda.</p>' +
+      '<div class="msum">' +
+        '<div><strong>' + METAS.length + '</strong><span>metas de la Iniciativa</span></div>' +
+        '<div class="ok"><strong>' + ok + '</strong><span>alcanzadas o superadas</span></div>' +
+        '<div class="run"><strong>' + run + '</strong><span>en curso</span></div>' +
+        '<div><strong>' + prom + '%</strong><span>avance promedio</span></div>' +
+      '</div>' +
+      '<div class="mlist">' + rows + '</div>' +
+      '<p class="note">Datos actualizados a ' + METAS_FECHA + '. El avance puede superar el 100% cuando el indicador supera la meta.</p></div>';
   }
 
   var newsFilter = 'Todas';
@@ -1392,6 +1447,7 @@
     var kinds = ['Todos'].concat(INFORMES.map(function (d) { return d.kind; }).filter(function (k, i, a) { return a.indexOf(k) === i; }));
     return '<div class="wrap">' + crumbs([['Inicio', '#inicio'], ['Informes']]) +
       '<h1 class="h-xl" tabindex="-1">Informes y publicaciones</h1>' +
+      '<div style="margin-top:32px">' + tciBand('informes') + '</div>' +
       '<div class="filters" role="group" aria-label="Filtrar por tipo">' + kinds.map(function (k) {
         return '<button type="button" class="chip" data-filter="' + k + '" aria-pressed="' + (k === docFilter) + '" style="min-height:44px">' + k + '</button>';
       }).join('') + '</div><div id="icc-docs">' + docsList() + '</div></div>';
@@ -1427,8 +1483,8 @@
     switch (h) {
       case 'que-hacemos': html = vQueHacemos(); break;
       case 'clusters': html = vClusters(); break;
-      case 'resultados': html = vResultados(); break;
-      case 'global-conference': html = vGlobalConference(); section = 'resultados'; break;
+      case 'metas': case 'resultados': html = vMetas(); section = 'metas'; break;
+      case 'global-conference': html = vGlobalConference(); section = 'informes'; break;
       case 'herramientas': html = vHerramientas(); break;
       case 'informes': html = vInformes(); break;
       case 'noticias': html = vNoticias(); break;
