@@ -288,6 +288,8 @@
 #icc .fx-num strong{display:block;font-size:46px;font-weight:800;letter-spacing:-.045em;line-height:1;color:var(--text)}
 #icc .fx-num span{display:block;margin-top:10px;font-size:15px;color:var(--muted);max-width:28ch;padding-top:12px;border-top:2px solid var(--orange)}
 #icc .fx-text{font-size:clamp(19px,1.8vw,22px);line-height:1.5;color:#2A2927;max-width:60ch}
+#icc .fx-sec .acciones li{font-size:clamp(19px,1.8vw,22px);line-height:1.5;color:#2A2927}
+#icc .fx-sec .acciones li::before{margin-top:.6em}
 #icc .fx-todo{padding:28px 32px;border:1px dashed #CFCAC2;border-radius:var(--radius-l);color:var(--muted);margin-top:24px}
 #icc .fx-todo b{display:block;color:var(--text);margin-bottom:6px}
 #icc .fx-steps{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
@@ -1242,7 +1244,7 @@
     var prev = CLUSTERS[(i + CLUSTERS.length - 1) % CLUSTERS.length];
     var next = CLUSTERS[(i + 1) % CLUSTERS.length];
     var out = '';
-    out += sec('Quiénes son', null, '<p class="lead">' + c.desc + '</p>');
+    out += sec('Quiénes son', null, '<p class="fx-text">' + c.desc + '</p>');
     out += sec('Qué hacen', 'Actividades principales', '<p class="fx-text">' + c.actividades + '</p>');
     out += sec('En números', null, numsFor(c.cifras));
     if ((SOCIOS[c.id] || []).length) out += sec('Socios', null, sociosBlock(c, SOCIOS[c.id]));
@@ -1277,13 +1279,175 @@
       '</nav></div>';
   }
 
-    /* Socios: contador + carrusel de logos con nombre */
-  function socioSlug(t) { return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/&/g, ' y ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); }
+  /* Socios: contador + carrusel de logos con nombre */
+  // Dominio web de cada socio, con el nombre exacto que figura en SOCIOS.
+  // Para sumar o corregir un logo, agregá o cambiá su dominio acá.
+  var WEB_SOCIOS = {
+    'BSPK': 'bspk.pro',
+    'Depro': 'depro.com.ar',
+    'Grupo DAQ': 'grupodaq.com',
+    'Grupo Edisur': 'grupoedisur.com.ar',
+    'Incoa': 'incoa-eng.com',
+    'Hexagon Multivista (Ex Voyansi)': 'voyansi.com',
+    'ZAP Arquitectos': 'zaparquitectos.com',
+    'Very Solution (Ex Very Visual)': 'veryvisual.studio',
+    'HITO metarquitectura': 'somoshito.com',
+    'PIENO': 'pieno.com.ar',
+    'ESTUDIO LARSSON': 'estudiolarsson.com.ar',
+    'BTB': 'btbconsultores.com.ar',
+    'INGENIA': 'ingeniasa.com.ar',
+    'eF1': 'ef1ec.com',
+    'Andes Dean': 'andesdean.pro',
+    'Dekalyseis': 'dekalyseis.com',
+    'NMASUNO INGENIERIA SA': 'nmas1.io',
+    'Augustinoy & Augustinoy': 'augustinoy.com.ar',
+    'Visual Peephole': 'visualpeephole.com',
+    'YouBIM LLC': 'youbim.com',
+    'TEKNIK': 'teknik-id.com',
+    'EPEC': 'epec.com.ar',
+    'ICON-INGENIERIA Y CONSTRUCCIONES SA': 'iconsa.com.ar',
+    'ITECH': 'itechstore.com.ar',
+    'Bimbranch LLC': 'bimbranch.com',
+    'Nanzer Climatización SA': 'nanzer.com.ar',
+    'Corbis': 'corbisstudio.com',
+    'AR-CON SRL': 'arcon.com.ar',
+    'ASTORI': 'astori.com.ar',
+    'HOLCIM ARGENTINA': 'holcim.com.ar',
+    'Grupo MV': 'grupo-mv.com.ar',
+    'CORBLOCK SAIC': 'corblock.com',
+    'ENG': 'engbim.com',
+    'FJA': 'fja.ar',
+    'Ciar sa': 'ciar.com.ar',
+    'GEOBIM': 'geobimstudio.com',
+    'Octave': 'octave.com',
+    'TGN': 'tgn.com.ar',
+    'Siemens SA': 'siemens.com',
+    'GBim SAS': 'gbimdesarrollos.com',
+    'YPF S.A': 'ypf.com',
+    'Pecom': 'pecomenergia.com',
+    'Delsurtranslations': 'delsurtranslations.com.ar',
+    'Progroup': 'progroup.com.ar',
+    'Language Solutions Team': 'languagest.com',
+    'TBO': 'tbo.group',
+    'Baquero Translations': 'baquerotranslations.com',
+    'Latamways': 'latamways.com',
+    'Stillman Translations': 'stillmantranslations.com',
+    'The Typesetter': 'thetypesetter.com.ar',
+    'Sharpline': 'sharplinels.com',
+    'HOSPITAL PRIVADO UNIVERSITARIO DE CORDOBA': 'hospitalprivado.com.ar',
+    'SANATORIO ALLENDE': 'sanatorioallende.com',
+    'INSTITUTO OULTON': 'oulton.com.ar',
+    'CLINICA DE OJOS CORDOBA': 'clinicadeojoscba.com',
+    'CLINICA DIQUECITO': 'diquecito.com.ar',
+    'CENTRO DE RADIOTERAPIA DEAN FUNES': 'dfunes.com.ar',
+    'CLINICA UNIVERSITARIA REINA FABIOLA': 'curf.ucc.edu.ar',
+    'HOTEL Y111': 'y111hotel.com',
+    'Evoltis': 'evoltis.com',
+    'Konecta': 'grupokonecta.com',
+    'Telemercado': 'telemercado.com.ar',
+    'Grupo VN Global': 'v-n.com.ar',
+    'Voicenter': 'voicenter.com.ar',
+    'Apex': 'apexamerica.com',
+    'Multiconex': 'multiconex.com.ar',
+    'Generall Collect': 'generalcollect.com.ar',
+    'Grido': 'grido.com.ar',
+    'InfoNegocios': 'infonegocios.info',
+    'Centrofranchising': 'centrofranchising.com',
+    'Supervielle': 'supervielle.com.ar',
+    'AAMF': 'aamf.com.ar',
+    'Córdoba Acelera': 'cordobaacelera.com.ar',
+    'IDESA': 'idesa.org',
+    'Universidad Blas Pascal': 'ubp.edu.ar',
+    'ICDA': 'icda.ucc.edu.ar',
+    'UES 21': 'ues21.edu.ar',
+    'INVERA': 'invera.com.ar',
+    'QUANTEX': 'quantex.com.ar',
+    'PAGOS 360': 'pagos360.com',
+    'PEYPE DATOS': 'peypedatos.com',
+    'PAYFUN': 'payfun.com.ar',
+    'PAYCLOUD': 'bcloud.com.ar',
+    'RED UNISOL': 'redunisol.com.ar',
+    'SISCARD SA': 'siscard.com.ar',
+    'TELEPROM': 'teleprom.com',
+    'VORTEX': 'vortex-it.com',
+    'DARWOFT SA': 'darwoft.com',
+    'Cucuru': 'cucuru.com',
+    'Addventure Club Inversores Ángeles': 'addventureclub.com',
+    'UCC': 'ucc.edu.ar',
+    'UNC': 'unc.edu.ar',
+    'US21': 'ues21.edu.ar',
+    'UBP': 'ubp.edu.ar',
+    'UPC': 'upc.edu.ar',
+    'INSTITUTO STRUSBERG': 'institutostrusberg.com',
+    'CLÍNICA UNIVERSITARIA REINA FABIOLA': 'curf.ucc.edu.ar',
+    'TERRAQUEO SMO': 'terraqueosmo.com',
+    'CONCI-CARPINELLA': 'concicarpinella.com.ar',
+    'CEMAIC': 'cemaicsas.com.ar',
+    'UNIVERSIDAD SIGLO XXI': 'ues21.edu.ar',
+    'HOSPITAL PRIVADO': 'hospitalprivado.com.ar',
+    'LABORATORIO DE HEMODERIVADOS UNC': 'hemoderivados.com.ar',
+    'CENTRO PRIVADO DEÁN FUNES Y ASOCIACIÓN DE ONCOLOGÍA': 'dfunes.com.ar',
+    'PROMEDON': 'promedon.com',
+    'UNC BIOINGENIERÍA': 'unc.edu.ar',
+    'SHARPLINE LIFE SCIENCES': 'sharplinels.com',
+    '25 WATTS': '25watts.com.ar',
+    'HELLOBRAND': 'hellobrand.com.ar',
+    'ROMERO VICTORICA': 'rv.com.ar',
+    'GARRAZA + PINUS': 'garrazapinus.com.ar',
+    'IRRACIONAL': 'irracional.agency',
+    'MARCAS CROWDBRANDING': 'marcas.io',
+    'WOBRA AGENCIA': 'wobra.com.ar',
+    '360 Regional Tour Operator': '360regional.com.ar',
+    'AUTOENTRADA': 'autoentrada.com',
+    'Binivisión': 'binivision.com.ar',
+    'BS GROUP SA': 'bssbe.com',
+    'CLUB ATLÉTICO BELGRANO': 'belgranocordoba.com',
+    'CLUB ATLÉTICO TALLERES': 'talleres.org.ar',
+    'CONGRESS RENTAL (PUNTO CBA)': 'crcordoba.com.ar',
+    'EDEN ENTRADAS (TICKETERA DEL CENTRO SAS)': 'edenentradas.com.ar',
+    'FONOBUS (EMPRENDIMIENTOS SRL)': 'fonobus.com.ar',
+    'Freguglia Carpas S.A.': 'fregugliacarpas.com',
+    'HOLIDAY INN CORDOBA (CEIBOTEL S.A)': 'hinncordoba.com.ar',
+    'Joint Group': 'jointgroup.com.ar',
+    'MB equipamientos': 'mbequipamiento.com.ar',
+    'NO ME GRITES PRODUCCIONES': 'nmg.com.ar',
+    'PARALELO PRODUCCIONES': 'paraleloprod.com',
+    'PASESHOW': 'paseshow.com.ar',
+    'PERSUASIVA Agencia': 'persuasiva.com',
+    'Quinto Centenario Hotel': 'quintocentenario.com',
+    'Rutur Viajes': 'ruturviajes.com.ar',
+    'San Honorato': 'sanhonorato.com.ar',
+    'SETUR VIAJES Y TURISMO': 'setur.com.ar',
+    'VUALA (JIMENA CALLES)': 'vualarp.com',
+    'Y111 HOTEL': 'y111hotel.com'
+  };
+  // Logos de socios.
+  // Por defecto se usa el ícono del sitio web de cada socio (dominio en WEB_SOCIOS).
+  // Si subís los PNG a logos/socios/<id-del-cluster>/<nombre>.png, cambiá a true:
+  // se usa el archivo propio y, si falta, el ícono web. Sin ninguno, se muestran las iniciales.
+  var LOGOS_SOCIOS_LOCALES = false;
+  function socioSlug(t) { return t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/&/g, ' y ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); }
   function socioIni(t) { return t.replace(/\(.*?\)/g, '').trim().split(/\s+/).filter(function (w) { return /[A-Za-zÁÉÍÓÚÑáéíóúñ0-9]/.test(w); }).slice(0, 2).map(function (w) { return w.charAt(0); }).join('').toUpperCase(); }
+  function socioWeb(dom) { return 'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(dom) + '&sz=128'; }
+  window.iccSocioFail = function (img) {
+    var nx = img.getAttribute('data-next');
+    if (nx) { img.removeAttribute('data-next'); img.src = nx; }
+    else img.parentNode.classList.add('nologo');
+  };
+  window.iccSocioOk = function (img) {
+    // El servicio de íconos devuelve un globo de 16 px cuando el sitio no tiene ícono: se descarta
+    if (/google\.com\/s2\//.test(img.src) && img.naturalWidth < 32) window.iccSocioFail(img);
+  };
   function sociosBlock(c, list) {
     var items = list.map(function (x) {
-      var n = typeof x === 'string' ? x : x.n, src = (typeof x === 'object' && x.logo) || ('logos/socios/' + c.id + '/' + socioSlug(n) + '.png');
-      return '<figure class="soc" role="listitem"><span class="soc-logo"><img src="' + src + '" alt="" loading="lazy" onerror="this.parentNode.classList.add(\'nologo\')"><span class="ini" aria-hidden="true">' + socioIni(n) + '</span></span><figcaption>' + n + '</figcaption></figure>';
+      var n = typeof x === 'string' ? x : x.n;
+      var own = typeof x === 'object' && x.logo;
+      var local = own || ('logos/socios/' + c.id + '/' + socioSlug(n) + '.png');
+      var web = WEB_SOCIOS[n] ? socioWeb(WEB_SOCIOS[n]) : '';
+      var first = (own || LOGOS_SOCIOS_LOCALES) ? local : web;
+      var next = first === local ? web : '';
+      var img = first ? '<img src="' + first + '"' + (next ? ' data-next="' + next + '"' : '') + ' alt="" loading="lazy" onload="iccSocioOk(this)" onerror="iccSocioFail(this)">' : '';
+      return '<figure class="soc" role="listitem"><span class="soc-logo' + (first ? '' : ' nologo') + '">' + img + '<span class="ini" aria-hidden="true">' + socioIni(n) + '</span></span><figcaption>' + n + '</figcaption></figure>';
     }).join('');
     return '<div class="soc-head"><div><strong class="soc-count" data-count="' + list.length + '">' + list.length + '</strong><span>socios entre empresas e instituciones</span></div>' +
       '<div class="soc-nav"><button type="button" data-soc="-1" aria-label="Ver socios anteriores">' + ICONS.left + '</button><button type="button" data-soc="1" aria-label="Ver más socios">' + ICONS.right + '</button></div></div>' +
