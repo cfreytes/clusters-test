@@ -465,6 +465,27 @@
 #icc .gps h3{color:var(--orange-hi)}
 #icc .gps.todo{background:transparent;border:1px dashed #CFCAC2}
 #icc .gps.todo h3{color:var(--muted)}
+/* Socios */
+#icc .soc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:22px}
+#icc .soc-count{display:block;font-size:clamp(56px,6vw,84px);font-weight:800;letter-spacing:-.05em;line-height:.9;color:var(--orange);font-variant-numeric:tabular-nums}
+#icc .soc-head span{display:block;margin-top:8px;font-size:15px;color:var(--muted)}
+#icc .soc-nav{display:flex;gap:8px}
+#icc .soc-nav button{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--bg);display:grid;place-items:center;color:var(--text);transition:background .15s,border-color .15s}
+#icc .soc-nav button:hover:not(:disabled){background:var(--orange);border-color:var(--orange)}
+#icc .soc-nav button:disabled{opacity:.35;cursor:default}
+#icc .soc-nav svg{width:18px;height:18px}
+#icc .soc-track{display:grid;grid-auto-flow:column;grid-auto-columns:150px;grid-template-rows:auto;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:2px 2px 14px;scrollbar-width:thin;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+#icc .soc-track.fit{-webkit-mask-image:none;mask-image:none}
+#icc .soc-track.two{grid-template-rows:auto auto}
+#icc .soc{margin:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:10px}
+#icc .soc-logo{height:96px;border-radius:var(--radius-m);background:#fff;border:1px solid var(--line);display:grid;place-items:center;overflow:hidden;padding:14px}
+#icc .soc-logo img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+#icc .soc-logo .ini{display:none;width:52px;height:52px;border-radius:50%;background:var(--surface-2);color:var(--muted);font-weight:800;font-size:16px;place-items:center}
+#icc .soc-logo.nologo img{display:none}
+#icc .soc-logo.nologo .ini{display:grid}
+#icc .soc figcaption{font-size:13px;font-weight:600;line-height:1.3;color:var(--text);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#icc .soc-hint{font-size:13px;color:var(--soft);margin-top:4px}
+@media (max-width:640px){#icc .soc-track{grid-auto-columns:128px} #icc .soc-logo{height:84px}}
 /* Metas públicas */
 #icc .msum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius-l);overflow:hidden;margin-top:36px}
 #icc .msum div{background:var(--bg);padding:24px 26px}
@@ -626,7 +647,7 @@
       name: 'BPO & KPO Córdoba Cluster', sector: 'Servicios basados en conocimiento',
       desc: 'Es el primer clúster de BPO & KPO de Argentina, creado en 2022 en la ciudad de Córdoba. Reúne a las principales empresas del sector de servicios empresariales y tercerización de procesos, con el objetivo de hacer del sector el primer eslabón de la economía del conocimiento y posicionar a Córdoba como la plaza más competitiva del país.',
       actividades: 'Atención multicanal al cliente, gestión administrativa y financiera, procesos de RRHH, IT y digitalización, análisis de datos, marketing y ventas digitales, servicios especializados por industria.',
-      cifras: [['8', 'empresas socias'], ['18.000', 'empleos registrados en Córdoba'], ['2.000', 'empleos formales directos creados en 3 años', 'convenio con Córdoba Acelera'], ['85%', 'del empleo provincial del sector'], ['58%', 'de los nuevos empleos ocupados por mujeres'], ['33%', 'de los nuevos empleados de entre 18 y 23 años', 'primer empleo formal'], ['40%', 'del empleo total del sector BPO/KPO de Argentina se concentra en Córdoba']],
+      cifras: [['18.000', 'empleos registrados en Córdoba'], ['2.000', 'empleos formales directos creados en 3 años', 'convenio con Córdoba Acelera'], ['85%', 'del empleo provincial del sector'], ['58%', 'de los nuevos empleos ocupados por mujeres'], ['33%', 'de los nuevos empleados de entre 18 y 23 años', 'primer empleo formal'], ['40%', 'del empleo total del sector BPO/KPO de Argentina se concentra en Córdoba']],
       hitos: ['Programa de empleo: 2.000 empleos formales y directos en 3 convenios (2023–2025)', 'Lab de Datos de Competitividad', 'Transformación productiva conjunta del sector'],
       paises: [], paisesTexto: '',
       manager: 'Diana Tuma', email: 'clusterbpoykpo@gmail.com', presidente: 'Iván Morero',
@@ -636,7 +657,7 @@
       name: 'CLIC – Cluster de Localización e Interpretación', sector: 'Servicios lingüísticos',
       desc: 'CLIC es el clúster de la industria de traducción, localización e interpretación de la ciudad de Córdoba, creado en 2023. Tiene el propósito de fomentar la colaboración, el crecimiento y la excelencia en el sector lingüístico, posicionando a Córdoba como referente regional e internacional en servicios de comunicación y contenidos.',
       actividades: 'Traducción y localización, corrección de estilo, interpretación, doblaje, subtitulado, posedición, transcripción, diseño gráfico, normas de accesibilidad, reclutamiento.',
-      cifras: [['10', 'empresas socias'], ['1.300', 'lingüistas en Argentina en la red del cluster'], ['6.000', 'lingüistas en la red global de las empresas socias'], ['100%', 'de las empresas socias exporta', 'principalmente a EE. UU., Canadá e Italia']],
+      cifras: [['1.300', 'lingüistas en Argentina en la red del cluster'], ['6.000', 'lingüistas en la red global de las empresas socias'], ['100%', 'de las empresas socias exporta', 'principalmente a EE. UU., Canadá e Italia']],
       hitos: ['Curso de Project Management', 'Encuesta interna sectorial', 'Participación en Tech Week Córdoba 2025', 'Co-organización del GALA RoadShow 2024'],
       paises: ['Estados Unidos', 'Canadá', 'Italia'], paisesTexto: '',
       manager: 'Serenella Domizi', email: 'info@cliccluster.com', presidente: 'Angélica Pérez', presidenteLabel: 'Presidenta',
@@ -646,7 +667,7 @@
       name: 'Cluster BIM Argentina', sector: 'Construcción e ingeniería digital',
       desc: 'Primer cluster del país dedicado a la metodología BIM (Building Information Modeling): un ecosistema de innovación y cooperación que reúne a empresas líderes y de larga trayectoria en servicios BIM. Nació en Córdoba en 2023 y hoy articula una red federal, con nodos en Neuquén y Buenos Aires. Su meta es transformar la industria de la construcción a través de la digitalización y la eficiencia en cada proyecto, junto al Estado y la academia (es socio del Gobierno provincial en el Plan BIM Córdoba 2030), y convertir a Córdoba en un hub BIM global.',
       actividades: 'Modelado BIM (arquitectura e ingeniería), BIM management y coordinación, consultoría (permisos, licitaciones, software AEC, interoperabilidad), diseño arquitectónico, BI e IA aplicada; implementación y formación BIM.',
-      cifras: [['30', 'empresas socias'], ['+280', 'becas BIM Modeler otorgadas'], ['8', 'servicios colaborativos ofrecidos por los socios de manera conjunta'], ['~USD 50 M', 'exportaciones anuales estimadas'], ['1.°', 'foro regional de BIM', 'BIM For All 2025: 379 profesionales, 36 speakers, 7 paneles y 8 países'], ['1.°', 'hub universitario BIM de Argentina'], ['4', 'sectores donde BIM genera mayor impacto', 'Desarrollismo y construcción, Infraestructura, Energía (Oil & Gas) e Industria']],
+      cifras: [['+280', 'becas BIM Modeler otorgadas'], ['8', 'servicios colaborativos ofrecidos por los socios de manera conjunta'], ['~USD 50 M', 'exportaciones anuales estimadas'], ['1.°', 'foro regional de BIM', 'BIM For All 2025: 379 profesionales, 36 speakers, 7 paneles y 8 países'], ['1.°', 'hub universitario BIM de Argentina'], ['4', 'sectores donde BIM genera mayor impacto', 'Desarrollismo y construcción, Infraestructura, Energía (Oil & Gas) e Industria']],
       hitos: ['Participación en el Plan BIM Córdoba 2030', 'Model Checker en Obras Privadas de la Municipalidad', 'BIM For All 2025, junto al Cluster de Petróleo, Gas y Minería', 'Convenio con Bancor para créditos para el sector', 'Córdoba BIM Day en Atlanta (con Embajada y Consulado)', 'Acuerdo con Autodesk'],
       paises: ['Estados Unidos', 'España', 'Reino Unido', 'Chile', 'Brasil', 'Uruguay', 'Paraguay', 'México', 'Canadá', 'Bolivia', 'Ecuador', 'Francia'],
       paisesTexto: 'Alrededor de dos tercios de las empresas socias tienen clientes en el exterior.',
@@ -657,7 +678,7 @@
       name: 'Cluster de Investigación e Innovación en Salud Humana', sector: 'Ciencias de la vida',
       desc: 'Clúster emergente del ecosistema de investigación clínica e innovación en salud de Córdoba, creado en 2024. Su propósito es nuclear a los actores de la investigación clínica para potenciar a Córdoba como hub de investigación e innovación en salud humana. Articula centros de investigación, universidades, empresas de innovación biomédica, instituciones médicas, laboratorios, CROs y organismos públicos en torno a ensayos clínicos, medicina de precisión y producción tecnológica médica.',
       actividades: 'Investigación clínica; prestación asistencial; biotecnología, diagnóstico avanzado y medicina de precisión; dispositivos médicos e ingeniería biomédica; formación de talento.',
-      cifras: [['40', 'empresas socias', 'y 3 universidades'], ['+570', 'investigadores registrados en la provincia'], ['608', 'profesionales y técnicos en 32 centros con ensayos activos'], ['97', 'profesionales capacitados en IA aplicada a investigación clínica'], ['7', 'países en 3 continentes donde operan empresas del cluster'], ['−65%', 'en los tiempos del proceso regulatorio de ensayos clínicos', 'una plaza más competitiva para sponsors internacionales'], ['1.°', 'evento que nuclea a estudiantes, investigadores, sitios de investigación, universidades, sponsors y CRO en un mismo lugar y momento']],
+      cifras: [['+570', 'investigadores registrados en la provincia'], ['608', 'profesionales y técnicos en 32 centros con ensayos activos'], ['97', 'profesionales capacitados en IA aplicada a investigación clínica'], ['7', 'países en 3 continentes donde operan empresas del cluster'], ['−65%', 'en los tiempos del proceso regulatorio de ensayos clínicos', 'una plaza más competitiva para sponsors internacionales'], ['1.°', 'evento que nuclea a estudiantes, investigadores, sitios de investigación, universidades, sponsors y CRO en un mismo lugar y momento']],
       hitos: ['Censo del ecosistema de investigación clínica', 'Actualización de la Ley provincial 9694, que agiliza la fiscalización de ensayos clínicos', 'Evento "Córdoba Investiga"', 'Curso de IA para investigadores clínicos', 'Visita de ProPanamá a empresas socias'],
       paises: ['Uruguay', 'Paraguay', 'Brasil', 'Perú'], paisesTexto: 'Empresas del cluster operan en 7 países de 3 continentes.',
       manager: 'Belén Olmedo', email: 'clusterinvestigacion@gmail.com', presidente: 'Rogelio Pizzi',
@@ -667,7 +688,7 @@
       name: 'Cluster Fintech Córdoba', sector: 'Servicios financieros digitales',
       desc: 'Ecosistema que lidera la innovación y la transformación tecnológica de los servicios financieros en la región. Creado en 2024, el clúster unifica a empresas fintech, instituciones académicas y el sector público para consolidar a Córdoba como un hub financiero digital de clase mundial. Impulsa una infraestructura robusta, segura y escalable con un fuerte enfoque exportador, posicionando el talento y la tecnología local en los mercados globales más exigentes.',
       actividades: 'Servicios fintech B2B, pagos digitales, inversiones, proveedores tecnológicos, scoring, préstamos, blockchain y criptoactivos.',
-      cifras: [['16', 'empresas socias', 'y 6 instituciones aliadas'], ['6', 'universidades e instituciones aliadas'], ['90%', 'de las empresas invierte en I+D'], ['36%', 'de las socias exporta servicios'], ['833.240', 'usuarios finales de servicios'], ['USD 10.405 M', 'en activos administrados en promedio por empresa (2024)']],
+      cifras: [['6', 'universidades e instituciones aliadas'], ['90%', 'de las empresas invierte en I+D'], ['36%', 'de las socias exporta servicios'], ['833.240', 'usuarios finales de servicios'], ['USD 10.405 M', 'en activos administrados en promedio por empresa (2024)']],
       hitos: ['Talleres de educación financiera en Parques Educativos', 'Observatorio de innovación y Mapa de Indicadores del cluster', 'Diplomatura en Fintech con universidad', 'Convenios con UPC, Legislatura de Córdoba, Club Fintech Miami, ProPanamá y British School', 'Participación en Fintech Americas Miami 2025 y São Paulo Fintech Week'],
       paises: ['Uruguay', 'Paraguay', 'Estados Unidos', 'Estonia', 'Lituania'], paisesTexto: '',
       manager: 'Ruth Sironi', email: 'clusterfintech@gmail.com', presidente: 'Agustín Ramello de la Vega',
@@ -677,7 +698,7 @@
       name: 'Cluster Franquicias Córdoba', sector: 'Comercio y modelos de negocio',
       desc: 'CFCOR es el cluster de Franquicias de Córdoba: una asociación civil sin fines de lucro, creada en 2022, donde se alían las marcas franquiciantes cordobesas, las consultoras especialistas, los proveedores del sector y las empresas que evalúan franquiciar su negocio. Su propósito es potenciar el sistema de franquicias desde Córdoba al mundo, profesionalizando el sector y haciendo más competitivas a las PyMEs que crecen bajo este modelo. Sus socios no exportan productos, sino modelos de negocio replicables, con el comercio de barrio como motor.',
       actividades: 'Franquicias de gastronomía, salud y estética, indumentaria, turismo y viajes, servicios y retail; consultoría de franquicias; proveedores de tecnología, diseño, inmobiliario comercial y financiamiento.',
-      cifras: [['64', 'socios', '38 marcas franquiciantes'], ['10.200', 'empleos directos estimados del sector en la provincia'], ['120', 'franquicias activas en Córdoba (2025)'], ['20+', 'empresas socias con operación en mercados externos'], ['2.°', 'polo franquiciante de Argentina', 'presente en el 59% de las marcas con desarrollo nacional']],
+      cifras: [['10.200', 'empleos directos estimados del sector en la provincia'], ['120', 'franquicias activas en Córdoba (2025)'], ['20+', 'empresas socias con operación en mercados externos'], ['2.°', 'polo franquiciante de Argentina', 'presente en el 59% de las marcas con desarrollo nacional']],
       hitos: ['Diagnóstico de internacionalización y seminarios', 'Grupos de CEOs (encuentros periódicos de networking)', 'Academia Clúster (conversatorios y talleres)'],
       paises: ['Uruguay', 'Brasil', 'Paraguay', 'Chile', 'México', 'Estados Unidos', 'España'], paisesTexto: '',
       manager: 'Marcela Caballero', email: 'gerenciacfcor@gmail.com', presidente: 'Sebastián Santiago',
@@ -687,7 +708,7 @@
       name: 'Cluster Turismo Salud Córdoba', sector: 'Salud y turismo',
       desc: 'Es el clúster de turismo médico de la ciudad de Córdoba, creado en 2022. Su propósito es posicionar la oferta de turismo médico cordobesa como una de las mejores opciones para pacientes internacionales, con profesionales reconocidos internacionalmente, infraestructura y tecnología médica World Class y grandes atractivos turísticos en un destino seguro. Integra prestadores de salud de alta complejidad, hoteles y servicios turísticos en torno a un "producto ciudad" competitivo a nivel regional y global.',
       actividades: 'Alta complejidad (trasplante de médula ósea, cardiopatías congénitas, medicina fetal), cirugía ortopédica y bariátrica, radioterapia avanzada, oftalmología, odontología e implantes, estética y programas de bienestar; hotelería y turismo de bienestar.',
-      cifras: [['12', 'socios', '10 instituciones de salud y 2 hoteles'], ['+20', 'instituciones de alta complejidad en la Provincia'], ['15%', 'del flujo nacional de pacientes internacionales captado por Córdoba'], ['8,4', 'médicos cada 1.000 habitantes', 'más del doble del promedio nacional'], ['2', 'socios con acreditación Joint Commission'], ['2.°', 'plaza de turismo médico más elegida de Argentina', '2.100 pacientes internacionales por año']],
+      cifras: [['+20', 'instituciones de alta complejidad en la Provincia'], ['15%', 'del flujo nacional de pacientes internacionales captado por Córdoba'], ['8,4', 'médicos cada 1.000 habitantes', 'más del doble del promedio nacional'], ['2', 'socios con acreditación Joint Commission'], ['2.°', 'plaza de turismo médico más elegida de Argentina', '2.100 pacientes internacionales por año']],
       hitos: ['Misión inversa Paraguay 2025: acuerdos con Medilife y UELA', 'Misión inversa Perú 2026', 'Curso de calidad de procesos y certificación de profesionales de instituciones socias'],
       paises: ['Paraguay', 'Uruguay', 'Estados Unidos'], paisesTexto: 'Mercados de origen de pacientes y alianzas: Paraguay (Medilife, UELA), Uruguay (AUDAVI) y Estados Unidos (Houston). Próximo destino: Perú.',
       manager: 'Javier Romero', email: 'jromero@turismosaludcordoba.com', presidente: 'Marcos Lozada',
@@ -697,7 +718,7 @@
       name: 'Córdoba Creativa - Capital de Ideas', sector: 'Industrias Creativas (Publicidad)',
       desc: 'Córdoba Creativa es el clúster de la industria publicitaria y de marketing de Córdoba. Creado en 2024, reúne agencias, estudios y profesionales creativos para amplificar los negocios del ecosistema y posicionar a Córdoba como una capital de ideas, articulando empresas, universidades y organismos públicos para escalar la oferta del sector.',
       actividades: 'Creatividad publicitaria, branding, diseño y desarrollo web, planificación y compra de medios, estrategia digital, eventos y experiencias, marketing de contenidos, paid media.',
-      cifras: [['13', 'miembros'], ['+1.500', 'profesionales y expertos en el ecosistema creativo'], ['100%', 'oferta integral End-to-End', 'cubre toda la cadena de valor'], ['5', 'alianzas con universidades y centros de formación']],
+      cifras: [['+1.500', 'profesionales y expertos en el ecosistema creativo'], ['100%', 'oferta integral End-to-End', 'cubre toda la cadena de valor'], ['5', 'alianzas con universidades y centros de formación']],
       hitos: ['Convenios con 5 instituciones educativas', 'Metodología de licitaciones intracluster', 'Premios Acento (premios de la industria)', 'Convenios comerciales con otros clusters', 'Primer monitor de la industria a nivel nacional'],
       paises: ['México', 'Chile', 'Uruguay'], paisesTexto: 'Las agencias socias operan individualmente en estos mercados.',
       manager: 'Alberto Finkelstein', email: 'info@clustercordobacreativa.com', presidente: 'Gaspar Petrini',
@@ -707,12 +728,29 @@
       name: 'Córdoba Welcome - Cluster de Eventos', sector: 'Industria de eventos',
       desc: 'Córdoba Welcome es el cluster de la industria de eventos de Córdoba. Creado en 2022, reúne a productores, organizadores, proveedores, hoteles, venues, clubes e instituciones de toda la cadena de valor de congresos, ferias, festivales y espectáculos musicales y deportivos. Trabaja de manera colaborativa para fortalecer y representar al sector, lograr que los eventos sean reconocidos como una industria que genera trabajo genuino y posicionar a Córdoba como destino líder de grandes eventos, con datos propios sobre su impacto económico, fiscal, laboral y ambiental.',
       actividades: 'Organización de eventos artísticos, deportivos, congresos y ferias; infraestructura y logística; producción audiovisual y técnica; promoción de destino; ticketing y servicios turísticos.',
-      cifras: [['80', 'miembros', '77 empresas'], ['+530.000', 'puestos de trabajo directos, indirectos y eventuales en el sector de espectáculos y eventos de la provincia'], ['6', 'destinos de exportación activos'], ['+870', 'festivales realizados en la ciudad durante 2025']],
+      cifras: [['+530.000', 'puestos de trabajo directos, indirectos y eventuales en el sector de espectáculos y eventos de la provincia'], ['6', 'destinos de exportación activos'], ['+870', 'festivales realizados en la ciudad durante 2025']],
       hitos: ['Metodología de medición de triple impacto de eventos (con Universidad Siglo 21)', 'Ley Provincial 11.092/2025 de Promoción de la Industria de Eventos y la Economía Creativa', 'Primer evento deportivo sustentable de Argentina', 'Presentaciones en FiExpo Latam 2025 y AFIDA 2025'],
       paises: ['Uruguay', 'España', 'Brasil', 'Estados Unidos', 'Paraguay', 'México'], paisesTexto: '',
       manager: 'Analía Jaccoud', email: 'cluster@cordobawelcome.com.ar', presidente: 'José Palazzo',
       web: 'https://cordobawelcome.com.ar/', instagram: 'cordobawelcome', linkedin: '' }
   ];
+
+  // Socios de cada cluster (fuente: planillas "Estructura actualizada" de cada cluster, noviembre 2026).
+  // Solo nombres de empresas e instituciones. El contador se calcula solo con la cantidad de la lista.
+  // Logos: subí cada archivo a logos/socios/<id-del-cluster>/<nombre-en-minúsculas-sin-tildes-y-con-guiones>.png
+  // (por ejemplo logos/socios/bim/grupo-edisur.png). Si un logo no está, se muestran las iniciales.
+  // Para usar otra ruta o un archivo con otro nombre, reemplazá el texto por { n: 'Nombre', logo: 'ruta/archivo.png' }.
+  var SOCIOS = {
+    'bim': ['BSPK', 'Depro', 'Grupo DAQ', 'Grupo Edisur', 'Incoa', 'Hexagon Multivista (Ex Voyansi)', 'ZAP Arquitectos', 'Very Solution (Ex Very Visual)', 'HITO metarquitectura', 'PIENO', 'ESTUDIO LARSSON', 'BTB', 'INGENIA', 'eF1', 'Andes Dean', 'Dekalyseis', 'NMASUNO INGENIERIA SA', 'Augustinoy & Augustinoy', 'Visual Peephole', 'YouBIM LLC', 'TEKNIK', 'EPEC', 'ICON-INGENIERIA Y CONSTRUCCIONES SA', 'ITECH', 'Acheo', 'Bimbranch LLC', 'Nanzer Climatización SA', 'Corbis', 'AR-CON SRL', 'LABRIN INSTALACIONES INGENIERIA SANITARIA S.A.', 'ASTORI', 'HOLCIM ARGENTINA', 'VJV Arquitectos', 'Grupo MV', 'CORBLOCK SAIC', 'ENG', 'FJA', 'Ciar sa', 'GEOBIM', 'Octave', 'TGN', 'Siemens SA', 'GBim SAS', 'YPF S.A', 'Pecom'],
+    'clic': ['Delsurtranslations', 'Progroup', 'Language Solutions Team', 'TBO', 'Baquero Translations', 'Latamways', 'Stillman Translations', 'The Typesetter', 'Sharpline'],
+    'turismo-salud': ['HOSPITAL PRIVADO UNIVERSITARIO DE CORDOBA', 'SANATORIO ALLENDE', 'INSTITUTO OULTON', 'CLINICA DE OJOS CORDOBA', 'CLINICA DIQUECITO', 'CENTRO DE RADIOTERAPIA DEAN FUNES', 'VITTAL', 'POSADA DEL QUENTI', 'CLINICA UNIVERSITARIA REINA FABIOLA', 'HOTEL Y111', 'WINDSOR HOTEL & TOWER'],
+    'bpo': ['Evoltis', 'Konecta', 'Telemercado', 'Grupo VN Global', 'Voicenter', 'Apex', 'Multiconex', 'Generall Collect'],
+    'franquicias': ['Agropiscinas', 'Bullanga Milanga', 'Caseratto', 'Colfres', 'Chuii', 'Custore', 'Ecokil', 'Gamba Media', 'Geo Comunicaciones', 'Glup´s', 'Grandiet', 'Grido', 'InfoNegocios', 'Junior B', 'Kamil', 'La Comanda', 'La Quinta', 'Lapana', 'Laura Posada', 'Lomitos El Candil', 'Lo que ellas quieran', 'Lozada Viajes', 'Maja Morena', 'Marea', 'Pan Plano', 'Panadería del Pilar', 'Peñón del Aguila', 'Pepecito', 'Porto Gelatto', 'Qué Chingón', 'Reina Alba', 'Silenzio', 'Sushi 2x1', 'Sushi Soul', 'Sushi World', 'Vía Verde', 'Wollen', 'TDH Viajes', '384 Group', 'Centrofranchising', 'CCLA Centro Comercial Latam', 'Duty Gestión', 'Eguía & Asociados', 'Gett', 'Imaginárea', 'MKT Franquicias', 'MRV Consultora', 'People & Franq', 'Prisma Propiedades', 'Rep.eat', 'Social Templates', 'Supervielle', 'Dimanche Panadería', 'Mariani Catering & Planner', 'Red Fresh', 'Tommy Pets', 'Cervantes', 'AAMF', 'Córdoba Acelera', 'GAF', 'IDESA', 'Universidad Blas Pascal', 'ICDA', 'UES 21'],
+    'fintech': ['INVERA', 'QUANTEX', 'PAGOS 360', 'PEYPE DATOS', 'Bezza Pay', 'PAYFUN', 'PAYCLOUD', 'CHYTAPAY', 'RED UNISOL', 'SISCARD SA', 'TELEPROM', 'VORTEX', 'DARWOFT SA', 'SYS GLOBAL PAY', 'Cucuru', 'Addventure Club Inversores Ángeles', 'UCC', 'UNC', 'US21', 'UBP', 'UPC'],
+    'salud-humana': ['INSTITUTO STRUSBERG', 'CLÍNICA VÉLEZ SARSFIELD', 'INSTITUTO ONCOLÓGICO CÓRDOBA', 'CLÍNICA UNIVERSITARIA REINA FABIOLA', 'TERRAQUEO SMO', 'SANATORIO ALLENDE', 'CONCI-CARPINELLA', 'CEMAIC', 'FUNDACIÓN LENOXX', 'UNIVERSIDAD SIGLO XXI', 'HOSPITAL PRIVADO', 'SICC', 'INSTITUTO MÉDICO DAMIC - FUNDACIÓN RUSCULLEDA', 'LABORATORIO DE HEMODERIVADOS UNC', 'CENTRO PRIVADO DEÁN FUNES Y ASOCIACIÓN DE ONCOLOGÍA', 'OCHRE RESEARCH ARGENTINA', 'HOSPITAL ITALIANO', 'LABORATORIO LUAR', 'RAOMED S.A', 'HOSPITAL CÓRDOBA', 'DASPU', 'PROMEDON', 'LEISTUNG', 'ONCOPRECISIÓN', 'CAISAL', 'CEPROCOR', 'ACTYON GENOMICS', 'INBIOMED', 'UNC BIOINGENIERÍA', 'BRCR GLOBAL', 'SHARPLINE LIFE SCIENCES', 'SANATORIO DE LA CAÑADA', 'FUNEYT'],
+    'creativa': ['25 WATTS', 'HELLOBRAND', 'INFINITA MKT', 'ROMERO VICTORICA', 'GARRAZA + PINUS', 'IRRACIONAL', 'MARCAS CROWDBRANDING', 'WOBRA AGENCIA'],
+    'welcome': ['360 Regional Tour Operator', 'AL POGO (TRAA SAS)', 'AUTOENTRADA', 'B&Q Consultora de Eventos', 'Bamboo Eventos SAS', 'Binivisión', 'BS GROUP SA', 'CLUB ATLÉTICO BELGRANO', 'CLUB ATLÉTICO RACING', 'CLUB ATLÉTICO TALLERES', 'CONGRESS RENTAL (PUNTO CBA)', 'DAHAUSS', 'DISTRITO CAPITALINAS CORDOBA', 'EA EVENTOS', 'EDEN ENTRADAS (TICKETERA DEL CENTRO SAS)', 'EN VIVO PRODUCCIONES', 'ENJOY PRODUCCION INTEGRAL DE EVENTOS', 'FONOBUS (EMPRENDIMIENTOS SRL)', 'FORCIT SAS (LA FABRICA CALERA)', 'FORJA ARENA (BONZAR SA)', 'Freguglia Carpas S.A.', 'GEA Producciones', 'HOLIDAY INN CORDOBA (CEIBOTEL S.A)', 'HOWARD JOHNSON by WYNDHAM CORDOBA', 'HOWARD JOHNSON CARLOS PAZ', 'CLUB INSTITUTO ATLÉTICO CENTRAL CÓRDOBA', 'INSTITUTO CULTURA CONTEMPORANEA (ICC)', 'Joint Group', 'LA ESTACION (ELECTROSOUND SA)', 'M. Celeste', 'MANIFIESTO PRO SAS', 'MB equipamientos', 'Momento Osadia', 'Nativo Viajes', 'NESTOR MOIO', 'NO ME GRITES PRODUCCIONES', 'Nura Ingeniería', 'ORFEO SUITES', 'PARALELO PRODUCCIONES', 'PASESHOW', 'PERSUASIVA Agencia', 'PRODAR SRL', 'Quinto Centenario Hotel', 'Quorum Hotel', 'Rutur Viajes', 'San Honorato', 'SCARLET CATERING & EVENTOS', 'SETUR VIAJES Y TURISMO', 'STYLO VIAJES (SERV TURISTICOS SAS)', 'U51NA GROUP (BRAK VALERIA MILAGROS)', 'UNIVERSO JIMENEZ', 'VORTICE', 'VUALA (JIMENA CALLES)', 'WILOW Catering', 'Y111 HOTEL']
+  };
 
   // Total oficial de países de exportación. La lista por país se arma con los destinos detallados de cada cluster.
   var TOTAL_PAISES = 29;
@@ -1207,6 +1245,7 @@
     out += sec('Quiénes son', null, '<p class="lead">' + c.desc + '</p>');
     out += sec('Qué hacen', 'Actividades principales', '<p class="fx-text">' + c.actividades + '</p>');
     out += sec('En números', null, numsFor(c.cifras));
+    if ((SOCIOS[c.id] || []).length) out += sec('Socios', null, sociosBlock(c, SOCIOS[c.id]));
     out += sec('Hitos', 'Hitos del cluster', '<ul class="acciones">' + c.hitos.map(function (h) { return '<li>' + h + '</li>'; }).join('') + '</ul>');
     if (c.paises.length || c.paisesTexto)
       out += sec('Mundo', 'Presencia internacional',
@@ -1238,7 +1277,46 @@
       '</nav></div>';
   }
 
-    function worldMap(paises) {
+    /* Socios: contador + carrusel de logos con nombre */
+  function socioSlug(t) { return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/&/g, ' y ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); }
+  function socioIni(t) { return t.replace(/\(.*?\)/g, '').trim().split(/\s+/).filter(function (w) { return /[A-Za-zÁÉÍÓÚÑáéíóúñ0-9]/.test(w); }).slice(0, 2).map(function (w) { return w.charAt(0); }).join('').toUpperCase(); }
+  function sociosBlock(c, list) {
+    var items = list.map(function (x) {
+      var n = typeof x === 'string' ? x : x.n, src = (typeof x === 'object' && x.logo) || ('logos/socios/' + c.id + '/' + socioSlug(n) + '.png');
+      return '<figure class="soc" role="listitem"><span class="soc-logo"><img src="' + src + '" alt="" loading="lazy" onerror="this.parentNode.classList.add(\'nologo\')"><span class="ini" aria-hidden="true">' + socioIni(n) + '</span></span><figcaption>' + n + '</figcaption></figure>';
+    }).join('');
+    return '<div class="soc-head"><div><strong class="soc-count" data-count="' + list.length + '">' + list.length + '</strong><span>socios entre empresas e instituciones</span></div>' +
+      '<div class="soc-nav"><button type="button" data-soc="-1" aria-label="Ver socios anteriores">' + ICONS.left + '</button><button type="button" data-soc="1" aria-label="Ver más socios">' + ICONS.right + '</button></div></div>' +
+      '<div class="soc-track' + (list.length > 10 ? ' two' : '') + '" role="list" tabindex="0" aria-label="Socios de ' + c.name + '">' + items + '</div>' +
+      '<p class="soc-hint">Deslizá o usá las flechas para ver todos los socios.</p>';
+  }
+  function initSocios() {
+    var el = view.querySelector('.soc-count'), track = view.querySelector('.soc-track');
+    if (track) {
+      var upd = function () {
+        var a = view.querySelector('[data-soc="-1"]'), b = view.querySelector('[data-soc="1"]');
+        if (a) a.disabled = track.scrollLeft < 4;
+        if (b) b.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+        var fit = track.scrollWidth <= track.clientWidth + 4, box = track.parentNode;
+        track.classList.toggle('fit', fit);
+        box.querySelectorAll('.soc-nav, .soc-hint').forEach(function (x) { x.style.display = fit ? 'none' : ''; });
+      };
+      window.addEventListener('resize', upd);
+      track.addEventListener('scroll', upd, { passive: true }); setTimeout(upd, 50);
+    }
+    if (!el || !('IntersectionObserver' in window)) return;
+    var end = +el.getAttribute('data-count'), reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    el.textContent = '0';
+    var io = new IntersectionObserver(function (en) {
+      if (!en[0].isIntersecting) return; io.disconnect();
+      var t0 = performance.now(), d = 1100;
+      (function tick(t) { var k = Math.min(1, (t - t0) / d); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); })(t0);
+    }, { threshold: 0.4 });
+    io.observe(el);
+  }
+
+  function worldMap(paises) {
     var on = {}, nm = {};
     paises.forEach(function (p) { if (ISO[p]) { on[ISO[p]] = 1; nm[ISO[p]] = p; } });
     var x0 = WORLD.cba[0], y0 = WORLD.cba[1];
@@ -1414,6 +1492,7 @@
     view.innerHTML = html;
     root.querySelector('.close').hidden = !!c;
     wireLogos();
+    initSocios();
     void view.offsetWidth;
     view.className = 'view enter v-' + section;
 
@@ -1439,6 +1518,12 @@
     if (fl) {
       var on = fl.classList.toggle('is-flipped');
       fl.setAttribute('aria-expanded', String(on));
+      return;
+    }
+    var sb = e.target.closest('[data-soc]');
+    if (sb) {
+      var tr = view.querySelector('.soc-track');
+      if (tr) tr.scrollBy({ left: +sb.getAttribute('data-soc') * tr.clientWidth * 0.85, behavior: 'smooth' });
       return;
     }
     var nf = e.target.closest('[data-nfilter]');
