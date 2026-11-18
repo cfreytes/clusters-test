@@ -221,6 +221,11 @@
 #icc .ccard .top{display:flex;align-items:center;gap:14px}
 #icc .ccard .top .logo{width:56px;height:56px}
 #icc .ccard .top .logo .ini{font-size:14px}
+#icc .ccard .cname{font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+#icc .ccard .see{font-size:14px;font-weight:700;color:var(--muted)}
+#icc .ccard:hover .see{color:var(--orange-hi)}
+#icc .ccard{min-height:200px}
+#icc .ccard .kpi{align-items:center}
 #icc .ccard .short{font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.05}
 #icc .ccard .full{font-size:14px;color:var(--muted)}
 #icc .ccard .kpi{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
@@ -373,6 +378,10 @@
 #icc .fx-person .who{font-size:18px;font-weight:800;margin-top:4px}
 #icc .fx-person .mail{display:inline-block;margin-top:4px;font-size:14px;color:var(--orange-hi);text-decoration:none}
 #icc .fx-person .mail:hover{text-decoration:underline}
+#icc .fx-social{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+#icc .fx-social a{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);font-size:14px;font-weight:700;text-decoration:none}
+#icc .fx-social a:hover{border-color:var(--orange);color:var(--orange-hi)}
+#icc .fx-social svg{width:14px;height:14px}
 
 /* Cifras de los clusters */
 #icc .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 24px}
@@ -613,198 +622,96 @@
      indicado en "logo". Si falta, se muestran las iniciales.
      ========================================================= */
   var CLUSTERS = [
-    { id: 'bpo', short: 'BPO & KPO', ini: 'BPO', logo: 'logos/bpo-icon.png', logoFull: 'logos/bpo.png', kpi: 0, desde: '2022',
+    { id: 'bpo', short: 'BPO & KPO', ini: 'BPO', logo: 'logos/bpo-icon.png', logoFull: 'logos/bpo.png', desde: '2022',
       name: 'BPO & KPO Córdoba Cluster', sector: 'Servicios basados en conocimiento',
-      desc: 'Somos el primer cluster de BPO & KPO de Argentina, creado en 2022 en la ciudad de Córdoba. Reunimos a las principales empresas del sector de servicios empresariales y tercerización de procesos, con el objetivo de hacer del sector el primer eslabón de la economía del conocimiento y posicionar a Córdoba como la plaza más competitiva del país.',
-      tags: ['BPO & Contact Center', 'KPO & Análisis de Datos', 'Servicios Empresariales', 'Economía del Conocimiento'],
-      dato: ['40%', 'del empleo total del sector BPO/KPO de toda Argentina se concentra en Córdoba'],
-      cifras: [['12.901', 'Empleos registrados por el cluster', 'diciembre 2025'], ['+11,09%', 'Variación interanual del empleo', '2024 a 2025'], ['2.000', 'Empleos formales directos creados en 3 años', '3 convenios'], ['85%', 'Del empleo provincial del sector'], ['2,48%', 'Del total del empleo asalariado formal de Córdoba'], ['58%', 'De los nuevos empleos ocupados por mujeres'], ['33%', 'De los nuevos empleados de entre 18 y 23 años', 'primer empleo formal']],
-      secciones: [
-        { label: 'Oferta del sector', title: 'De los servicios core (BPO) al valor agregado (KPO)', kind: 'cards', items: [
-          ['Servicios core (BPO)', 'Atención multicanal al cliente, gestión administrativa y financiera, procesos de RRHH, servicios de IT y digitalización, marketing y ventas digitales, y servicios especializados por industria.'],
-          ['Servicios de valor agregado (KPO)', 'Análisis de datos y conocimiento, el Lab de Datos de Competitividad (plataforma de análisis estratégico que integra datos, metodologías y escenarios para medir y proyectar la competitividad del sector) y proyectos de IA aplicada a procesos.']] },
-        { label: 'Quiénes traccionan', title: 'Empresas que lo componen', kind: 'list', items: ['Evoltis', 'Konecta', 'Telemercado', 'Grupo VN Global', 'Voicenter', 'Apex', 'Multiconex', 'Generall Collect'] }],
-      pendiente: { title: 'Transformación digital conjunta', text: '[Texto a completar con el cluster sobre el proceso de transformación digital que llevan adelante de manera conjunta]' },
-      exporta: [], exportaTexto: 'Atiende clientes en más de 10 mercados globales desde Córdoba.',
-      manager: 'Diana Tuma', presidente: 'Iván Morero', email: 'clusterbpoykpo@gmail.com', web: 'https://cbaclusterbpokpo.com.ar/', webLabel: 'Visitar el sitio del cluster' },
+      desc: 'Es el primer clúster de BPO & KPO de Argentina, creado en 2022 en la ciudad de Córdoba. Reúne a las principales empresas del sector de servicios empresariales y tercerización de procesos, con el objetivo de hacer del sector el primer eslabón de la economía del conocimiento y posicionar a Córdoba como la plaza más competitiva del país.',
+      actividades: 'Atención multicanal al cliente, gestión administrativa y financiera, procesos de RRHH, IT y digitalización, análisis de datos, marketing y ventas digitales, servicios especializados por industria.',
+      cifras: [['8', 'empresas socias'], ['18.000', 'empleos registrados en Córdoba'], ['2.000', 'empleos formales directos creados en 3 años', 'convenio con Córdoba Acelera'], ['85%', 'del empleo provincial del sector'], ['58%', 'de los nuevos empleos ocupados por mujeres'], ['33%', 'de los nuevos empleados de entre 18 y 23 años', 'primer empleo formal'], ['40%', 'del empleo total del sector BPO/KPO de Argentina se concentra en Córdoba']],
+      hitos: ['Programa de empleo: 2.000 empleos formales y directos en 3 convenios (2023–2025)', 'Lab de Datos de Competitividad', 'Transformación productiva conjunta del sector'],
+      paises: [], paisesTexto: '',
+      manager: 'Diana Tuma', email: 'clusterbpoykpo@gmail.com', presidente: 'Iván Morero',
+      web: 'https://cbaclusterbpokpo.com.ar/', instagram: 'cluster.bpo.kpo', linkedin: '' },
 
     { id: 'clic', short: 'CLIC', ini: 'CLIC', logo: 'logos/clic-icon.png', logoFull: 'logos/clic.png', desde: '2023',
-      name: 'Cluster de Localización e Interpretación de Córdoba', sector: 'Servicios lingüísticos',
-      desc: 'CLIC es el cluster de la industria de traducción, localización e interpretación de la ciudad de Córdoba, creado en 2023. Tiene el propósito de fomentar la colaboración, el crecimiento y la excelencia en el sector lingüístico, posicionando a Córdoba como referente regional e internacional en servicios de lengua y contenidos.',
-      tags: ['Localización', 'Traducción', 'Interpretación', 'IA aplicada al lenguaje'],
-      dato: ['100%', 'de las empresas socias exporta, principalmente a EE. UU., Canadá e Italia'],
-      cifras: [['1.300', 'Lingüistas en Argentina en la red del cluster'], ['6.000', 'Lingüistas en la red global de las empresas socias'], ['5,11%', 'Del VAB nacional del paquete Comunicaciones y Edición aportado por Córdoba', '4.ª provincia'], ['3,56%', 'Del VAB provincial que representa el paquete sectorial de referencia']],
-      secciones: [
-        { label: 'Dónde podemos colaborar', title: 'Qué resolvemos', kind: 'cards', items: [
-          ['Localización integral de punta a punta', 'Adaptación cultural y tecnológica integral de software, aplicaciones y contenidos multimedia para mercados internacionales, desde la traducción y posedición con IA hasta el diseño gráfico aplicado, el subtitulado y el doblaje profesional.'],
-          ['Equipos especializados y gestión de proyectos', 'Equipos ágiles liderados por gestores de proyectos (Project Managers) formados bajo estándares de primera calidad, integrando especialistas en accesibilidad lingüística y lingüística computacional.'],
-          ['Consorcios inter-empresas', 'Consorcios colaborativos para partners que busquen centralizar sus operaciones de traducción e interpretación (simultánea o consecutiva), utilizando la red consolidada de más de 6.000 profesionales.'],
-          ['Mesas de trabajo de modelos de IA lingüística', 'Trabajo conjunto con empresas tecnológicas y de otros sectores para el diseño, entrenamiento y testeo de modelos lingüísticos de IA aplicados a la comunicación corporativa, garantizando precisión terminológica, seguridad de datos y optimización de costos.']] },
-        { label: 'Por qué asociarse', title: 'Razones para iniciar una conversación', kind: 'steps', items: [
-          ['ADN netamente global', 'El 100% de las empresas socias exporta servicios de manera individual a mercados altamente competitivos como Estados Unidos, Canadá e Italia.'],
-          ['Talento local, infraestructura global', 'Una red de 1.300 lingüistas en Argentina y más de 6.000 profesionales interconectados a nivel global, lo que permite gestionar proyectos multilingües complejos de gran volumen en múltiples combinaciones de idiomas en tiempo récord.'],
-          ['Tradición fusionada con IA generativa', 'Fusionan el know-how lingüístico tradicional con flujos de trabajo avanzados de inteligencia artificial generativa, posedición automática y prompting.'],
-          ['Especialización por vertical', 'Equipos lingüísticos altamente especializados por verticales de negocio, con terminología técnica rigurosa en sectores como Medicina y Salud, Legal, IT & Software, Finanzas y Contenidos Audiovisuales. Cada traducción la ejecutan expertos que entienden la lógica y las normativas de su industria.']] }],
-      exporta: ['Estados Unidos', 'Canadá', 'Italia'],
-      manager: 'Serenella Domizi', presidente: 'Angélica Pérez', presidenteLabel: 'Presidenta', email: 'info@cliccluster.com', web: 'https://cliccluster.com/', webLabel: 'Visitar el sitio del cluster' },
+      name: 'CLIC – Cluster de Localización e Interpretación', sector: 'Servicios lingüísticos',
+      desc: 'CLIC es el clúster de la industria de traducción, localización e interpretación de la ciudad de Córdoba, creado en 2023. Tiene el propósito de fomentar la colaboración, el crecimiento y la excelencia en el sector lingüístico, posicionando a Córdoba como referente regional e internacional en servicios de comunicación y contenidos.',
+      actividades: 'Traducción y localización, corrección de estilo, interpretación, doblaje, subtitulado, posedición, transcripción, diseño gráfico, normas de accesibilidad, reclutamiento.',
+      cifras: [['10', 'empresas socias'], ['1.300', 'lingüistas en Argentina en la red del cluster'], ['6.000', 'lingüistas en la red global de las empresas socias'], ['100%', 'de las empresas socias exporta', 'principalmente a EE. UU., Canadá e Italia']],
+      hitos: ['Curso de Project Management', 'Encuesta interna sectorial', 'Participación en Tech Week Córdoba 2025', 'Co-organización del GALA RoadShow 2024'],
+      paises: ['Estados Unidos', 'Canadá', 'Italia'], paisesTexto: '',
+      manager: 'Serenella Domizi', email: 'info@cliccluster.com', presidente: 'Angélica Pérez', presidenteLabel: 'Presidenta',
+      web: 'https://cliccluster.com/', instagram: 'clic.cluster', linkedin: 'https://ar.linkedin.com/company/clic-cluster' },
 
-    { id: 'bim', short: 'BIM', ini: 'BIM', logo: 'logos/bim-icon.png', logoFull: 'logos/bim.png', kpi: 4, desde: '2023',
+    { id: 'bim', short: 'BIM', ini: 'BIM', logo: 'logos/bim-icon.png', logoFull: 'logos/bim.png', desde: '2023',
       name: 'Cluster BIM Argentina', sector: 'Construcción e ingeniería digital',
-      desc: 'El Cluster BIM Argentina conecta talento, conocimiento y visión, integrando toda la cadena de valor. Articula empresas, Estado y academia para impulsar la transformación tecnológica de la construcción, acelerar la adopción de BIM, elevar los estándares del sector y generar nuevas oportunidades de negocio.',
-      tags: ['Metodología BIM', 'AEC', 'Construcción digital', 'Oil & Gas'],
-      dato: ['< 72 h', 'para aprobar permisos de obra con el primer Model Checker municipal de Argentina.'],
-      cifras: [['30', 'Empresas socias'], ['+280', 'Becas BIM Modeler otorgadas'], ['4', 'Universidades locales comprometidas en la formación BIM'], ['8', 'Servicios colaborativos', 'ofrecidos por los socios de manera conjunta, integrándose a equipos de proyecto para reducir retrabajos y optimizar la ejecución en entornos de alta complejidad'], ['~USD 50 M', 'Exportaciones anuales estimadas', 'con un núcleo de empresas socias fuertemente orientadas a mercados externos'], ['1.º', 'Foro regional de BIM', 'BIM For All, edición 2025. 379 profesionales, 36 speakers nacionales e internacionales, 7 paneles y 8 países'], ['1.º', 'Hub universitario BIM de Argentina']],
-      secciones: [
-        { label: 'Sectores de referencia', title: 'Cuatro sectores donde BIM genera el mayor impacto', intro: 'Sectores estratégicos atravesados transversalmente por nuestros servicios.', kind: 'cards', items: [
-          ['Desarrollismo y construcción', 'Diseño, coordinación y ejecución de proyectos edilicios y urbanos.'],
-          ['Infraestructura', 'Obra pública y privada, con foco en eficiencia, trazabilidad y gestión del ciclo de vida.'],
-          ['Energía (Oil & Gas)', 'Sector en expansión activa. En abril de 2026 realizamos un viaje exploratorio a Vaca Muerta (Neuquén) para identificar oportunidades concretas para nuestras empresas socias y posicionar al Cluster como actor técnico relevante en la transformación digital de la industria.'],
-          ['Industria', 'Digitalización de procesos productivos y activos industriales.']] },
-        { label: 'Ya conectado con', title: 'Vínculos institucionales e internacionales', kind: 'list', items: ['ProPanamá', 'Consulado de Atlanta', 'BIM Forums', 'Universidad de León (España)', 'CEPAL InterCluster, Cluster de la Construcción de Colombia', 'Autodesk', 'IRAM'] },
-        { label: 'Por qué asociarse', title: 'Razones para iniciar una conversación', kind: 'steps', items: [
-          ['Capacidad exportadora consolidada', 'Alrededor de dos tercios de las empresas socias tienen experiencia brindando servicios a clientes en el exterior, en 12 países de América y Europa.'],
-          ['Innovación en gestión pública', 'Desarrollo en curso de un Model Checker, orientado a convertirse en el primer sistema municipal de Argentina capaz de aprobar permisos de obra de forma ágil, en menos de 72 horas.'],
-          ['Liderazgo en formación y política pública', 'Más de 280 becas BIM Modeler otorgadas. Co-lideramos, junto al Ministerio de Infraestructura y Servicios Públicos de la Provincia, el Plan BIM 2030 Córdoba, e impulsamos la creación del primer Hub Universitario BIM del país, lanzado en junio de 2025 con la adhesión de 4 universidades provinciales.'],
-          ['Cobertura integral de la cadena de valor BIM', 'Nuestras empresas cubren todo el ciclo. Diseño estructural, arquitectura e ingeniería de detalle; modelado BIM, coordinación digital y gestión de proyectos; construcción, gerenciamiento de obras y VDC; modelado 3D y planificación 4D (tiempo) y 5D (costos); optimización de activos; visualización 3D avanzada, realidad virtual y gemelos digitales; consultoría en transformación digital; y capacitación profesional en tecnologías BIM.'],
-          ['Proyección regional e internacional', 'Presencia activa en BIM Forums de Chile, Paraguay y Brasil y en Autodesk University, y organizadores de BIM For All, el primer foro regional de BIM. Líneas de I+D abiertas en interoperabilidad, IA aplicada al diseño y BIM para oil & gas. Cooperación cluster a cluster en construcción digital en el marco del Proyecto InterCluster CEPAL junto a Colombia.']] }],
-      exporta: ['Estados Unidos', 'España', 'Reino Unido', 'Chile', 'Brasil', 'Uruguay', 'Paraguay', 'México', 'Canadá', 'Bolivia', 'Ecuador', 'Francia'],
-      exportaLabel: 'Dónde ya trabajan sus socios', exportaTexto: 'Alrededor de dos tercios de las empresas socias tienen experiencia brindando servicios a clientes en el exterior.',
-      manager: 'Hernán Laguia', email: 'hernan@clusterbim.com', directora: 'Maira Calzada', presidente: 'Diego Cotsifis', web: 'https://clusterbim.com/', webLabel: 'Visitar el sitio del cluster' },
+      desc: 'Primer cluster del país dedicado a la metodología BIM (Building Information Modeling): un ecosistema de innovación y cooperación que reúne a empresas líderes y de larga trayectoria en servicios BIM. Nació en Córdoba en 2023 y hoy articula una red federal, con nodos en Neuquén y Buenos Aires. Su meta es transformar la industria de la construcción a través de la digitalización y la eficiencia en cada proyecto, junto al Estado y la academia (es socio del Gobierno provincial en el Plan BIM Córdoba 2030), y convertir a Córdoba en un hub BIM global.',
+      actividades: 'Modelado BIM (arquitectura e ingeniería), BIM management y coordinación, consultoría (permisos, licitaciones, software AEC, interoperabilidad), diseño arquitectónico, BI e IA aplicada; implementación y formación BIM.',
+      cifras: [['30', 'empresas socias'], ['+280', 'becas BIM Modeler otorgadas'], ['8', 'servicios colaborativos ofrecidos por los socios de manera conjunta'], ['~USD 50 M', 'exportaciones anuales estimadas'], ['1.°', 'foro regional de BIM', 'BIM For All 2025: 379 profesionales, 36 speakers, 7 paneles y 8 países'], ['1.°', 'hub universitario BIM de Argentina'], ['4', 'sectores donde BIM genera mayor impacto', 'Desarrollismo y construcción, Infraestructura, Energía (Oil & Gas) e Industria']],
+      hitos: ['Participación en el Plan BIM Córdoba 2030', 'Model Checker en Obras Privadas de la Municipalidad', 'BIM For All 2025, junto al Cluster de Petróleo, Gas y Minería', 'Convenio con Bancor para créditos para el sector', 'Córdoba BIM Day en Atlanta (con Embajada y Consulado)', 'Acuerdo con Autodesk'],
+      paises: ['Estados Unidos', 'España', 'Reino Unido', 'Chile', 'Brasil', 'Uruguay', 'Paraguay', 'México', 'Canadá', 'Bolivia', 'Ecuador', 'Francia'],
+      paisesTexto: 'Alrededor de dos tercios de las empresas socias tienen clientes en el exterior.',
+      manager: 'Hernán Laguia', email: 'hernan@clusterbim.com', directora: 'Maira Calzada', directoraEmail: 'maira@cordobabim.com', presidente: 'Diego Cotsifis',
+      web: 'https://clusterbim.com/', instagram: 'cluster.bim', linkedin: 'https://www.linkedin.com/company/córdoba-bim-cluster' },
 
-    { id: 'salud-humana', short: 'Salud Humana', ini: 'IISH', logo: 'logos/salud-humana-icon.png', logoFull: 'logos/salud-humana.png', kpi: 0, desde: '2024',
+    { id: 'salud-humana', short: 'Salud Humana', ini: 'IISH', logo: 'logos/salud-humana-icon.png', logoFull: 'logos/salud-humana.png', desde: '2024',
       name: 'Cluster de Investigación e Innovación en Salud Humana', sector: 'Ciencias de la vida',
-      desc: 'Cluster emergente del ecosistema de investigación clínica e innovación en salud de Córdoba, creado a fines de 2024. Nuestro propósito es nuclear a los actores de la investigación clínica para potenciar a Córdoba como hub de investigación e innovación en salud humana. Articulamos centros de investigación, universidades, empresas de innovación biomédica, instituciones médicas, laboratorios, CROs y organismos públicos en torno a ensayos clínicos, medicina de precisión y producción tecnológica médica.',
-      tags: ['Investigación clínica', 'Biotecnología & salud', 'Medicina de precisión', 'Dispositivos médicos'],
-      dato: ['-65%', 'en los tiempos del proceso regulatorio de ensayos clínicos, una plaza más competitiva para sponsors internacionales'],
-      cifras: [['+570', 'Investigadores registrados en la provincia de Córdoba'], ['8.540', 'Empleados registrados en las empresas socias (2025)', '+7,38% interanual'], ['608', 'Profesionales y técnicos en 32 centros con ensayos activos'], ['97', 'Profesionales capacitados en IA aplicada a investigación clínica'], ['7', 'Países en 3 continentes donde operan empresas del cluster'], ['1.º', 'Evento que nuclea a estudiantes, investigadores, sitios de investigación, universidades, sponsors y CRO en un mismo lugar y momento']],
-      secciones: [
-        { label: 'Por qué asociarse', title: 'Razones para iniciar una conversación', kind: 'cards', items: [
-          ['Registro de ensayos digitalizado', 'El registro de ensayos clínicos provincial está actualmente digitalizado, y los centros de investigación privados se encuentran en curso de plena digitalización.'],
-          ['Profesionales y formación de primer nivel', 'Profesionales con el más alto grado de formación y técnicos activos en investigación clínica, sumado a la oferta de capacitaciones de actualización y formación técnica especializada para mejorar la capacidad operativa de los centros y clínicas.'],
-          ['Experiencia internacional', 'Empresas socias operando en diversos países, con experiencia en internacionalización de la investigación clínica y de productos de la innovación médica.'],
-          ['Alta disponibilidad de pacientes', 'Alta disponibilidad de pacientes para ensayos clínicos.'],
-          ['Trabajo conjunto con el sector público', 'Trabajo continuo con el sector público para reducir los tiempos de fiscalización de ensayos clínicos y mejorar la competitividad de la plaza.']] },
-        { label: 'Ya conectado con', title: 'Vínculos internacionales', kind: 'list', items: ['Pro Panamá, visita institucional y vínculo en desarrollo', 'Clusters de investigación clínica de Panamá y México, en etapa de exploración'] },
-        { label: 'Hitos', title: 'Oportunidades concretas de colaboración', kind: 'steps', items: [
-          ['Ser sitio de ensayos clínicos', 'Capacidad instalada en fases I a IV para sponsors internacionales.'],
-          ['Desarrollar programas formativos', 'IA y tecnología aplicada a ensayos clínicos, y diplomatura para monitores y coordinadores de ensayos clínicos.'],
-          ['Impulsar investigación colaborativa', 'Aliados para proyectos colaborativos de investigación clínica, tecnología e innovación.'],
-          ['Co-construir soluciones de futuro', 'En inteligencia artificial, salud digital, biotecnología y bioingeniería.']] }],
-      exporta: ['Uruguay', 'México', 'España', 'Chile', 'Alemania', 'Brasil', 'Perú'],
-      manager: 'Belén Olmedo', presidente: 'Rogelio Pizzi', email: 'clusterinvestigacion@gmail.com', web: 'https://www.clustersaludcba.com/', webLabel: 'Visitar el sitio del cluster' },
+      desc: 'Clúster emergente del ecosistema de investigación clínica e innovación en salud de Córdoba, creado en 2024. Su propósito es nuclear a los actores de la investigación clínica para potenciar a Córdoba como hub de investigación e innovación en salud humana. Articula centros de investigación, universidades, empresas de innovación biomédica, instituciones médicas, laboratorios, CROs y organismos públicos en torno a ensayos clínicos, medicina de precisión y producción tecnológica médica.',
+      actividades: 'Investigación clínica; prestación asistencial; biotecnología, diagnóstico avanzado y medicina de precisión; dispositivos médicos e ingeniería biomédica; formación de talento.',
+      cifras: [['40', 'empresas socias', 'y 3 universidades'], ['+570', 'investigadores registrados en la provincia'], ['608', 'profesionales y técnicos en 32 centros con ensayos activos'], ['97', 'profesionales capacitados en IA aplicada a investigación clínica'], ['7', 'países en 3 continentes donde operan empresas del cluster'], ['−65%', 'en los tiempos del proceso regulatorio de ensayos clínicos', 'una plaza más competitiva para sponsors internacionales'], ['1.°', 'evento que nuclea a estudiantes, investigadores, sitios de investigación, universidades, sponsors y CRO en un mismo lugar y momento']],
+      hitos: ['Censo del ecosistema de investigación clínica', 'Actualización de la Ley provincial 9694, que agiliza la fiscalización de ensayos clínicos', 'Evento "Córdoba Investiga"', 'Curso de IA para investigadores clínicos', 'Visita de ProPanamá a empresas socias'],
+      paises: ['Uruguay', 'Paraguay', 'Brasil', 'Perú'], paisesTexto: 'Empresas del cluster operan en 7 países de 3 continentes.',
+      manager: 'Belén Olmedo', email: 'clusterinvestigacion@gmail.com', presidente: 'Rogelio Pizzi',
+      web: 'https://www.clustersaludcba.com/', instagram: 'clustersaludcba', linkedin: 'https://www.linkedin.com/company/clúster-de-investigación-e-innovación-en-salud-humana' },
 
-    { id: 'fintech', short: 'Fintech', ini: 'FIN', logo: 'logos/fintech-icon.png', logoFull: 'logos/fintech.png', kpi: 0, desde: '2024',
+    { id: 'fintech', short: 'Fintech', ini: 'FIN', logo: 'logos/fintech-icon.png', logoFull: 'logos/fintech.png', desde: '2024',
       name: 'Cluster Fintech Córdoba', sector: 'Servicios financieros digitales',
-      desc: 'Ecosistema que lidera la innovación y la transformación tecnológica de los servicios financieros en la región. Creado en 2024, el cluster unifica a empresas fintech, instituciones académicas y el sector público para consolidar a Córdoba como un hub financiero digital de clase mundial. Impulsamos una infraestructura robusta, segura y escalable con un fuerte enfoque exportador, posicionando el talento y la tecnología local en los mercados globales más exigentes.',
-      tags: ['Pagos digitales', 'Servicios financieros B2B', 'Blockchain & criptoactivos', 'IA financiera'],
-      dato: ['8,8%', 'del empleo fintech de Argentina está en Córdoba (3.235 puestos), y casi se duplicó entre 2023 y 2025 (+90,6%)'],
-      cifras: [['36%', 'De las empresas socias exporta servicios'], ['750', 'Empleados en las empresas socias'], ['US$ 10.405 M', 'En activos administrados en promedio por empresa del cluster (2024)'], ['90%', 'Empresas que invierten en I+D'], ['6', 'Universidades e instituciones aliadas']],
-      secciones: [
-        { label: 'Por qué asociarse', title: 'Razones para iniciar una conversación', kind: 'cards', items: [
-          ['Presencia en la conversación global', 'Presencia exportadora activa y participación constante en los principales foros y eventos fintech del mundo, lo que permite cocrear soluciones interoperables y facilitar el desembarco de tecnologías locales en múltiples mercados internacionales.'],
-          ['Un portafolio integral y avanzado', 'Desde pasarelas de pagos digitales y servicios financieros B2B hasta infraestructuras de blockchain y criptoactivos, e inteligencia artificial aplicada al análisis de riesgo y las finanzas predictivas.'],
-          ['I+D a la vanguardia', 'El 90% de las empresas socias invierte activamente en I+D, lo que asegura a los clientes soluciones de software financiero actualizadas bajo las últimas tendencias globales de ciberseguridad y eficiencia operativa.'],
-          ['Experiencia en todos los segmentos', 'Más de 13.000 clientes distintos entre B2B y B2C, con presencia en el segmento bancario, público, PyMEs, microempresas, grandes empresas y personas físicas.']] },
-        { label: 'Ya conectado con', title: 'Vínculos internacionales', kind: 'list', items: ['Fintech Club Miami', 'Pro Panamá', 'Programa InterCluster CEPAL', 'Fintech Americas Conference Miami', 'São Paulo Fintech Week'] },
-        { label: 'Hitos', title: 'Oportunidades concretas de colaboración', kind: 'steps', items: [
-          ['Acceso a infraestructuras digitales consolidadas', 'Capacidad probada para procesar altos volúmenes de transacciones financieras diarias, con soluciones robustas de pasarelas de pago y servicios B2B adaptables a grandes, medianas y pequeñas corporaciones.'],
-          ['Diseño conjunto de finanzas sustentables', 'Sobre un modelo ya desarrollado por el cluster, conectamos herramientas de medición ambiental (como huella hídrica y de carbono) con instrumentos económicos y líneas de financiamiento.'],
-          ['Mesas de trabajo y transferencia de buenas prácticas', 'Entre el ecosistema local y ecosistemas internacionales, para armonizar criterios y promover el intercambio mutuo de conocimientos sobre tendencias.'],
-          ['Formación técnica a medida', 'Células de talento a medida y capacitaciones corporativas de alta especialización junto a nuestras universidades aliadas y universidades globales.']] }],
-      exporta: ['Uruguay', 'Paraguay', 'Estados Unidos', 'Estonia', 'Lituania'],
-      manager: 'Ruth Sironi', email: 'ruth.sironi.2026@gmail.com', presidente: 'Agustín Ramello de la Vega', web: 'https://ar.linkedin.com/company/clusterfintechcordoba', webLabel: 'Ver el cluster en LinkedIn' },
+      desc: 'Ecosistema que lidera la innovación y la transformación tecnológica de los servicios financieros en la región. Creado en 2024, el clúster unifica a empresas fintech, instituciones académicas y el sector público para consolidar a Córdoba como un hub financiero digital de clase mundial. Impulsa una infraestructura robusta, segura y escalable con un fuerte enfoque exportador, posicionando el talento y la tecnología local en los mercados globales más exigentes.',
+      actividades: 'Servicios fintech B2B, pagos digitales, inversiones, proveedores tecnológicos, scoring, préstamos, blockchain y criptoactivos.',
+      cifras: [['16', 'empresas socias', 'y 6 instituciones aliadas'], ['6', 'universidades e instituciones aliadas'], ['90%', 'de las empresas invierte en I+D'], ['36%', 'de las socias exporta servicios'], ['833.240', 'usuarios finales de servicios'], ['USD 10.405 M', 'en activos administrados en promedio por empresa (2024)']],
+      hitos: ['Talleres de educación financiera en Parques Educativos', 'Observatorio de innovación y Mapa de Indicadores del cluster', 'Diplomatura en Fintech con universidad', 'Convenios con UPC, Legislatura de Córdoba, Club Fintech Miami, ProPanamá y British School', 'Participación en Fintech Americas Miami 2025 y São Paulo Fintech Week'],
+      paises: ['Uruguay', 'Paraguay', 'Estados Unidos', 'Estonia', 'Lituania'], paisesTexto: '',
+      manager: 'Ruth Sironi', email: 'clusterfintech@gmail.com', presidente: 'Agustín Ramello de la Vega',
+      web: '', instagram: 'clusterfintechcordoba', linkedin: 'https://www.linkedin.com/company/clusterfintechcordoba' },
 
-    { id: 'franquicias', short: 'Franquicias', ini: 'CFC', logo: 'logos/franquicias-icon.png', logoFull: 'logos/franquicias.png', kpi: 1, desde: '2022',
-      name: 'Cluster de Franquicias de Córdoba', sector: 'Comercio y modelos de negocio',
-      desc: 'Es el cluster del sistema de franquicias de Córdoba, creado en 2022. Su propósito es potenciar el sistema de franquicias desde Córdoba al mundo, profesionalizando el sector e incrementando la competitividad de las PyMEs que crecen bajo este modelo.',
-      tags: ['Franquicias & retail', 'Modelos de negocio escalables', 'Exportación de know-how'],
-      dato: ['2.º', 'polo franquiciante de Argentina, presente en el 59% de las marcas con desarrollo nacional (IER 1,326)'],
-      cifras: [['1.611', 'Empleados registrados por empresas del cluster', 'diciembre 2025'], ['+19,3%', 'Crecimiento interanual del empleo', '2024 a 2025, el sector más dinámico del comercio cordobés'], ['10.200', 'Empleos directos estimados del sector en la provincia'], ['120', 'Franquicias activas en Córdoba (2025)'], ['59%', 'De las marcas con desarrollo nacional presentes en Córdoba'], ['23,2%', 'Del VAB provincial', 'comercio y servicios vinculados a franquicias'], ['20+', 'Empresas socias con operación en mercados externos'], ['64', 'Miembros en el ecosistema del cluster']],
-      secciones: [
-        { label: 'Por qué asociarse', title: 'Razones para iniciar una conversación', kind: 'cards', items: [
-          ['El 2.º polo franquiciante de Argentina', '120 franquicias activas y presencia en el 59% de las marcas con desarrollo nacional.'],
-          ['Ya exportando', 'Al menos 20 empresas del cluster ya operan en mercados externos, en Uruguay, Brasil, Paraguay, Chile, México, EE. UU. y España.'],
-          ['El sector más dinámico del comercio', '+19,3% de crecimiento interanual del empleo en empresas del cluster.'],
-          ['Modelo de exportación de know-how', 'Replicación de modelos de negocio en mercados externos, sin necesidad de exportar productos físicos.'],
-          ['Ecosistema completo', 'Franquiciantes, proveedores especializados, consultores, financiamiento y universidades, todo en una sola red.']] },
-        { label: 'Composición', title: '64 miembros en el ecosistema del cluster', kind: 'groups', items: [
-          ['Miembros por categoría', ['38 franquiciantes', '12 proveedores', '2 especialistas', '4 adherentes', '7 alianzas', '1 sponsor']],
-          ['Rubros representados', ['Gastronomía y alimentos', 'Salud, estética y bienestar', 'Indumentaria y moda', 'Turismo y viajes', 'Servicios y retail especializado', 'Consultoría de franquicias', 'Gestión y tecnología para redes', 'Marca, diseño y comunicación', 'Inmobiliario comercial', 'Financiamiento']]] },
-        { label: 'Hitos', title: 'Oportunidades concretas de colaboración', kind: 'steps', items: [
-          ['Expandir marcas cordobesas al exterior', 'Mediante alianzas con cámaras, redes de franquicias y clusters de retail internacionales.'],
-          ['Intercambiar metodologías de internacionalización', 'Con organizaciones del sector a nivel global.'],
-          ['Vincular con inversores y máster franquiciantes', 'Contrapartes internacionales para acelerar la expansión de marcas del cluster.'],
-          ['Co-desarrollar el Programa de Diagnóstico para la Internacionalización', 'Con contrapartes que tengan experiencia en la expansión global de modelos de franquicia.']] }],
-      exporta: ['Uruguay', 'Brasil', 'Paraguay', 'Chile', 'México', 'Estados Unidos', 'España'], exportaLabel: 'Dónde ya operan las marcas socias',
-      manager: 'Marcela Caballero', email: 'gerenciacfcor@gmail.com', presidente: 'Sebastián Santiago', web: 'https://cfcor.com.ar/', webLabel: 'Visitar el sitio del cluster' },
+    { id: 'franquicias', short: 'Franquicias', ini: 'CFC', logo: 'logos/franquicias-icon.png', logoFull: 'logos/franquicias.png', desde: '2022',
+      name: 'Cluster Franquicias Córdoba', sector: 'Comercio y modelos de negocio',
+      desc: 'CFCOR es el cluster de Franquicias de Córdoba: una asociación civil sin fines de lucro, creada en 2022, donde se alían las marcas franquiciantes cordobesas, las consultoras especialistas, los proveedores del sector y las empresas que evalúan franquiciar su negocio. Su propósito es potenciar el sistema de franquicias desde Córdoba al mundo, profesionalizando el sector y haciendo más competitivas a las PyMEs que crecen bajo este modelo. Sus socios no exportan productos, sino modelos de negocio replicables, con el comercio de barrio como motor.',
+      actividades: 'Franquicias de gastronomía, salud y estética, indumentaria, turismo y viajes, servicios y retail; consultoría de franquicias; proveedores de tecnología, diseño, inmobiliario comercial y financiamiento.',
+      cifras: [['64', 'socios', '38 marcas franquiciantes'], ['10.200', 'empleos directos estimados del sector en la provincia'], ['120', 'franquicias activas en Córdoba (2025)'], ['20+', 'empresas socias con operación en mercados externos'], ['2.°', 'polo franquiciante de Argentina', 'presente en el 59% de las marcas con desarrollo nacional']],
+      hitos: ['Diagnóstico de internacionalización y seminarios', 'Grupos de CEOs (encuentros periódicos de networking)', 'Academia Clúster (conversatorios y talleres)'],
+      paises: ['Uruguay', 'Brasil', 'Paraguay', 'Chile', 'México', 'Estados Unidos', 'España'], paisesTexto: '',
+      manager: 'Marcela Caballero', email: 'gerenciacfcor@gmail.com', presidente: 'Sebastián Santiago',
+      web: 'https://cfcor.com.ar/', instagram: 'cfcor', linkedin: 'https://www.linkedin.com/in/camarafranquiciascba/' },
 
-    { id: 'turismo-salud', short: 'Turismo Salud', ini: 'TS', logo: 'logos/turismo-salud-icon.png', logoFull: 'logos/turismo-salud.png', kpi: 0, desde: '2022', lugar: 'Córdoba Capital y Sierras',
+    { id: 'turismo-salud', short: 'Turismo Salud', ini: 'TS', logo: 'logos/turismo-salud-icon.png', logoFull: 'logos/turismo-salud.png', desde: '2022', lugar: 'Córdoba Capital y Sierras',
       name: 'Cluster Turismo Salud Córdoba', sector: 'Salud y turismo',
-      desc: 'Creado en 2022, su propósito es posicionar la oferta de turismo médico cordobesa como una de las mejores opciones para pacientes internacionales, con profesionales reconocidos internacionalmente, infraestructura y tecnología médica World Class y grandes atractivos turísticos en un destino seguro. Integra prestadores de salud de alta complejidad, hoteles y servicios turísticos en torno a un "producto ciudad" competitivo a nivel regional y global.',
-      tags: ['Turismo médico', 'Alta complejidad clínica', 'Wellness & bienestar', 'Salud internacional'],
-      dato: ['2.º', 'plaza de turismo médico más elegida de Argentina, con 2.100 pacientes internacionales por año'],
-      cifras: [['2.100', 'Pacientes internacionales eligen Córdoba por año'], ['+20', 'Instituciones de alta complejidad'], ['15%', 'Del flujo nacional de pacientes internacionales captado por Córdoba'], ['8,4', 'Médicos cada 1.000 habitantes', 'más del doble del promedio nacional'], ['2', 'Socios con la máxima acreditación internacional (Joint Commission)']],
-      secciones: [
-        { label: 'Por qué elegir Córdoba', title: 'Razones para iniciar una conversación', kind: 'cards', items: [
-          ['Oferta de salud altamente diversificada', 'Prácticas médicas de máxima complejidad y radioterapia avanzada, con especialidades en oftalmología, odontología estética y programas de Wellness de nivel internacional.'],
-          ['Profesionales con formación internacional', 'Una cantera de profesionales con formación y reconocimiento internacional, respaldados por la trayectoria académica y científica de la Universidad Nacional de Córdoba y la Universidad Católica de Córdoba.'],
-          ['Logística coordinada de punta a punta', 'Empaqueta el tratamiento de alta complejidad, la hotelería premium para el paciente y sus acompañantes, y la recuperación pre-alta en entornos de bienestar integrados, aprovechando un destino seguro y un clima favorable para la rehabilitación.'],
-          ['Infraestructura robusta y de alta densidad', 'Segunda plaza de turismo médico de Argentina, con más de 20 instituciones privadas de alta complejidad y 8,4 médicos cada 1.000 habitantes (más del doble del promedio nacional), lo que garantiza una respuesta inmediata y altamente calificada para casos complejos.']] },
-        { label: 'Composición', title: 'Quiénes componen el cluster', kind: 'groups', items: [
-          ['Hospitales y clínicas de alta complejidad', ['Hospital Privado Universitario', 'Sanatorio Allende', 'Instituto Oulton', 'Clínica Reina Fabiola']],
-          ['Servicios especializados', ['Clínica de Ojos Córdoba', 'Dentis Odontología', 'Centro de Radioterapia Dean Funes', 'Vittal Emergencias', 'Clínica Diquecito']],
-          ['Wellness y bienestar', ['Posada del Qenti']],
-          ['Hotelería', ['Hotel Y111', 'Hotel Windsor']]] },
-        { label: 'Hitos', title: 'Oportunidades concretas de colaboración', kind: 'steps', items: [
-          ['Acuerdos directos con aseguradoras y brokers', 'Aseguradoras, prepagas y brokers de salud internacionales para la resolución ágil de casos de alta complejidad con una óptima relación costo-beneficio.'],
-          ['Alianzas comerciales con operadores de turismo médico', 'Mayoristas y agencias para estructurar itinerarios completos de tratamiento, recuperación y bienestar.'],
-          ['Medicina preventiva de alta velocidad para directivos', 'Chequeos ejecutivos para directivos de empresas de la región, integrando diagnóstico y hotelería premium.'],
-          ['Programas terapéuticos conjuntos', 'Descenso de peso, control de estrés corporativo y adicciones en centros wellness de prestigio continental.']] }],
-      exporta: ['Perú', 'Paraguay', 'Uruguay', 'Bolivia', 'Chile'], exportaLabel: 'Mercados prioritarios',
-      exportaTexto: 'También recibe pacientes de Estados Unidos, Europa y otros países de Latinoamérica.',
-      manager: 'Javier Romero', email: 'jromero@turismosaludcordoba.com', presidente: 'Marcos Lozada', web: 'https://www.turismosaludcordoba.com/', webLabel: 'Visitar el sitio del cluster' },
+      desc: 'Es el clúster de turismo médico de la ciudad de Córdoba, creado en 2022. Su propósito es posicionar la oferta de turismo médico cordobesa como una de las mejores opciones para pacientes internacionales, con profesionales reconocidos internacionalmente, infraestructura y tecnología médica World Class y grandes atractivos turísticos en un destino seguro. Integra prestadores de salud de alta complejidad, hoteles y servicios turísticos en torno a un "producto ciudad" competitivo a nivel regional y global.',
+      actividades: 'Alta complejidad (trasplante de médula ósea, cardiopatías congénitas, medicina fetal), cirugía ortopédica y bariátrica, radioterapia avanzada, oftalmología, odontología e implantes, estética y programas de bienestar; hotelería y turismo de bienestar.',
+      cifras: [['12', 'socios', '10 instituciones de salud y 2 hoteles'], ['+20', 'instituciones de alta complejidad en la Provincia'], ['15%', 'del flujo nacional de pacientes internacionales captado por Córdoba'], ['8,4', 'médicos cada 1.000 habitantes', 'más del doble del promedio nacional'], ['2', 'socios con acreditación Joint Commission'], ['2.°', 'plaza de turismo médico más elegida de Argentina', '2.100 pacientes internacionales por año']],
+      hitos: ['Misión inversa Paraguay 2025: acuerdos con Medilife y UELA', 'Misión inversa Perú 2026', 'Curso de calidad de procesos y certificación de profesionales de instituciones socias'],
+      paises: ['Paraguay', 'Uruguay', 'Estados Unidos'], paisesTexto: 'Mercados de origen de pacientes y alianzas: Paraguay (Medilife, UELA), Uruguay (AUDAVI) y Estados Unidos (Houston). Próximo destino: Perú.',
+      manager: 'Javier Romero', email: 'jromero@turismosaludcordoba.com', presidente: 'Marcos Lozada',
+      web: 'https://www.turismosaludcordoba.com/', instagram: 'turismosaludcordoba', linkedin: 'https://www.linkedin.com/company/clusterturismosaludcordoba' },
 
-    { id: 'creativa', short: 'Creativa', ini: 'CC', logo: 'logos/creativa-icon.png', logoFull: 'logos/creativa.png', kpi: 0, desde: '2024',
+    { id: 'creativa', short: 'Creativa', ini: 'CC', logo: 'logos/creativa-icon.png', logoFull: 'logos/creativa.png', desde: '2024',
       name: 'Córdoba Creativa - Capital de Ideas', sector: 'Industrias Creativas (Publicidad)',
-      desc: 'Córdoba Creativa es el cluster de la industria creativa, publicitaria y de marketing de Córdoba. Creado en 2024, reúne agencias, estudios y profesionales creativos para amplificar los negocios del ecosistema y posicionar a Córdoba como una capital de ideas, articulando empresas, universidades y organismos públicos para escalar la oferta del sector.',
-      tags: ['Industria creativa', 'Publicidad & branding', 'Marketing', 'Contenidos'],
-      dato: ['+1.500', 'profesionales y expertos en el ecosistema creativo, entre el núcleo y la red ampliada'],
-      cifras: [['+600', 'Profesionales creativos en red'], ['100%', 'Oferta integral End-to-End', 'que cubre toda la cadena de valor'], ['5', 'Alianzas con universidades y centros de formación']],
-      secciones: [
-        { label: 'Cómo trabajamos juntos', title: 'Potencia creativa de punta a punta', kind: 'cards', items: [
-          ['Co-producción de campañas de alto impacto', 'Campañas bajo estándares globales de calidad y adaptadas culturalmente a mercados locales e internacionales.'],
-          ['Equipos ágiles e interdisciplinarios', 'Diseño, branding, desarrollo y estrategia digital que se acoplan a cada proyecto para acelerar los lanzamientos y potenciar su negocio de manera más inteligente, eficiente y con un método probado.'],
-          ['Resoluciones End-to-End de la marca', 'Desde la conceptualización y el diseño estratégico hasta la ejecución digital, optimizando tiempos de entrega mediante un único ecosistema aliado.'],
-          ['Publicidad + desarrollo digital de vanguardia', 'Fusión de la creatividad publicitaria tradicional con desarrollos digitales de vanguardia y marketing de contenidos para potenciar el posicionamiento de su empresa en nuevos mercados.']] },
-        { label: 'Por qué asociarse', title: 'Razones para iniciar una conversación', kind: 'steps', items: [
-          ['Trayectoria internacional', 'Trayectoria consolidada (vía agencias socias) en mercados internacionales como México, Chile y Uruguay, lo que demuestra que las empresas operan bajo estándares internacionales de calidad, cumplimiento normativo y flexibilidad cultural.'],
-          ['Escala y músculo técnico', 'Reúne la fuerza y el conocimiento de profesionales especializados en red y un ecosistema ampliado de más de 1.500 expertos, ofreciendo a sus aliados la escala necesaria para proyectos de cualquier magnitud.'],
-          ['Cobertura integral', 'Desde la conceptualización y el diseño estratégico hasta la ejecución, el desarrollo tecnológico y la gestión de activos a escala global.'],
-          ['Alianzas académicas de primer nivel', 'Alianza estratégica con universidades de primer nivel que garantiza el acceso directo y continuo al mejor talento joven e innovación académica.']] }],
-      exporta: ['México', 'Chile', 'Uruguay'], exportaLabel: 'Mercado global', exportaTexto: 'Las agencias socias operan individualmente en mercados internacionales.',
-      manager: 'Alberto Finkelstein', email: 'info@clustercordobacreativa.com', presidente: 'Gaspar Petrini', web: 'https://clustercordobacreativa.com/', webLabel: 'Visitar el sitio del cluster' },
+      desc: 'Córdoba Creativa es el clúster de la industria publicitaria y de marketing de Córdoba. Creado en 2024, reúne agencias, estudios y profesionales creativos para amplificar los negocios del ecosistema y posicionar a Córdoba como una capital de ideas, articulando empresas, universidades y organismos públicos para escalar la oferta del sector.',
+      actividades: 'Creatividad publicitaria, branding, diseño y desarrollo web, planificación y compra de medios, estrategia digital, eventos y experiencias, marketing de contenidos, paid media.',
+      cifras: [['13', 'miembros'], ['+1.500', 'profesionales y expertos en el ecosistema creativo'], ['100%', 'oferta integral End-to-End', 'cubre toda la cadena de valor'], ['5', 'alianzas con universidades y centros de formación']],
+      hitos: ['Convenios con 5 instituciones educativas', 'Metodología de licitaciones intracluster', 'Premios Acento (premios de la industria)', 'Convenios comerciales con otros clusters', 'Primer monitor de la industria a nivel nacional'],
+      paises: ['México', 'Chile', 'Uruguay'], paisesTexto: 'Las agencias socias operan individualmente en estos mercados.',
+      manager: 'Alberto Finkelstein', email: 'info@clustercordobacreativa.com', presidente: 'Gaspar Petrini',
+      web: 'https://clustercordobacreativa.com/', instagram: 'cordoba.creativa', linkedin: 'https://www.linkedin.com/company/cluster-cordoba-creativa' },
 
-    { id: 'welcome', short: 'Welcome', ini: 'CW', logo: 'logos/welcome-icon.png', logoFull: 'logos/welcome.png', kpi: 0, desde: '2022',
+    { id: 'welcome', short: 'Welcome', ini: 'CW', logo: 'logos/welcome-icon.png', logoFull: 'logos/welcome.png', desde: '2022',
       name: 'Córdoba Welcome - Cluster de Eventos', sector: 'Industria de eventos',
-      desc: 'Córdoba Welcome - Cluster de Eventos es el ecosistema que lidera y transforma la industria de eventos, espectáculos artísticos, deportivos y el segmento MICE en Córdoba. Creado en 2022, el cluster articula de manera estratégica a empresas, academia y sector público para impulsar el crecimiento económico, social y sostenible de la región. Se proyecta globalmente como un destino de referencia internacional y pionero en la implementación de modelos de gestión con medición de triple impacto.',
-      tags: ['Industria de eventos', 'MICE', 'Espectáculos artísticos', 'Eventos deportivos'],
-      dato: ['+870', 'eventos realizados en la ciudad durante 2025'],
-      cifras: [['+530.000', 'Puestos de trabajo directos, indirectos y eventuales', 'en el sector de espectáculos y eventos de la provincia de Córdoba'], ['+80', 'Miembros', 'entre ellos 77 empresas, 5 clubes de fútbol y 3 universidades o institutos'], ['6', 'Destinos de exportación activos']],
-      secciones: [
-        { label: 'Por qué asociarse', title: 'Razones para iniciar una conversación', kind: 'cards', items: [
-          ['Una metodología propia de triple impacto', 'Única en la región para auditar y medir el impacto económico, social y medioambiental de grandes eventos. Desarrollada en alianza con la Universidad Siglo 21, garantiza a marcas y gobiernos la ejecución de eventos alineados con estándares globales de sustentabilidad.'],
-          ['Un modelo ya exportado', 'El modelo de gestión y producción de eventos de Córdoba ya se exportó con éxito a EE. UU., España, Brasil, Uruguay, Paraguay y México, y se encuentra en plena expansión hacia Emiratos Árabes.'],
-          ['Centros de alto rendimiento de clase mundial', 'Centros integrales equipados con tecnología de punta, diseñados bajo estándares internacionales para albergar delegaciones, atletas de élite y entrenamientos o pretemporadas de máxima exigencia.'],
-          ['Nuevos venues en desarrollo', 'Inversiones en curso para tres nuevos venues cerrados de última generación (formato Arena), proyectados para responder a la demanda de espectáculos y eventos de mediana escala.'],
-          ['Alta confianza institucional', 'Un marco regulatorio único en la región (Ley Provincial N° 11.092 y Ordenanza Municipal N° 13.382) garantiza estabilidad, incentivos y previsibilidad para la producción de grandes eventos.']] },
-        { label: 'Composición', title: '+80 miembros en toda la cadena de valor de eventos', kind: 'list', items: ['34 productoras de eventos', '7 hoteles', '7 empresas de tecnología para eventos', '7 de transporte y turismo', '5 clubes deportivos', '6 locaciones', '3 ticketeras', '3 universidades e institutos', '1 banco'] },
-        { label: 'Ya conectado con', title: 'Vínculos internacionales', kind: 'list', items: ['Programa InterCluster CEPAL', 'Rutas Escénicas Lagos y Volcanes (Chile)', 'FiExpo Latam', 'Encuentro Los Ríos Atrae 2026 (Valdivia, Chile)', 'BIME (Bilbao)', 'BOMM (Bogotá)', 'AFIDA (Guadalajara)', 'FIT (Buenos Aires)', 'Ole Summit', 'Uruguay Mercado Musical'] },
-        { label: 'Hitos', title: 'Oportunidades concretas de colaboración', kind: 'steps', items: [
-          ['Exportá tus eventos', 'Llevá festivales y eventos a nuevos mercados internacionales, con un modelo ya probado en diversos destinos.'],
-          ['Adoptá la metodología de triple impacto', 'Intercambio y adopción de nuestra metodología de medición de triple impacto con organizaciones y clusters del sector a nivel global.'],
-          ['Abrí nuestros centros de alto rendimiento', 'Recibí equipos profesionales, federaciones y atletas de élite de todo el mundo que requieran entrenamiento de máxima exigencia en una infraestructura adaptada.']] }],
-      exporta: ['Uruguay', 'España', 'Brasil', 'Estados Unidos', 'Paraguay', 'México'], exportaLabel: 'Destinos de exportación activos',
-      manager: 'Analía Jaccoud', email: 'analia@envivoproducciones.net', presidente: 'José Palazzo', web: 'https://cordobawelcome.com.ar/', webLabel: 'Visitar el sitio del cluster' }
+      desc: 'Córdoba Welcome es el cluster de la industria de eventos de Córdoba. Creado en 2022, reúne a productores, organizadores, proveedores, hoteles, venues, clubes e instituciones de toda la cadena de valor de congresos, ferias, festivales y espectáculos musicales y deportivos. Trabaja de manera colaborativa para fortalecer y representar al sector, lograr que los eventos sean reconocidos como una industria que genera trabajo genuino y posicionar a Córdoba como destino líder de grandes eventos, con datos propios sobre su impacto económico, fiscal, laboral y ambiental.',
+      actividades: 'Organización de eventos artísticos, deportivos, congresos y ferias; infraestructura y logística; producción audiovisual y técnica; promoción de destino; ticketing y servicios turísticos.',
+      cifras: [['80', 'miembros', '77 empresas'], ['+530.000', 'puestos de trabajo directos, indirectos y eventuales en el sector de espectáculos y eventos de la provincia'], ['6', 'destinos de exportación activos'], ['+870', 'festivales realizados en la ciudad durante 2025']],
+      hitos: ['Metodología de medición de triple impacto de eventos (con Universidad Siglo 21)', 'Ley Provincial 11.092/2025 de Promoción de la Industria de Eventos y la Economía Creativa', 'Primer evento deportivo sustentable de Argentina', 'Presentaciones en FiExpo Latam 2025 y AFIDA 2025'],
+      paises: ['Uruguay', 'España', 'Brasil', 'Estados Unidos', 'Paraguay', 'México'], paisesTexto: '',
+      manager: 'Analía Jaccoud', email: 'cluster@cordobawelcome.com.ar', presidente: 'José Palazzo',
+      web: 'https://cordobawelcome.com.ar/', instagram: 'cordobawelcome', linkedin: '' }
   ];
 
   // Total oficial de países de exportación. La lista por país se arma con los destinos detallados de cada cluster.
@@ -919,6 +826,7 @@
   ];
 
   var INFORMES = [
+    { kind: 'Informe', title: 'TCI Global Conference Córdoba 2026 en cifras', who: 'Córdoba Acelera y TCI Network', href: '#global-conference', cta: 'Ver el informe', icon: 'arrow' },
     { kind: 'Guía', title: 'Cuadernillo de Buenas Prácticas Cluster', who: 'Córdoba Acelera', href: 'https://cordobaacelera.com.ar/wp-content/uploads/2025/10/CuaderniilloBPCluster.pdf', cta: 'Descargar PDF', icon: 'download' },
     { kind: 'Estudio', title: 'Complejidad económica de Córdoba', who: 'Fundar', href: 'https://fund.ar/serie/complejidad-economica-cordoba/', cta: 'Ver la serie', icon: 'arrow' },
     { kind: 'Informe', title: 'Peer Review de Clusters 2026', who: 'Córdoba Acelera y TCI Network', status: '[Publicación a confirmar]' },
@@ -963,7 +871,7 @@
   // Destinos sin repetir, con los clusters que llegan a cada uno
   var DEST = (function () {
     var map = {};
-    CLUSTERS.forEach(function (c) { c.exporta.forEach(function (p) { (map[p] = map[p] || []).push(c); }); });
+    CLUSTERS.forEach(function (c) { c.paises.forEach(function (p) { (map[p] = map[p] || []).push(c); }); });
     return Object.keys(map).map(function (p) { return { pais: p, clusters: map[p] }; })
       .sort(function (a, b) { return b.clusters.length - a.clusters.length || a.pais.localeCompare(b.pais, 'es'); });
   })();
@@ -1216,8 +1124,8 @@
     { n: '+260', label: 'empresas', short: 'empresas' },
     { n: '150', label: 'servicios', short: 'servicios' },
     { n: String(TOTAL_PAISES), label: 'países de destino de exportación', short: 'países de exportación' },
-    { n: String(UNIVERSIDADES.length), label: 'universidades de la Ciudad articuladas', short: 'universidades', list: UNIVERSIDADES },
-    { n: String(ALIANZAS.length), label: 'alianzas con organismos internacionales', short: 'alianzas internacionales', list: ALIANZAS },
+    { n: '', label: 'Articulación con universidades de la Ciudad', short: 'Universidades de la Ciudad', list: UNIVERSIDADES },
+    { n: '', label: 'Alianzas con organismos internacionales', short: 'Alianzas internacionales', list: ALIANZAS },
     { n: '', label: 'Articulación con órganos locales y regionales', short: 'Articulación local y regional', list: ARTICULACION } // sin número: solo el texto y "Ver quiénes"
   ];
   function figList(n, label, items, cls) {
@@ -1264,16 +1172,14 @@
 
   function vClusters() {
     var cards = CLUSTERS.map(function (c) {
-      var k = c.cifras[c.kpi || 0];
       return '<a class="ccard" href="#' + c.id + '">' +
-        '<div class="top">' + logo(c) + '<div class="tag">' + c.sector + '</div></div>' +
-        '<div><div class="short">' + c.short + '</div><div class="full">' + c.name + '</div></div>' +
-        '<div class="kpi"><div><strong>' + k[0] + '</strong><span>' + k[1] + '</span></div>' +
+        '<div class="top">' + logo(c) + '<div class="cname">' + c.name + '</div></div>' +
+        '<div class="kpi"><span class="see">Hacé clic para ver la ficha</span>' +
         '<span class="arrow">' + ICONS.right + '</span></div></a>';
     }).join('');
     return '<div class="wrap">' + crumbs([['Inicio', '#inicio'], ['Clusters']]) +
       '<h1 class="h-xl" tabindex="-1">Los clusters que impulsamos</h1>' +
-      '<p class="lead" style="margin-top:18px">Nueve clusters de la ciudad de Córdoba que suman más de 260 empresas. Abrí cada ficha para ver su perfil, sus cifras, sus mercados y su contacto.</p>' +
+      '<p class="lead" style="margin-top:18px">Nueve clusters de la ciudad de Córdoba que suman más de 260 empresas. Abrí cada ficha para ver su perfil, sus cifras, sus hitos, su presencia internacional y su contacto.</p>' +
       '<div class="cgrid">' + cards + '</div></div>';
   }
 
@@ -1290,7 +1196,7 @@
   }
   function numsFor(list) {
     return '<div class="fx-nums">' + list.map(function (m) {
-      return '<div class="fx-num' + (isTodo(m[0]) ? ' todo' : '') + '"><strong>' + m[0] + '</strong><span>' + m[1] + (m[2] ? '<em>' + m[2] + '</em>' : '') + '</span></div>'; }).join('') + '</div>';
+      return '<div class="fx-num' + (isTodo(m[0]) ? ' todo' : '') + '"><strong>' + m[0] + '</strong><span>' + m[1].charAt(0).toUpperCase() + m[1].slice(1) + (m[2] ? '<em>' + m[2] + '</em>' : '') + '</span></div>'; }).join('') + '</div>';
   }
 
   function vCluster(c) {
@@ -1298,39 +1204,41 @@
     var prev = CLUSTERS[(i + CLUSTERS.length - 1) % CLUSTERS.length];
     var next = CLUSTERS[(i + 1) % CLUSTERS.length];
     var out = '';
-    out += sec('Quiénes son', null, '<p class="lead">' + c.desc + '</p><div class="chips">' + c.tags.map(function (e) { return '<span class="chip">' + e + '</span>'; }).join('') + '</div>');
-    if (c.dato) out += sec('El dato', null, '<div class="fx-dato"><strong>' + c.dato[0] + '</strong><p>' + c.dato[1] + '</p></div>');
-    out += sec('En números', null, numsFor(c.cifras.filter(function (m) { return !c.dato || m[0] !== c.dato[0]; })));
-    if (c.pendiente) out += sec('Diferencial', null, '<div class="fx-todo" style="margin-top:0"><b>' + c.pendiente.title + '</b>' + c.pendiente.text + '</div>');
-    (c.secciones || []).forEach(function (s) { out += sec(s.label, s.title, bodyFor(s), s.intro); });
-    var expTitle = c.exportaLabel || (c.exporta.length ? 'Dónde exportan las empresas socias' : 'Alcance internacional');
-    out += sec('Mundo', expTitle,
-      (c.exporta.length ? '<div class="flags">' + c.exporta.map(flag).join('') + '</div>' : '') +
-      (c.exportaTexto ? '<p class="body" style="margin-top:' + (c.exporta.length ? '18px' : '0') + '">' + c.exportaTexto + '</p>' : ''));
+    out += sec('Quiénes son', null, '<p class="lead">' + c.desc + '</p>');
+    out += sec('Qué hacen', 'Actividades principales', '<p class="fx-text">' + c.actividades + '</p>');
+    out += sec('En números', null, numsFor(c.cifras));
+    out += sec('Hitos', 'Hitos del cluster', '<ul class="acciones">' + c.hitos.map(function (h) { return '<li>' + h + '</li>'; }).join('') + '</ul>');
+    if (c.paises.length || c.paisesTexto)
+      out += sec('Mundo', 'Presencia internacional',
+        (c.paises.length ? '<div class="flags">' + c.paises.map(flag).join('') + '</div>' : '') +
+        (c.paisesTexto ? '<p class="body" style="margin-top:' + (c.paises.length ? '18px' : '0') + '">' + c.paisesTexto + '</p>' : ''));
 
     function person(label, name, mail) {
       return '<div class="fx-person"><div class="tag">' + label + '</div><div class="who">' + name + '</div>' + (mail ? '<a class="mail" href="mailto:' + mail + '">' + mail + '</a>' : '') + '</div>';
     }
     var people = person('Cluster manager', c.manager, c.email) +
-      (c.directora ? person('Dirección ejecutiva', c.directora) : '') +
+      (c.directora ? person('Dirección ejecutiva', c.directora, c.directoraEmail) : '') +
       (c.presidente ? person(c.presidenteLabel || 'Presidencia', c.presidente) : '');
+    var links = [];
+    if (c.web) links.push(['Sitio web', c.web]);
+    if (c.instagram) links.push(['Instagram', 'https://www.instagram.com/' + c.instagram + '/']);
+    if (c.linkedin) links.push(['LinkedIn', c.linkedin]);
 
     return '<div class="wrap">' + crumbs([['Inicio', '#inicio'], ['Clusters', '#clusters'], [c.short]]) +
       '<div class="fx-meta"><span class="hot">' + c.sector + '</span><span>Iniciativa Clusters Córdoba Acelera</span>' + (c.desde ? '<span>Desde ' + c.desde + '</span>' : '') + '</div>' +
       '<header class="fx-hero">' + logoFull(c) + '<div><h1 class="h-xl" tabindex="-1">' + c.name + '</h1><p class="city">' + (c.lugar || 'Córdoba Capital') + '</p></div></header>' +
       out +
       '<section class="fx-contact" aria-label="Contacto del cluster"><div><div class="fx-people">' + people + '</div>' +
+        (links.length ? '<div class="fx-social">' + links.map(function (l) { return '<a href="' + l[1] + '" target="_blank" rel="noopener">' + l[0] + ' ' + ICONS.arrow + '</a>'; }).join('') + '</div>' : '') +
         '<p class="body" style="margin-top:16px">¿Querés sumarte a este cluster? Te conectamos con su equipo.</p></div>' +
-        '<div class="actions"><a class="btn btn-primary" href="mailto:hola@cordobaacelera.com.ar?subject=' + encodeURIComponent('Quiero sumarme a ' + c.short) + '">Escribinos</a>' +
-        '<a class="btn btn-ghost" href="' + c.web + '"' + ext(c.web) + '>' + c.webLabel + ' ' + ICONS.arrow + '</a></div></section>' +
+        '<div class="actions"><a class="btn btn-primary" href="mailto:hola@cordobaacelera.com.ar?subject=' + encodeURIComponent('Quiero sumarme a ' + c.short) + '">Escribinos</a></div></section>' +
       '<nav class="pager" aria-label="Otros clusters">' +
         '<a href="#' + prev.id + '">' + logo(prev) + '<span><small>Cluster anterior</small><b>' + prev.short + '</b></span></a>' +
         '<a class="next" href="#' + next.id + '">' + logo(next) + '<span><small>Cluster siguiente</small><b>' + next.short + '</b></span></a>' +
       '</nav></div>';
   }
 
-  /* Mapa de países con arcos desde Córdoba */
-  function worldMap(paises) {
+    function worldMap(paises) {
     var on = {}, nm = {};
     paises.forEach(function (p) { if (ISO[p]) { on[ISO[p]] = 1; nm[ISO[p]] = p; } });
     var x0 = WORLD.cba[0], y0 = WORLD.cba[1];
@@ -1459,10 +1367,10 @@
     var kinds = ['Todos'].concat(INFORMES.map(function (d) { return d.kind; }).filter(function (k, i, a) { return a.indexOf(k) === i; }));
     return '<div class="wrap">' + crumbs([['Inicio', '#inicio'], ['Informes']]) +
       '<h1 class="h-xl" tabindex="-1">Informes y publicaciones</h1>' +
-      '<div style="margin-top:32px">' + tciBand('informes') + '</div>' +
       '<div class="filters" role="group" aria-label="Filtrar por tipo">' + kinds.map(function (k) {
         return '<button type="button" class="chip" data-filter="' + k + '" aria-pressed="' + (k === docFilter) + '" style="min-height:44px">' + k + '</button>';
-      }).join('') + '</div><div id="icc-docs">' + docsList() + '</div></div>';
+      }).join('') + '</div><div id="icc-docs">' + docsList() + '</div>' +
+      '<div class="section-gap">' + tciBand('informes') + '</div></div>';
   }
   function docsList() {
     return INFORMES.filter(function (d) { return docFilter === 'Todos' || d.kind === docFilter; }).map(function (d) {
