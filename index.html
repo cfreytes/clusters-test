@@ -1425,7 +1425,7 @@
   // Por defecto se usa el ícono del sitio web de cada socio (dominio en WEB_SOCIOS).
   // Si subís los PNG a logos/socios/<id-del-cluster>/<nombre>.png, cambiá a true:
   // se usa el archivo propio y, si falta, el ícono web. Sin ninguno, se muestran las iniciales.
-  var LOGOS_SOCIOS_LOCALES = false;
+  var LOGOS_SOCIOS_LOCALES = true;
   function socioSlug(t) { return t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/&/g, ' y ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); }
   function socioIni(t) { return t.replace(/\(.*?\)/g, '').trim().split(/\s+/).filter(function (w) { return /[A-Za-zÁÉÍÓÚÑáéíóúñ0-9]/.test(w); }).slice(0, 2).map(function (w) { return w.charAt(0); }).join('').toUpperCase(); }
   function socioWeb(dom) { return 'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(dom) + '&sz=128'; }
